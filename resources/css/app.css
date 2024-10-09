@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Inter", sans-serif;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Aeonik", system-ui, sans-serif !important;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply py-1 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150 font-medium gap-1 items-center active:scale-95 
+    }
+
+    .btn-primary {
+        @apply bg-primary rounded-[6px] overflow-hidden text-white ring-2 ring-primary shadow-md shadow-primary-200  hover:shadow-none
+    }
+
+    .btn-light {
+        @apply bg-gray-100 overflow-hidden rounded-lg font-semibold text-muted ring-2 ring-gray-200 shadow-lg shadow-gray-200  hover:shadow-none
+    }
+
+    .btn-light::before {
+        content: '';
+        @apply bg-gray-500 absolute bottom-0 left-0 right-0 top-[50%] bg-opacity-10
+    }
+
+    .btn-primary::before {
+        content: '';
+        @apply bg-white absolute top-0 left-0 right-0 bottom-[50%] bg-opacity-10
+    }
+
+    .btn-secondary {
+        @apply bg-secondary overflow-hidden text-white ring-2 ring-secondary shadow-lg shadow-secondary  hover:shadow-none
+    }
+
+    .btn-secondary::before {
+        content: '';
+        @apply bg-white absolute top-0 left-0 right-0 bottom-[50%] bg-opacity-10
+    }
+
+    .btn-white {
+        @apply bg-white text-black
+    }
+
+    .btn-square {
+        @apply shrink-0
+    }
+
+    .form-control{
+        @apply shadow-sm w-full rounded-lg focus:border-0 border-gray-200 focus:ring-1 focus:ring-primary;
+    }
+
+    .form-label{
+        @apply leading-loose font-medium text-sm md:text-base
+    }
+
+    .card {
+        @apply md:p-5 p-4 rounded-[20px] border 
+    }
+
+    .shadow-main{
+        box-shadow: 0px 14.05px 39.82px 0px rgba(33, 33, 38, 0.1);
+        box-shadow: 0px 2.34px 3.51px 0px rgba(33, 33, 38, 0.08);
+        box-shadow: 0px 0px 0px 0.59px rgba(19, 19, 22, 0.05);
+        box-shadow: 0px 0.59px 0.59px 0px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 5.86px 18.74px 0px rgba(33, 33, 38, 0.15);
+    }
+}
