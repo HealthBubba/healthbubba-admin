@@ -1,19 +1,22 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import Header from './Partials/Dashboard/Header';
+import Sidebar from './Partials/Dashboard/Sidebar';
 
-export default function Authenticated({ header, children }) {
-    const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
+export default function DashboardLayout ({ children, title }) {
     return (
-        <div className="min-h-screen bg-gray-100">
-            <main>{children}</main>
+        <div className="min-h-screen flex bg-[#FAFAFB]">
+            <div className="w-full flex ">
+                <aside className="w-1/5 h-full">
+                    <Sidebar />
+                </aside>
+
+                <main className="h-full flex-1">
+                    <Header title={title} />
+
+                    <div className="p-5">
+                        {children}
+                    </div>
+                </main>
+            </div>
         </div>
     );
 }
