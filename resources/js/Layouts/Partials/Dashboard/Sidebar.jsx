@@ -17,15 +17,15 @@ export default function () {
                 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Dashboard'} icon={AppIcon} isActive={true} />
+                        <SidebarItem name={'Dashboard'} url={route('dashboard')} icon={AppIcon} isActive={true} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Health Practitioners'} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Health Practitioners'} url={route('practitioners')} icon={SethoscopeIcon} />
                     </li>
                     
                     <li>
-                        <SidebarItem name={'Patient'} icon={HospitalBedIcon} />
+                        <SidebarItem name={'Patient'} url={route('patients')} icon={HospitalBedIcon} />
                     </li>
                 </ul>
                 
@@ -33,11 +33,11 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Manage Appointment Orders'} icon={CubeIcon} />
+                        <SidebarItem name={'Manage Appointment Orders'} url={route('appointments')} icon={CubeIcon} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Manage Tests & Medication Orders '} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Manage Tests & Medication Orders '} url={route('orders')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 
@@ -45,11 +45,11 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Transactions'} icon={CubeIcon} />
+                        <SidebarItem name={'Transactions'} url={route('transactions')} icon={CubeIcon} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Admins'} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Admins'} url={route('admins')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 

@@ -13,9 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 inter: ['Inter', ...defaultTheme.fontFamily.serif],
-                aeonik: ['Aeonik', ...defaultTheme.fontFamily.sans]
             },
             colors: {
 				primary: {
@@ -33,7 +31,7 @@ export default {
 				},
 
 				secondary: '#303030',
-				muted: '#5E5F6E'
+				muted: '#71717A'
 			},
 
         },
