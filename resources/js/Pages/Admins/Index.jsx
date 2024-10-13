@@ -1,6 +1,9 @@
+import Button from '@/Components/Button/Button';
+import Checkbox from '@/Components/Checkbox';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon, PencilIcon, PencilSquareIcon, TrashIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/solid';
 import { Link } from '@inertiajs/react';
 import { useMemo } from 'react';
 
@@ -13,37 +16,21 @@ export default function () {
     return (
         <AuthenticatedLayout title="Health Practitioners">
             <div className="card p-0 rounded-xl">
-                <div className="p-4 flex space-x-2">
-                    <div>
-                        <Menu>
-                            <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                <AdjustmentsHorizontalIcon className='size-5' />         
-                                <span>Filter</span>
-                                <ChevronDownIcon className='size-3' />         
-                            </MenuButton>
-                            <MenuItems transition anchor="bottom start" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                <div className='p-1'>
-                                    <MenuItem >
-                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Verified</button>
-                                    </MenuItem>
-                                </div>
-
-                                <div className="border-t-[1.5px]"></div>
-
-                                <div className='p-1'>
-                                    <MenuItem>
-                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Pending</button>
-                                    </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </Menu>
+                <div className="p-4 flex justify-between items-center">
+                    <div className="inline-flex items-center space-x-2">
+                        <UserCircleIcon className='size-7' />
+                        <p className='font-semibold'>Users</p>
                     </div>
-                    <div>
-                        <div className="relative bg-[#F9FAFB] flex items-center border border-[#E5E7EB] rounded-lg border-2">
+                    <div className=" flex items-center  space-x-2">
+                        <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />
                             </div>
-                            <input type="text" placeholder='Search health practioner' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
+                            <input type="text" placeholder='Search Users' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
+                        </div>
+
+                        <div>
+                            <Button className='btn-primary py-[5px] h-full'>Create User <PlusIcon className='size-5' /></Button>
                         </div>
                     </div>
                 </div>
@@ -54,53 +41,37 @@ export default function () {
                     <table className='border-b'>
                         <thead>
                             <tr>
+                                <th>
+                                    <Checkbox />
+                                </th>
                                 <th>S/N</th>
                                 <th>Name</th>
-                                <th >Practitioner ID</th>
-                                <th>Specialization</th>
-                                <th>License No.</th>
-                                <th>License Expiry</th>
+                                <th >Role</th>
                                 <th>Status</th>
-                                <th>Consultations</th>
-                                <th>Earnings</th>
+                                <th>Date Added</th>
                                 <th></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>TRX12345</td>
-                                <td>Alexander Ogunyemi</td>
-                                <td>Jane Smith</td>
-                                <td>Payment</td>
-                                <td>N 5,000,000</td>
                                 <td>
-                                    <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
+                                    <Checkbox />
                                 </td>
-                                <td>Bank Transfer</td>
+                                <td>1</td>
+                                <td>Alexander Ogunyemi</td>
+                                <td>TRX12345</td>
+                                <td>APPT56789</td>
                                 <td>APPT56789</td>
                                 <td>
-                                    <Menu>
-                                        <MenuButton className="border-2 p-1 rounded-lg">
-                                            <EllipsisHorizontalIcon className='size-5' />                                        
-                                        </MenuButton>
-                                        <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                            <div className='p-1'>
-                                                <MenuItem >
-                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Suspend</button>
-                                                </MenuItem>
-                                            </div>
-
-                                            <div className="border-t-[1.5px]"></div>
-
-                                            <div className='p-1'>
-                                                <MenuItem>
-                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</button>
-                                                </MenuItem>
-                                            </div>
-                                        </MenuItems>
-                                    </Menu>
+                                    <div className="flex space-x-4">
+                                        <button className="border-2 p-1 bg-white rounded-lg">
+                                            <PencilSquareIcon className='size-5' />                                        
+                                        </button>
+                                        <button className="border-2 p-1 bg-white rounded-lg">
+                                            <TrashIcon className='size-5' />                                        
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

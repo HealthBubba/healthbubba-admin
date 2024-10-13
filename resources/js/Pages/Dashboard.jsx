@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { StatsItem } from '@/Partials/Stats/StatsItem';
+import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link } from '@inertiajs/react';
 
@@ -15,14 +15,14 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-4 gap-4">
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
-                    <StatsItem />
+                    <StatsItem title={'Total Active Patients'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Active Practitioners'} amount={2000}  direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Consultation Revenue'} isPrice amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Orders'} amount={2000}  direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Appointments'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Completed Appointments'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Cancelled  Appointments'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Ongoing Orders'} amount={2000} direction={Direction.up} percentage={36} />
                 </div>
 
 

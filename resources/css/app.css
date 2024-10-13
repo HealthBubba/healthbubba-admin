@@ -21,7 +21,7 @@
     }
 
     th, td {
-        @apply p-3 text-sm text-[#6B7280] table-cell
+        @apply p-3 text-sm text-[#6B7280] table-cell align-middle
     }
 
     th:first-child, td:first-child{

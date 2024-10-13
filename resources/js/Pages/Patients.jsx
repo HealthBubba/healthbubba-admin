@@ -11,7 +11,7 @@ export default function () {
     }, [])
 
     return (
-        <AuthenticatedLayout title="Health Practitioners">
+        <AuthenticatedLayout title="Patients">
             <div className="card p-0 rounded-xl">
                 <div className="p-4 flex space-x-2">
                     <div>
@@ -39,7 +39,7 @@ export default function () {
                         </Menu>
                     </div>
                     <div>
-                        <div className="relative bg-[#F9FAFB] flex items-center border border-[#E5E7EB] rounded-lg border-2">
+                        <div className="relative bg-[#F9FAFB] flex items-center  border-[#E5E7EB] rounded-lg border-2">
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />
                             </div>
@@ -56,13 +56,13 @@ export default function () {
                             <tr>
                                 <th>S/N</th>
                                 <th>Name</th>
-                                <th >Practitioner ID</th>
-                                <th>Specialization</th>
-                                <th>License No.</th>
-                                <th>License Expiry</th>
+                                <th >Patient ID</th>
+                                <th>Email Address</th>
+                                <th>Phone No.</th>
+                                <th>Next Appointment</th>
                                 <th>Status</th>
                                 <th>Consultations</th>
-                                <th>Earnings</th>
+                                <th>Total Payments</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -96,7 +96,7 @@ export default function () {
 
                                             <div className='p-1'>
                                                 <MenuItem>
-                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</button>
+                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete Patient</button>
                                                 </MenuItem>
                                             </div>
                                         </MenuItems>
