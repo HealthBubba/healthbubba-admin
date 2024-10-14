@@ -1,3 +1,4 @@
+import { Badge } from '@/Components/Badge'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import React from 'react'
@@ -10,9 +11,9 @@ export const PractitionerItem = ({user}) => {
             <td>{user.email}</td>
             <td>Jane Smith</td>
             <td>{user.licence_number}</td>
-            <td>N 5,000,000</td>
+            <td></td>
             <td>
-                <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
+                <Badge className='capitalize' status={user.status} >{user.status}</Badge>
             </td>
             <td>Bank Transfer</td>
             <td>APPT56789</td>
