@@ -37,7 +37,7 @@ export default function ({users}) {
                         </Menu>
                     </div>
                     <div>
-                        <div className="relative bg-[#F9FAFB] flex items-center border border-[#E5E7EB] rounded-lg border-2">
+                        <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />
                             </div>
