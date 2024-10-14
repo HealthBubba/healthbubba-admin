@@ -15,4 +15,17 @@ class HealthPractitionerController extends Controller {
         return Inertia::render('HealthPractitioners', compact('users'));
     }
 
+    function suspend(User $user){
+        $user->is_active = !$user->is_active;
+        $user->save();
+        toast($user->is_active ? "User account restored successfully!" : "User account suspended successfully!")->success();
+        return back();
+    }
+
+    function destroy(User $user){
+        $user->delete();
+        toast('User account deleted successfully!')->success();
+        return back();
+    }
+
 }

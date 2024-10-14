@@ -20,6 +20,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "@heroicons/react": "^2.1.5"
+        "@heroicons/react": "^2.1.5",
+        "react-toastify": "^10.0.6",
+        "reapop": "^4.2.2"
     }
 }

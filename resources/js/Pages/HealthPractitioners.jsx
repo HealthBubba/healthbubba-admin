@@ -11,7 +11,7 @@ export default function ({users}) {
     return (
         <AuthenticatedLayout title="Health Practitioners">
             <div className="card p-0 rounded-xl">
-                <div className="p-4 flex space-x-2">
+                <div className="p-4 md:flex md:space-x-2">
                     <div>
                         <Menu>
                             <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
@@ -41,7 +41,7 @@ export default function ({users}) {
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />
                             </div>
-                            <input type="text" placeholder='Search health practioner' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
+                            <input type="text" placeholder='Search health practitioners' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
                         </div>
                     </div>
                 </div>

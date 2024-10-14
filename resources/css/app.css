@@ -40,7 +40,7 @@
 
 @layer components {
     .btn {
-        @apply py-1 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150 font-medium gap-1 items-center active:scale-95 
+        @apply py-2 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150 font-medium gap-1 items-center active:scale-95  text-sm
     }
 
     .btn-primary {
@@ -48,12 +48,7 @@
     }
 
     .btn-light {
-        @apply bg-gray-100 overflow-hidden rounded-lg font-semibold text-muted ring-2 ring-gray-200 shadow-lg shadow-gray-200  hover:shadow-none
-    }
-
-    .btn-light::before {
-        content: '';
-        @apply bg-gray-500 absolute bottom-0 left-0 right-0 top-[50%] bg-opacity-10
+        @apply bg-white overflow-hidden rounded-md font-semibold ring-2 ring-[#E5E7EB] bg-gradient-to-b from-[#03071200] to-[#03071208]
     }
 
     .btn-primary::before {
@@ -63,6 +58,14 @@
 
     .btn-secondary {
         @apply bg-secondary overflow-hidden text-white ring-2 ring-secondary shadow-lg shadow-secondary  hover:shadow-none
+    }
+
+    .btn-warning {
+        @apply bg-orange-500 overflow-hidden text-white ring-2 ring-orange-600 rounded-md shadow-inner shadow-white/50 
+    }
+
+    .btn-danger {
+        @apply bg-red-600 overflow-hidden text-white ring-2 ring-red-700 rounded-md shadow-inner shadow-white/50 
     }
 
     .btn-secondary::before {

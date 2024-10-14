@@ -1,22 +1,28 @@
 import Header from './Partials/Dashboard/Header';
 import Sidebar from './Partials/Dashboard/Sidebar';
+import 'react-toastify/dist/ReactToastify.css';
+import ToastContext from '@/Context/ToastContext';
 
 export default function DashboardLayout ({ children, title }) {
     return (
-        <div className="min-h-screen flex bg-[#FAFAFB]">
-            <div className="w-full flex ">
-                <aside className="w-[22%] fixed bottom-0 top-0">
-                    <Sidebar />
-                </aside>
+        <ToastContext>
+            <div className="min-h-screen flex bg-[#FAFAFB]">
+                <div className="w-full md:flex ">
+                    <aside className="md:w-[22%] hidden md:block  fixed bottom-0 top-0">
+                        <Sidebar />
+                    </aside>
 
-                <main className="h-full ms-[22%] flex-1">
-                    <Header title={title} />
+                    <main className="h-full md:ms-[22%] w-full md:flex-1">
+                        <Header title={title} />
 
-                    <div className="p-5">
-                        {children}
-                    </div>
-                </main>
+                        <div className="md:p-5 p-2">
+                            {children}
+                        </div>
+                    </main>
+                </div>
             </div>
-        </div>
+
+
+        </ToastContext>
     );
 }

@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/practitioners', [HealthPractitionerController::class, 'index'])->name('practitioners');
+
+Route::prefix('practitioners')->group(function(){
+    Route::get('', [HealthPractitionerController::class, 'index'])->name('practitioners');
+
+    Route::prefix('{user}')->group(function(){
+        Route::get('suspend', [HealthPractitionerController::class, 'suspend'])->name('practitioners.suspend');
+        Route::get('destroy', [HealthPractitionerController::class, 'destroy'])->name('practitioners.destroy');
+    });
+});
 Route::get('/patients', [PatientController::class, 'index'])->name('patients');
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
