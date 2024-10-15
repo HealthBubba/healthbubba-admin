@@ -17,7 +17,7 @@ class HealthPractitionerController extends Controller {
 
     function destroy(User $user){
         $user->delete();
-        toast('User account deleted successfully!')->success();
+        toast('Health practitioner account deleted successfully!')->success();
         return back();
     }
 

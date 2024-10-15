@@ -15,4 +15,10 @@ class PatientController extends Controller {
         return Inertia::render('Patients', compact('patients'));
     }
 
+    function destroy(User $user){
+        $user->delete();
+        toast('Patient account deleted successfully!')->success();
+        return back();
+    }
+
 }

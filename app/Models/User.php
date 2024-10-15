@@ -47,4 +47,12 @@ class User extends Authenticatable {
         return "{$this->first_name} {$this->last_name}";
     }
 
+    function patientAppointments(){
+        return $this->hasMany(Appointment::class, 'patient_id');
+    }
+
+    function doctorsAppointments(){
+        return $this->hasMany(Appointment::class, 'doctor_id');
+    }
+
 }

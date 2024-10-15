@@ -18,11 +18,23 @@ Route::prefix('practitioners')->group(function(){
     Route::get('', [HealthPractitionerController::class, 'index'])->name('practitioners');
 
     Route::prefix('{user}')->group(function(){
-        Route::get('suspend', [HealthPractitionerController::class, 'suspend'])->name('practitioners.suspend');
         Route::get('destroy', [HealthPractitionerController::class, 'destroy'])->name('practitioners.destroy');
     });
 });
-Route::get('/patients', [PatientController::class, 'index'])->name('patients');
+
+Route::prefix('users')->group(function(){
+    Route::prefix('{user}')->group(function(){
+        Route::get('suspend', [ProfileController::class, 'suspend'])->name('users.suspend');
+    });
+});
+
+Route::prefix('patients')->group(function(){
+    Route::get('/', [PatientController::class, 'index'])->name('patients');
+    Route::prefix('{user}')->group(function(){
+        Route::get('destroy', [PatientController::class, 'destroy'])->name('practitioners.destroy');
+    });
+});
+
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
