@@ -6,7 +6,7 @@ use App\Enums\Status;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PractitionerResource extends JsonResource
+class PatientResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,18 +15,16 @@ class PractitionerResource extends JsonResource
      */
     public function toArray(Request $request): array {
         return [
-            'id' => $this->id,
             'no' => $this->no,
+            'id' => $this->id,
             'picture' => $this->picture,
             'email' => $this->email,
             'full_name' => $this->fullname,
             'phone' => $this->phone,
             'dob' => $this->dob,
             'sex' => $this->sex,
-            'licence_number' => $this->licence_number,
-            'licence_number_verified' => $this->licence_number_verified,
+            'weight' => $this->weight,
             'title' => $this->title,
-            'is_doctor_verified' => $this->is_doctor_verified,
             'is_verified' => $this->licence_number_verified && $this->is_doctor_verified,
             'status' => $this->status()
         ];
@@ -34,8 +32,6 @@ class PractitionerResource extends JsonResource
 
     function status(){
         if(!$this->is_active) return Status::SUSPENDED->value;
-        if($this->is_doctor_verified && $this->licence_number_verified) return Status::VERIFIED->value;
-        return Status::PENDING->value;
+        return Status::ACTIVE->value;
     }
-
 }
