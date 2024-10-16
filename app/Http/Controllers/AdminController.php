@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AdminResource;
 use App\Http\Resources\UserResource;
 use App\Models\Admin;
 use Illuminate\Http\Request;
@@ -15,13 +16,13 @@ class AdminController extends Controller
         $admins = Admin::withSerialNo()->paginate();
 
         return Inertia::render('Admins/Index', [
-            'admins' => UserResource::collection($admins)
+            'admins' => AdminResource::collection($admins)
         ]);
     }
 
     function edit(Admin $admin) {
         return Inertia::render('Admins/Edit', [
-            'admin' => new UserResource($admin)
+            'admin' => new AdminResource($admin)
         ]);
     }
 
@@ -29,13 +30,14 @@ class AdminController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'email' => 'required|email',
+            'email' => ['required','email', 'unique:admins,id,except,'.$admin?->id],
             'phone' => 'required|numeric',
-            'password' => [Rule::requiredIf(fn() => is_null($admin))],
+            'password' => [Rule::requiredIf(fn() => $admin)],
             'created_at' => now()
         ]);
 
         $validated['password'] = $request->password ? Hash::make($validated['password']) : null;
+        dd($admin, $validated);
         $admin?->update($validated) ?? Admin::create($validated);
 
         toast('Admin Profile Saved Successfully')->success();

@@ -41,11 +41,10 @@ Route::get('/transactions', [TransactionController::class, 'index'])->name('tran
 
 Route::prefix('admins')->group(function(){
     Route::get('', [AdminController::class, 'index'])->name('admins');
-    Route::post('', [AdminController::class, 'update'])->name('admins.store');
+    Route::post('{?admin}', [AdminController::class, 'update'])->name('admins.update');
 
     Route::prefix('{admin}')->group(function(){
         Route::get('', [AdminController::class, 'edit'])->name('admins.edit');
-        Route::post('', [AdminController::class, 'update'])->name('admins.update');
     });
 
 });

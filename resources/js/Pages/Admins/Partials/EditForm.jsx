@@ -19,39 +19,38 @@ export default function EditForm({admin = null}) {
 
 	const submit = (e) => {
 		e.preventDefault()
-		form.post(admin ? route('admins.store') : route('admins.update', {admin: admin.id}))
+		form.post(route('admins.update', {admin: admin?.id}))
 	}
-
 
     return (
         <form onSubmit={submit} className="space-y-3">
             <div>
                 <Label>First name</Label>
-                <Input onChange={e => form.setData('firstname', e.currentTarget.value)} value={form.firstname} placeholder="First Name" className={'w-full'} />
+                <Input onChange={e => form.setData('firstname', e.currentTarget.value)} value={form.data.firstname} placeholder="First Name" className={'w-full'} />
                 <InputError message={form.errors.firstname} />
             </div>
             
             <div>
                 <Label>Last name</Label>
-                <Input onChange={e => form.setData('lastname', e.currentTarget.value)} value={form.lastname} placeholder="Last Name" className={'w-full'} />
+                <Input onChange={e => form.setData('lastname', e.currentTarget.value)} value={form.data.lastname} placeholder="Last Name" className={'w-full'} />
                 <InputError message={form.errors.lastname} />
             </div>
 
             <div>
                 <Label>Email Address</Label>
-                <Input onChange={e => form.setData('email', e.currentTarget.value)} value={form.email} placeholder="Email Address" className={'w-full'} />
+                <Input onChange={e => form.setData('email', e.currentTarget.value)} value={form.data.email} placeholder="Email Address" className={'w-full'} />
                 <InputError message={form.errors.email} />
             </div>
 
             <div>
                 <Label>Phone Number</Label>
-                <Input onChange={e => form.setData('phone', e.currentTarget.value)} value={form.phone} placeholder="Phone Number" className={'w-full'} />
+                <Input onChange={e => form.setData('phone', e.currentTarget.value)} value={form.data.phone} placeholder="Phone Number" className={'w-full'} />
                 <InputError message={form.errors.phone} />
             </div>
 
             <div>
                 <Label>Default Password</Label>
-                <Password onChange={e => form.setData('password', e.currentTarget.value)} value={form.password} placeholder="Password" className={'w-full'} />
+                <Password onChange={e => form.setData('password', e.currentTarget.value)} value={form.data.password} placeholder="Password" autoComplete='off'  className={'w-full'} />
                 <InputError message={form.errors.password} />
             </div>
 
