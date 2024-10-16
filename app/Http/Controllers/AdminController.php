@@ -30,14 +30,13 @@ class AdminController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'email' => ['required','email', 'unique:admins,id,except,'.$admin?->id],
+            'email' => ['required','email', Rule::unique('admins', 'email')->ignore($admin?->id, 'id')],
             'phone' => 'required|numeric',
-            'password' => [Rule::requiredIf(fn() => $admin)],
-            'created_at' => now()
+            'password' => [Rule::requiredIf(fn() => $admin !== null)],
         ]);
 
+        $validated['created_at'] = now();
         $validated['password'] = $request->password ? Hash::make($validated['password']) : null;
-        dd($admin, $validated);
         $admin?->update($validated) ?? Admin::create($validated);
 
         toast('Admin Profile Saved Successfully')->success();
