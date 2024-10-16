@@ -7,8 +7,8 @@ export default function TransactionItem({transaction}) {
         <tr>
             <td>{transaction.no}</td>
             <td>{transaction.reference}</td>
-            <td>Alexander Ogunyemi</td>
-            <td>Jane Smith</td>
+            <td>{transaction.date}</td>
+            <td>{transaction.user?.full_name}</td>
             <td>Payment</td>
             <td>{transaction.type}</td>
             <td><Currency /> {transaction.amount.toLocaleString()}</td>

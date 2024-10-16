@@ -40,7 +40,7 @@
 
 @layer components {
     .btn {
-        @apply py-2 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150 font-medium gap-1 items-center active:scale-95  text-sm
+        @apply py-2 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150  gap-1 items-center active:scale-95  text-sm
     }
 
     .btn-primary {
@@ -82,11 +82,11 @@
     }
 
     .form-control{
-        @apply shadow-sm w-full rounded-lg focus:border-0 border-gray-200 focus:ring-1 focus:ring-primary;
+        @apply w-full rounded-lg focus:border-0 border-gray-200 focus:ring-1 focus:ring-primary shadow-sm shadow-black/5 text-sm;
     }
 
     .form-label{
-        @apply leading-loose font-medium text-sm md:text-base
+        @apply leading-loose text-sm md:text-base
     }
 
     .card {

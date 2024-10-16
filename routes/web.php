@@ -41,6 +41,12 @@ Route::get('/transactions', [TransactionController::class, 'index'])->name('tran
 
 Route::prefix('admins')->group(function(){
     Route::get('', [AdminController::class, 'index'])->name('admins');
+    Route::post('', [AdminController::class, 'update'])->name('admins.store');
+
+    Route::prefix('{admin}')->group(function(){
+        Route::post('', [AdminController::class, 'update'])->name('admins.update');
+    });
+
 });
 
 // Route::get('/logout', [TransactionController::class, 'index'])->name('logout');

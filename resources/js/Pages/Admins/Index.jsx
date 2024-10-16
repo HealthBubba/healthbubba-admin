@@ -1,20 +1,45 @@
 import Button from '@/Components/Button/Button';
-import Checkbox from '@/Components/Checkbox';
+import Checkbox from '@/Components/Form/Checkbox';
+import Pagination from '@/Components/Pagination';
+import useModal from '@/Hooks/useModal';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminItem from '@/Partials/Admins/AdminItem';
+import { EditModal } from '@/Partials/Admins/EditModal';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon, PencilIcon, PencilSquareIcon, TrashIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
-import { Link } from '@inertiajs/react';
-import { useMemo } from 'react';
+import { Head, Link } from '@inertiajs/react';
+import { useMemo, useState } from 'react';
 
-export default function () {
+export default function ({admins}) {
 
-    const practitioners = useMemo(() => {
-        // return 
-    }, [])
+    const [selected, setSelected] = useState([])
+
+    const toggleSelect = (value) => {
+        if(selected.includes(value)) {
+            setSelected(selected.filter(item => item != value))
+        }else{
+            setSelected([...selected, value])
+        }
+    }
+
+    const selectAll = (checked) => {
+        if(checked) {
+            setSelected(admins.map(admin => admin.id))
+        }else{
+            setSelected([])
+        }
+    }
+
+    const all = useMemo(() => {
+        return admins.data.length && selected.length == admins.data.length;
+    }, [selected, admins])
+
+    const modal = useModal()
 
     return (
-        <AuthenticatedLayout title="Health Practitioners">
+        <AuthenticatedLayout title="Admins">
+            <Head title='Admins' />
             <div className="card p-0 rounded-xl">
                 <div className="p-4 flex justify-between items-center">
                     <div className="inline-flex items-center space-x-2">
@@ -30,7 +55,7 @@ export default function () {
                         </div>
 
                         <div>
-                            <Button className='btn-primary py-[5px] h-full'>Create User <PlusIcon className='size-5' /></Button>
+                            <Button onClick={modal.open} className='btn-primary h-full'>Create User <PlusIcon className='size-5' /></Button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +67,7 @@ export default function () {
                         <thead>
                             <tr>
                                 <th>
-                                    <Checkbox />
+                                    <Checkbox onChange={e => selectAll(e.currentTarget.checked)} checked={all}  />
                                 </th>
                                 <th>S/N</th>
                                 <th>Name</th>
@@ -54,45 +79,15 @@ export default function () {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>
-                                    <Checkbox />
-                                </td>
-                                <td>1</td>
-                                <td>Alexander Ogunyemi</td>
-                                <td>TRX12345</td>
-                                <td>APPT56789</td>
-                                <td>APPT56789</td>
-                                <td>
-                                    <div className="flex space-x-4">
-                                        <button className="border-2 p-1 bg-white rounded-lg">
-                                            <PencilSquareIcon className='size-5' />                                        
-                                        </button>
-                                        <button className="border-2 p-1 bg-white rounded-lg">
-                                            <TrashIcon className='size-5' />                                        
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            {admins.data.map(admin => <AdminItem admin={admin} toggle={toggleSelect} />)}
                         </tbody>
                     </table>
                 </div>
 
-                <div className="p-5 flex text-muted justify-between text-sm">
-                    <div>
-                        <p className=''>1 - 14 of 200 results</p>
-                    </div>
-                    <div className='flex space-x-5 '>
-                        <div>
-                            <p>1 of 16 pages</p>
-                        </div>
-                        <div className='flex space-x-3'>
-                            <Link href='#' className='text-muted/75'>Prev</Link>
-                            <Link href='#'>Next</Link>
-                        </div>
-                    </div>
-                </div>
+                <Pagination items={admins} />
             </div>
+
+            <EditModal {...modal} />
         </AuthenticatedLayout>
     )
 }
