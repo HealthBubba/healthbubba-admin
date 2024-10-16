@@ -25,4 +25,13 @@ enum Role:string {
         };
     }
 
+    static function options(){
+        return [
+            self::ADMIN->value => self::ADMIN->label(),
+            self::SUPERADMIN->value => self::SUPERADMIN->label(),
+            self::EDITOR->value => self::EDITOR->label(),
+            self::VIEWER->value => self::VIEWER->label()
+        ];
+    }
+
 }

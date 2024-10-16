@@ -9,6 +9,7 @@ import { useState } from "react";
 import Disclose from "@/Components/Disclose";
 import EditForm from "./Partials/EditForm";
 import { EditRoles } from "./Partials/EditRoles";
+import Swal from "@/Components/Swal";
 
 const BreadCrumbs = ({name}) => {
     return (
@@ -22,10 +23,11 @@ const BreadCrumbs = ({name}) => {
 
 export default function Edit({admin}) {
 
-    // roles - edit - ''
     const [tab, setTab] = useState('')
 
-
+    const deactivateUser = () => {
+        
+    }
 
     return (
         <AuthenticatedLayout title={<BreadCrumbs name={admin.data.full_name} />} >
@@ -58,10 +60,10 @@ export default function Edit({admin}) {
 
                             <div className="border-t"></div>
 
-                            <button className={`flex w-full text-red-600 space-x-2 p-1 text-sm `}>
+                            <Swal onConfirm={deactivateUser} className={`flex w-full text-red-600 space-x-2 p-1 text-sm `}>
                                 <TrashIcon className="stroke-red-600" />
                                 <p>Deactivate User</p>
-                            </button>
+                            </Swal>
 
                             <div>
                                 <p className="text-gray-400 text-sm">Added on <span className="text-black">{admin.data.created_at}</span></p>

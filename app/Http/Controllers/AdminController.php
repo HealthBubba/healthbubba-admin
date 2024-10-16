@@ -32,7 +32,7 @@ class AdminController extends Controller
             'lastname' => 'required|string',
             'email' => ['required','email', Rule::unique('admins', 'email')->ignore($admin?->id, 'id')],
             'phone' => 'required|numeric',
-            'password' => [Rule::requiredIf(fn() => $admin !== null)],
+            'password' => [Rule::requiredIf(!is_null($admin))],
         ]);
 
         $validated['created_at'] = now();

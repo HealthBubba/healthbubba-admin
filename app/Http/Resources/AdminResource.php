@@ -27,7 +27,7 @@ class AdminResource extends JsonResource
             'last_login_at' => $this->last_login_at?->toDayDateTimeString(),
             'role' => $this->access_level->label(),
             'access_level' => $this->access_level,
-            'last_login' => $this->last_login_at?->longRelativeDiffForHumans()
+            'last_login' => $this->last_login_at?->longRelativeDiffForHumans() ?? null
         ];
     }
 }

@@ -2,15 +2,20 @@ import Button from '@/Components/Button/Button'
 import Label from '@/Components/Form/Label'
 import Select from '@/Components/Form/Select'
 import Switch from '@/Components/Form/Switch'
+import { usePage } from '@inertiajs/react'
 import React from 'react'
 
 export const EditRoles = ({admin}) => {
+
+    const {props} = usePage()
+
     return (
         <div className='space-y-5'>
             <div>
                 <p className='font-medium mb-1'>Role</p>
                 <Select  >
-                    <option value="">Select Role</option>
+                    <option value="" disabled>Select Role</option>
+                    {Object.keys(props.roles).map((role) => <option value={role} >{props.roles[role]}</option>)}
                 </Select>
             </div>
 
