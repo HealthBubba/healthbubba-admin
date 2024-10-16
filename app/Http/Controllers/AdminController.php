@@ -31,7 +31,8 @@ class AdminController extends Controller
             'lastname' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|numeric',
-            'password' => [Rule::requiredIf(fn() => is_null($admin))]
+            'password' => [Rule::requiredIf(fn() => is_null($admin))],
+            'created_at' => now()
         ]);
 
         $validated['password'] = $request->password ? Hash::make($validated['password']) : null;
