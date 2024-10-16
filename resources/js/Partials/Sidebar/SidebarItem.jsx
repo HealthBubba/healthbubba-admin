@@ -1,11 +1,11 @@
 import { Link, usePage } from '@inertiajs/react'
 import React, { useMemo } from 'react'
 
-export const SidebarItem = ({icon: Icon, name, url}) => {
+export const SidebarItem = ({icon: Icon, name, url, is_current = false}) => {
 
     const {props} = usePage()
 
-    const isActive = useMemo(() => props.ziggy.location == url, [url, props])
+    const isActive = useMemo(() => props.ziggy.location == url || is_current, [url, props])
 
     return (
         <Link href={url} className={`flex group justify-between space-x-3 p-2 px-3 hover:shadow-inner hover:shadow-white/10  items-center hover:bg-[#272729] duration-500 rounded-[10px] ${isActive ? 'shadow-white/10 bg-[#272729] shadow-inner' : ''}`}>

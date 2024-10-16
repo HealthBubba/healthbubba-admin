@@ -44,6 +44,7 @@ Route::prefix('admins')->group(function(){
     Route::post('', [AdminController::class, 'update'])->name('admins.store');
 
     Route::prefix('{admin}')->group(function(){
+        Route::get('', [AdminController::class, 'edit'])->name('admins.edit');
         Route::post('', [AdminController::class, 'update'])->name('admins.update');
     });
 

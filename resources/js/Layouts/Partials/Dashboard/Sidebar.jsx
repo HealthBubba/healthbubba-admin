@@ -49,7 +49,7 @@ export default function () {
                     </li>
 
                     <li>
-                        <SidebarItem name={'Admins'} url={route('admins')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Admins'} url={route('admins')} is_current={route().current('admins.*') || route().current('admins')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 

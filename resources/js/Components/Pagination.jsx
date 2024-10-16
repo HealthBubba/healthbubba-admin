@@ -4,8 +4,6 @@ import React from 'react'
 export default function Pagination({items}) {
     const {data, links, meta} = items
 
-    console.log(links, meta, data)
-
     return (
         <div className="p-5 flex text-muted justify-between text-sm">
             <div>

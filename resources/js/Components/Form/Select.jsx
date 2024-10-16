@@ -1,7 +1,9 @@
-export default function () {
+export default function ({children, className, ...props}) {
     return (
-        <select class="p-3 rounded-[8px] bg-[#F9F9F9] hover:bg-[#ededed] border border-[#F3F3F3]  w-full" >
-            {children}
-        </select>
+        <div className="">
+            <select className={`rounded-[8px] border border-[#F3F3F3] shadow-inner text-gray-500 w-full ${className}`} {...props} >
+                {children}
+            </select>
+        </div>
     )
 }

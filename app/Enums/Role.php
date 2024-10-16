@@ -15,13 +15,13 @@ enum Role:string {
 
     function label(){
         return match ($this) {
-            self::ADMIN->value => 'Administrator',
-            self::SUPERADMIN->value => 'Super Administrator',
-            self::EDITOR->value => 'Editor',
-            self::VIEWER->value => 'Viewer',
-            self::DOCTOR->value => 'Doctor',
-            self::PATIENT->value => 'Patient',
-            self::UNSPECIFIED->value => 'Unspecified',
+            self::ADMIN => 'Administrator',
+            self::SUPERADMIN => 'Super Administrator',
+            self::EDITOR => 'Editor',
+            self::VIEWER => 'Viewer',
+            self::DOCTOR => 'Doctor',
+            self::PATIENT => 'Patient',
+            self::UNSPECIFIED => 'Unspecified',
         };
     }
 

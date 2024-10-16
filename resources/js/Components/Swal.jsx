@@ -5,10 +5,10 @@ import Button from './Button/Button'
 
 export default function ({
     children, 
-    className, 
-    title,  
-    caption,
-    type,
+    className = '', 
+    title = 'Are you sure?',  
+    caption = 'Are you sure you wish to proceed?',
+    type = 'danger',
     onConfirm = (close) => {},
     cancelLabel = 'Cancel',
     confirmLabel = 'Proceed',

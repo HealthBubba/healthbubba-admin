@@ -36,7 +36,6 @@ class AdminController extends Controller
         ]);
 
         $validated['password'] = $request->password ? Hash::make($validated['password']) : null;
-
         $admin?->update($validated) ?? Admin::create($validated);
 
         toast('Admin Profile Saved Successfully')->success();
