@@ -2,10 +2,25 @@ import Header from './Partials/Dashboard/Header';
 import Sidebar from './Partials/Dashboard/Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastContext from '@/Context/ToastContext';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 export default function DashboardLayout ({ children, title }) {
     return (
-        <ToastContext>
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover={false}
+                theme="dark"
+                transition={Bounce}
+            />
+
             <div className="min-h-screen flex bg-[#FAFAFB]">
                 <div className="w-full md:flex ">
                     <aside className="md:w-[22%] hidden md:block  fixed bottom-0 top-0">
@@ -21,8 +36,8 @@ export default function DashboardLayout ({ children, title }) {
                     </main>
                 </div>
             </div>
-
-
-        </ToastContext>
+        
+            <ToastContext />
+        </>
     );
 }

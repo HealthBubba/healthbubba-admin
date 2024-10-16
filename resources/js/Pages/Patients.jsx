@@ -3,13 +3,14 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PatientItem from '@/Partials/Patients/PatientItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import { useMemo } from 'react';
 
 export default function ({patients}) {
 
     return (
         <AuthenticatedLayout title="Patients">
+            <Head title='Patients' />
             <div className="card p-0 rounded-xl">
                 <div className="p-4 flex space-x-2">
                     <div>
@@ -22,7 +23,15 @@ export default function ({patients}) {
                             <MenuItems transition anchor="bottom start" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
                                 <div className='p-1'>
                                     <MenuItem >
-                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Verified</button>
+                                        <button onClick={e => router.reload({data: {status: ''}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">All</button>
+                                    </MenuItem>
+                                </div>
+
+                                <div className="border-t-[1.5px]"></div>
+                                
+                                <div className='p-1'>
+                                    <MenuItem >
+                                        <button onClick={e => router.reload({data: {status: 'active'}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Active</button>
                                     </MenuItem>
                                 </div>
 
@@ -30,7 +39,7 @@ export default function ({patients}) {
 
                                 <div className='p-1'>
                                     <MenuItem>
-                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Pending</button>
+                                        <button onClick={e => router.reload({data: {status: 'suspended'}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Suspended</button>
                                     </MenuItem>
                                 </div>
                             </MenuItems>
@@ -41,7 +50,7 @@ export default function ({patients}) {
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />
                             </div>
-                            <input type="text" placeholder='Search health practioner' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
+                            <input type="text" onChange={e => router.reload({data: {keyword: e.currentTarget.value}})} placeholder='Search Patients' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
                         </div>
                     </div>
                 </div>
@@ -67,7 +76,7 @@ export default function ({patients}) {
 
                         <tbody>
                             {
-                                patients.data.map(patient => <PatientItem patient={patient} />)
+                                patients.data.map(patient => <PatientItem key={patient.id} patient={patient} />)
                             }
                         </tbody>
                     </table>

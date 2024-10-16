@@ -18,7 +18,11 @@ export default function ({
 
     const modal = useModal()
 
-    const cancel = () => onCancel(modal.close)
+    const cancel = () => {
+        onCancel && onCancel(modal.close)
+        modal.close()
+    }
+    
     const confirm = () => onConfirm(modal.close)
 
     return (
@@ -27,9 +31,9 @@ export default function ({
 
             <Modal {...modal} >
                 <div className="space-y-5">
-                    <div className='space-y-2'>
+                    <div className='space-y-1'>
                         <p className='text-lg font-medium'>{title}</p>
-                        <p className='text-sm text-[#4B5563] md:text-base'>{caption}</p>
+                        <p className='text-[#4B5563] md:text-base'>{caption}</p>
                     </div>
 
                     <div className="flex justify-end space-x-3">
@@ -41,7 +45,7 @@ export default function ({
                                 onClick={confirm} 
                                 loading={loading} 
                                 className={`
-                                    ${type == 'success' && 'btn-success'}
+                                    ${type == 'success' && 'btn-primary'}
                                     ${type == 'warning' && 'btn-warning'}
                                     ${type == 'light' && 'btn-light'}
                                     ${type == 'danger' && 'btn-danger'}

@@ -28,7 +28,8 @@ class PractitionerResource extends JsonResource
             'title' => $this->title,
             'is_doctor_verified' => $this->is_doctor_verified,
             'is_verified' => $this->licence_number_verified && $this->is_doctor_verified,
-            'status' => $this->status()
+            'status' => $this->status(),
+            'is_active' => $this->is_active
         ];
     }
 

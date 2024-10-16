@@ -1,31 +1,18 @@
 import { usePage } from "@inertiajs/react"
-import { createContext } from "react"
-import { ToastContainer } from "react-toastify"
-import { NotificationsProvider } from "reapop"
+import { createContext, useEffect } from "react"
+import { toast, ToastContainer } from "react-toastify"
 
-const ToastContext = createContext()
-
-export default ({children })  => {
-
+export default ()  => {
     const { props } = usePage()
 
-    return (
-        <>
-            {children}
+    useEffect(() => {
+        if(props.toast){
+            if(props.toast.status == 'success') toast.success(props.toast.message)
+            if(props.toast.status == 'error') toast.success(props.toast.message)
+            if(props.toast.status == 'info') toast.success(props.toast.message)
+            if(props.toast.status == 'warn') toast.success(props.toast.message)
+        }
+    }, [props.toast])
 
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition='Bounce'
-            />
-        </>
-    )
+    return null
 }

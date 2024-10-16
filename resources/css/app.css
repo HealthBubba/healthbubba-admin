@@ -4,8 +4,8 @@
 
 @layer base {
     * {
-        /* font-family: "Inter", sans-serif !important; */
-        @apply font-inter;
+        font-family: "Inter", sans-serif !important;
+        @apply font-inter outline-none focus:outline-none;
     }
 
     table {
@@ -61,11 +61,11 @@
     }
 
     .btn-warning {
-        @apply bg-orange-500 overflow-hidden text-white ring-2 ring-orange-600 rounded-md shadow-inner shadow-white/50 
+        @apply bg-orange-500 overflow-hidden text-white ring-2 ring-orange-600 rounded-md shadow-inner shadow-white/50 hover:shadow-white/30 
     }
 
     .btn-danger {
-        @apply bg-red-600 overflow-hidden text-white ring-2 ring-red-700 rounded-md shadow-inner shadow-white/50 
+        @apply bg-red-600 overflow-hidden text-white ring-2 ring-red-700 rounded-md shadow-inner shadow-white/50 hover:shadow-white/30
     }
 
     .btn-secondary::before {

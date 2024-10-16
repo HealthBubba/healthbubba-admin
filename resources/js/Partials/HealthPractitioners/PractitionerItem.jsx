@@ -9,13 +9,11 @@ import { toast } from 'react-toastify'
 export const PractitionerItem = ({user}) => {
 
     const suspend = (close) => {
-        console.log("Asas");
-        toast.success('User deleted successfully')
-
+        router.get(route('users.suspend', {user: user.id}))
     }
-
+    
     const destroy = (close) => {
-        toast.success('User deleted successfully')
+        router.get(route('practitioners.destroy', {user: user.id}))
     }
 
     return (
@@ -40,12 +38,12 @@ export const PractitionerItem = ({user}) => {
                         <div className='p-1'>
                             <MenuItem >
                                 <Swal 
-                                    title="Suspend User" 
-                                    type={'warning'} 
-                                    confirmLabel={'Suspend User'}
-                                    onClick={suspend} 
-                                    caption="Are you sure you want to suspend this user's account?" 
-                                    className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Suspend</Swal>
+                                    title={user.is_active ? 'Suspend User' : 'Restore User'} 
+                                    type={user.is_active ? 'warning' : 'success'} 
+                                    confirmLabel={user.is_active ? 'Suspend User' : 'Restore User'}
+                                    onConfirm={suspend} 
+                                    caption={`Are you sure you want to ${user.is_active ? 'suspend' : 'restore'} this user's account?`} 
+                                    className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">{user.is_active ? 'Suspend' : 'Restore'}</Swal>
                             </MenuItem>
                         </div>
 
@@ -53,7 +51,7 @@ export const PractitionerItem = ({user}) => {
 
                         <div className='p-1'>
                             <MenuItem>
-                                <Swal title="Delete User Account" type={'danger'} onClick={destroy} caption="Are you sure you want to delete this user's account? This action cannot be undone." className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</Swal>
+                                <Swal title="Delete User Account" type={'danger'} onConfirm={destroy} caption="Are you sure you want to delete this user's account? This action cannot be undone." className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</Swal>
                             </MenuItem>
                         </div>
                     </MenuItems>

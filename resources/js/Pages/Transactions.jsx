@@ -1,17 +1,15 @@
+import Pagination from '@/Components/Pagination';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { Link } from '@inertiajs/react';
-import { useMemo } from 'react';
+import { AdjustmentsHorizontalIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
+import { Head } from '@inertiajs/react';
 
-export default function () {
-
-    const practitioners = useMemo(() => {
-        // return 
-    }, [])
+export default function ({transactions}) {
 
     return (
-        <AuthenticatedLayout title="Health Practitioners">
+        <AuthenticatedLayout title="Transactions">
+            <Head title='Transactions' />
             <div className="card p-0 rounded-xl">
                 <div className="justify-between items-center flex p-4">
                     <div>
@@ -74,72 +72,25 @@ export default function () {
                         <thead>
                             <tr>
                                 <th>S/N</th>
-                                <th>Name</th>
-                                <th >Practitioner ID</th>
-                                <th>Specialization</th>
-                                <th>License No.</th>
-                                <th>License Expiry</th>
+                                <th>Transaction ID</th>
+                                <th >Date/Time</th>
+                                <th>Patient name</th>
+                                <th>Practitioner Name</th>
+                                <th>Type</th>
+                                <th>Amount</th>
                                 <th>Status</th>
-                                <th>Consultations</th>
-                                <th>Earnings</th>
-                                <th></th>
+                                <th>Payment Method</th>
+                                <th>Appointment ID</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>TRX12345</td>
-                                <td>Alexander Ogunyemi</td>
-                                <td>Jane Smith</td>
-                                <td>Payment</td>
-                                <td>N 5,000,000</td>
-                                <td>
-                                    <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
-                                </td>
-                                <td>Bank Transfer</td>
-                                <td>APPT56789</td>
-                                <td>
-                                    <Menu>
-                                        <MenuButton className="border-2 p-1 rounded-lg">
-                                            <EllipsisHorizontalIcon className='size-5' />                                        
-                                        </MenuButton>
-                                        <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                            <div className='p-1'>
-                                                <MenuItem >
-                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Suspend</button>
-                                                </MenuItem>
-                                            </div>
-
-                                            <div className="border-t-[1.5px]"></div>
-
-                                            <div className='p-1'>
-                                                <MenuItem>
-                                                    <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</button>
-                                                </MenuItem>
-                                            </div>
-                                        </MenuItems>
-                                    </Menu>
-                                </td>
-                            </tr>
+                            {transactions.data.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
                         </tbody>
                     </table>
                 </div>
 
-                <div className="p-5 flex text-muted justify-between text-sm">
-                    <div>
-                        <p className=''>1 - 14 of 200 results</p>
-                    </div>
-                    <div className='flex space-x-5 '>
-                        <div>
-                            <p>1 of 16 pages</p>
-                        </div>
-                        <div className='flex space-x-3'>
-                            <Link href='#' className='text-muted/75'>Prev</Link>
-                            <Link href='#'>Next</Link>
-                        </div>
-                    </div>
-                </div>
+                <Pagination items={transactions} />
             </div>
         </AuthenticatedLayout>
     )

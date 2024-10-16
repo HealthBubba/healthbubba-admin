@@ -10,9 +10,25 @@ use Inertia\Inertia;
 class PatientController extends Controller {
     
 
-    function index(){
-        $patients = PatientResource::collection(User::isPatient()->withSerialNo()->paginate());
-        return Inertia::render('Patients', compact('patients'));
+    function index(Request $request){
+        $patients = User::isPatient()
+                        ->when($request->keyword, function($query, $keyword) {
+                            $query->where('first_name', 'LIKE', "%$keyword%")
+                                ->orWhere('last_name', 'LIKE', "%$keyword%")
+                                ->orWhere('email', 'LIKE', "%$keyword%");
+                        })
+                        ->when($request->status, function($query, $filter) {
+                            match ($filter) {
+                                'active' => $query->where('is_active', true),
+                                'suspended' => $query->where('is_active', false),
+                                default => null
+                            };
+                        })
+                        ->withSerialNo()->paginate();
+
+        return Inertia::render('Patients', [
+            'patients' => PatientResource::collection($patients)
+        ]);
     }
 
     function destroy(User $user){

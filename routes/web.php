@@ -31,7 +31,7 @@ Route::prefix('users')->group(function(){
 Route::prefix('patients')->group(function(){
     Route::get('/', [PatientController::class, 'index'])->name('patients');
     Route::prefix('{user}')->group(function(){
-        Route::get('destroy', [PatientController::class, 'destroy'])->name('practitioners.destroy');
+        Route::get('destroy', [PatientController::class, 'destroy'])->name('patients.destroy');
     });
 });
 
