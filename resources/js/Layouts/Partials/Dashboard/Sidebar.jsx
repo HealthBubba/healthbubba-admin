@@ -57,7 +57,7 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Logout'} icon={CubeIcon} />
+                        <SidebarItem url={route('logout')} name={'Logout'} icon={CubeIcon} />
                     </li>
                 </ul>
             </div>

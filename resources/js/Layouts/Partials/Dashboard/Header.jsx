@@ -3,7 +3,7 @@ import { BellIcon } from '@/Icons/BellIcon'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Bars2Icon, ChevronDownIcon } from '@heroicons/react/24/solid'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import React from 'react'
 
 export default function ({title}) {
@@ -34,7 +34,7 @@ export default function ({title}) {
                         <MenuItems transition anchor="bottom start" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm z-50" >
                             <div className='p-1'>
                                 <MenuItem >
-                                    <button onClick={() => route('logout')} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Logout</button>
+                                    <Link href={route('logout')} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Logout</Link>
                                 </MenuItem>
                             </div>
                         </MenuItems>
