@@ -1,0 +1,1 @@
+import{j as t}from"./app-DDrCQHcv.js";function r({children:e}){return t.jsx("div",{className:"flex min-h-screen flex-col items-center bg-white pt-6 sm:justify-center sm:pt-0",children:e})}export{r as G};
