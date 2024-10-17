@@ -3,8 +3,23 @@ import Sidebar from './Partials/Dashboard/Sidebar';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastContext from '@/Context/ToastContext';
 import { Bounce, ToastContainer } from 'react-toastify';
+import { useEffect, useRef, useState } from 'react';
+import Disclose from '@/Components/Disclose';
 
 export default function DashboardLayout ({ children, title }) {
+
+    const [show, setShow] = useState(false)
+
+    const ref = useRef(null)
+
+    const hide = (e) => {
+        if(show && !e.target?.contains(ref.current)) setShow(false)
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', hide)
+    }, [show])
+
     return (
         <>
             <ToastContainer
@@ -27,8 +42,14 @@ export default function DashboardLayout ({ children, title }) {
                         <Sidebar />
                     </aside>
 
+                    <Disclose show={show} >
+                        <div ref={ref} className="w-5/6 h-full fixed md:hidden bottom-0 top-0 z-[99999]">
+                            <Sidebar />
+                        </div>
+                    </Disclose>
+
                     <main className="h-full md:ms-[22%] w-full md:flex-1">
-                        <Header title={title} />
+                        <Header open={setShow} title={title} />
 
                         <div className="md:p-5 p-2">
                             {children}

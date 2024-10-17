@@ -5,20 +5,23 @@ import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Dashboard({patients, practitioners, appointments, pending, transactions, completed}) {
+
+    const {props} = usePage()
+
     return (
         <AuthenticatedLayout title="Dashboard">
             <Head title="Dashboard" />
 
             <div className="space-y-5">
                 <div className='mb-4'>
-                    <h3 className='font-semibold'>Hey Admin,</h3>
+                    <h3 className='font-semibold'>Hey {props.auth.user.data.firstname},</h3>
                     <p className='text-muted'>Here’s all your activities for today</p>
                 </div>
 
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Consultation Revenue'} isPrice amount={2000} direction={Direction.up} percentage={36} />
@@ -29,14 +32,14 @@ export default function Dashboard({patients, practitioners, appointments, pendin
                     <StatsItem title={'Ongoing Orders'} amount={2000} direction={Direction.up} percentage={36} />
                 </div>
 
-                <div className="flex gap-5">
-                    <div className="w-4/6">
+                <div className="md:flex space-y-5">
+                    <div className="md:w-4/6">
                         <div className="card">
                             <Chart />
                         </div>
                     </div>
 
-                    <div className="w-2/6">
+                    <div className="md:w-2/6">
                         <div className="card h-full space-y-10">
                             <div className="flex justify-between text-sm">
                                 <div>
