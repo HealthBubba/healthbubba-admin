@@ -3,10 +3,13 @@ import { BellIcon } from '@/Icons/BellIcon'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import { Bars2Icon, ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Link, router } from '@inertiajs/react'
+import { Link, router, usePage } from '@inertiajs/react'
 import React from 'react'
 
 export default function ({title}) {
+
+    const {props} = usePage()
+
     return (
         <header className="w-full bg-white md:p-5 px-2 sticky z-50 top-0 py-2 flex border-b items-center justify-between">
             <div className='hidden md:block' >
@@ -28,7 +31,7 @@ export default function ({title}) {
                             <span className="aspect-square rounded-full">
                                 <Avatar className="size-6" />
                             </span>
-                            <p className='text-sm font-medium text-gray-700'>John Doe</p>
+                            <p className='text-sm font-medium text-gray-700'>{props?.auth?.user.data.firstname}</p>
                             <ChevronDownIcon className="size-3 ms-3" />        
                         </MenuButton>
                         <MenuItems transition anchor="bottom start" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm z-50" >

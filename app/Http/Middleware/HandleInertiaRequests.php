@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Enums\Role;
+use App\Http\Resources\AdminResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
@@ -34,7 +35,7 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user' => new AdminResource($request->user()),
             ],
             'toast' =>  $request->session()->get('toast'),
             'roles' => Role::options(),

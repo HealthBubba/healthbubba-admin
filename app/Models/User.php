@@ -7,10 +7,10 @@ namespace App\Models;
 use App\Concerns\Models\HasQuery;
 use App\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable {
+class User extends Model {
     use HasFactory, Notifiable, HasQuery;
 
     protected $fillable = [

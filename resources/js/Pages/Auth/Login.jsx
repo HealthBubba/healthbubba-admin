@@ -5,6 +5,7 @@ import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, useForm } from '@inertiajs/react';
 import Button from '@/Components/Button/Button';
 import { PlayIcon } from '@heroicons/react/24/solid';
+import Password from '@/Components/Form/Password';
 
 
 export default function Login({ status, canResetPassword }) {
@@ -32,7 +33,7 @@ export default function Login({ status, canResetPassword }) {
                     <img src="/assets/imgs/logo.svg" alt="" />
                 </div>
 
-                <div className="card shadow-main w-96 p-5 mx-auto">
+                <div className="card shadow-main max-w-md px-5 py-10 mx-auto">
                     <div className="pb-5 space-y-3" >
                         <div className="text-center">
                             <h3 className="text-xl font-semibold">Login Account</h3>
@@ -54,8 +55,7 @@ export default function Login({ status, canResetPassword }) {
 
                             <div className="mt-4">
                                 <Label htmlFor="email" >Password</Label>
-                                <Input 
-                                    type="password"
+                                <Password 
                                     placeholder="Password" 
                                     value={data.password} 
                                     onChange={e => setData('password', e.target.value)} 
