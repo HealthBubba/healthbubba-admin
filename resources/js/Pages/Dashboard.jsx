@@ -1,9 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
+import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link } from '@inertiajs/react';
 
-export default function Dashboard() {
+export default function Dashboard({patients, practitioners, appointments, pending, transactions, completed}) {
     return (
         <AuthenticatedLayout title="Dashboard">
             <Head title="Dashboard" />
@@ -15,13 +16,13 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-4 gap-4">
-                    <StatsItem title={'Total Active Patients'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Active Practitioners'} amount={2000}  direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Consultation Revenue'} isPrice amount={2000} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Orders'} amount={2000}  direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Appointments'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Completed Appointments'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Cancelled  Appointments'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Cancelled  Appointments'} amount={pending} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Ongoing Orders'} amount={2000} direction={Direction.up} percentage={36} />
                 </div>
 
@@ -32,7 +33,7 @@ export default function Dashboard() {
                         <p className='font-semibold'>Transactions</p>
                         </div>
                         <div>
-                            <Link className='text-sm inline-flex items-center' href='#'>See All Transactions <ChevronRightIcon className='size-3 ms-1' /></Link>
+                            <Link className='text-sm inline-flex items-center' href={route('transactions')}>See All Transactions <ChevronRightIcon className='size-3 ms-1' /></Link>
                         </div>
                     </div>
 
@@ -56,48 +57,7 @@ export default function Dashboard() {
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX12345</td>
-                                    <td>2023-10-12 15:42</td>
-                                    <td>Alexander Ogunyemi</td>
-                                    <td>Jane Smith</td>
-                                    <td>Payment</td>
-                                    <td>N 5,000,000</td>
-                                    <td>
-                                        <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
-                                    </td>
-                                    <td>Bank Transfer</td>
-                                    <td>APPT56789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX12345</td>
-                                    <td>2023-10-12 15:42</td>
-                                    <td>Alexander Ogunyemi</td>
-                                    <td>Jane Smith</td>
-                                    <td>Payment</td>
-                                    <td>N 5,000,000</td>
-                                    <td>
-                                        <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
-                                    </td>
-                                    <td>Bank Transfer</td>
-                                    <td>APPT56789</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX12345</td>
-                                    <td>2023-10-12 15:42</td>
-                                    <td>Alexander Ogunyemi</td>
-                                    <td>Jane Smith</td>
-                                    <td>Payment</td>
-                                    <td>N 5,000,000</td>
-                                    <td>
-                                        <span className='rounded-r-full rounded-s-full font-semibold bg-green-100 text-green-600 py-[6px] text-xs px-4 border-2 border-green-300 leading-none'>Successful</span>
-                                    </td>
-                                    <td>Bank Transfer</td>
-                                    <td>APPT56789</td>
-                                </tr>
+                                {transactions.data.map(transaction => <TransactionItem transaction={transaction} />)}
                             </tbody>
                         </table>
                     </div>

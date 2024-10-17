@@ -27,4 +27,12 @@ class Appointment extends Model {
     function scopeWithSerialNo(Builder $query){
         return $query->select('*')->addSelect(DB::raw('ROW_NUMBER() OVER (ORDER BY appointment_id) AS no'));
     }
+
+    function scopeIsCompleted(Builder $query){
+        return $query->where('status', true);
+    }
+
+    function scopeIsPending(Builder $query){
+        return $query->where('status', false);
+    }
 }
