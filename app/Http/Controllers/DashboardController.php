@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Flowframe\Trend\Trend;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -20,14 +21,15 @@ class DashboardController extends Controller
         $appointments = Appointment::count();
         $pending = Appointment::isPending()->count();
         $completed = Appointment::isCompleted()->count();
-        $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(10)->get());
+        $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
         
         return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed'));
     }
 
     function trends(Request $request){
-        $patients = $this->query(Trend::query(User::whereType(Role::PATIENT)), $request->filter)->count();
-        $practitioners = $this->query(Trend::query(User::whereType(Role::DOCTOR)), $request->filter)->count();
+        $patients = $this->query(Trend::query(User::whereType(Role::PATIENT)), $request->filter);
+        $practitioners = $this->query(Trend::query(User::whereType(Role::DOCTOR)), $request->filter);
+
         return response()->json(compact('patients', 'practitioners'));
     }
 
@@ -40,12 +42,26 @@ class DashboardController extends Controller
             end: $end_date,
         );
 
-        return match($filter) {
+        $query = match($filter) {
             '365' => $query->perMonth(),
             '180' => $query->perMonth(),
-            '30' => $query->perWeek(),
+            '30' => $query->perDay(),
             '7' => $query->perDay()
         };
+
+        $trend = $query->count();
+
+        return $trend->map(function ($trend) use($filter){
+            return [
+                'date' => match ($filter) {
+                    '365' => Date::parse($trend->date)->format('M'),
+                    '180' => Date::parse($trend->date)->format('M'),
+                    '30' =>  Date::parse($trend->date)->format('jS M'),
+                    '7' => Date::parse($trend->date)->format('jS M')
+                },
+                'aggregate' => $trend->aggregate,
+            ];
+        });
     }
     
 }
