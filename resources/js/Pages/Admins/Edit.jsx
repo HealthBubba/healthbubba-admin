@@ -15,7 +15,7 @@ const BreadCrumbs = ({name}) => {
     return (
         <div className="flex items-center space-x-1">
             <p className="mb-0">Admins</p>
-            <span><ChevronRightIcon className="size-5 text-[#6B7280]" /></span>
+            <span><ChevronRightIcon className="size-4 text-[#6B7280]" /></span>
             <p className="mb-0 text-[#6B7280] font-normal">{name}</p>
         </div>
     )

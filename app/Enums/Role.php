@@ -25,6 +25,10 @@ enum Role:string {
         };
     }
 
+    static function managers(){
+        return [self::ADMIN, self::SUPERADMIN, self::EDITOR, self::VIEWER];
+    }
+
     static function options(){
         return [
             self::ADMIN->value => self::ADMIN->label(),
@@ -32,6 +36,15 @@ enum Role:string {
             self::EDITOR->value => self::EDITOR->label(),
             self::VIEWER->value => self::VIEWER->label()
         ];
+    }
+
+    function permissions(){
+        return match($this) {
+            self::ADMIN => [Permissions::READ, Permissions::CREATE, Permissions::UPDATE, Permissions::DELETE],
+            self::SUPERADMIN => [Permissions::READ, Permissions::CREATE, Permissions::UPDATE, Permissions::DELETE],
+            self::EDITOR => [Permissions::READ, Permissions::CREATE, Permissions::UPDATE],
+            self::VIEWER => [Permissions::READ],
+        }; 
     }
 
 }

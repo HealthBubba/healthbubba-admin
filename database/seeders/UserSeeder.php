@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Admin::create([
+        $admin = Admin::create([
             'firstname' => 'Super',
             'lastname' => 'Admin',
             'email' => 'admin@localhost.com',
@@ -25,5 +25,7 @@ class UserSeeder extends Seeder
             'access_level' => Role::SUPERADMIN,
             'created_at' => now()
         ]);
+
+        $admin->assignRole(Role::SUPERADMIN->value);
     }
 }

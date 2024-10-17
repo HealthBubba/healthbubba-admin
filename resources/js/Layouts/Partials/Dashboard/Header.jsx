@@ -10,7 +10,7 @@ export default function ({title}) {
     return (
         <header className="w-full bg-white md:p-5 px-2 sticky z-50 top-0 py-2 flex border-b items-center justify-between">
             <div className='hidden md:block' >
-                <h3 className="font-semibold md:text-lg">{title}</h3>
+                <h3 className="font-semibold">{title}</h3>
             </div>
             <div className='block md:hidden' >
                 <img src="/assets/imgs/logo-icon.svg" alt="" />

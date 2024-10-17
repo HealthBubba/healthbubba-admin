@@ -45,6 +45,7 @@ Route::prefix('admins')->group(function(){
 
     Route::prefix('{admin}')->group(function(){
         Route::get('', [AdminController::class, 'edit'])->name('admins.edit');
+        Route::post('roles', [AdminController::class, 'roles'])->name('admins.roles');
     });
 
 });
