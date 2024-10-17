@@ -2,7 +2,7 @@ import Input from '@/Components/Form/Input';
 import Label from '@/Components/Form/Label';
 import InputError from '@/Components/Form/InputError';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import Button from '@/Components/Button/Button';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import Password from '@/Components/Form/Password';
@@ -28,14 +28,14 @@ export default function Login({ status, canResetPassword }) {
         <GuestLayout>
             <Head title="Log in" />
 
-            <div className="space-y-4 w-full ">
+            <div className="space-y-5 w-full ">
                 <div className="mx-auto flex justify-center">
                     <img src="/assets/imgs/logo.svg" alt="" />
                 </div>
 
-                <div className="card shadow-main max-w-md px-5 py-10 mx-auto">
-                    <div className="pb-5 space-y-3" >
-                        <div className="text-center">
+                <div className="card shadow-sm max-w-md px-5 py-5 mx-auto">
+                    <div className="space-y-3" >
+                        <div className="text-center mb-5">
                             <h3 className="text-xl font-semibold">Login Account</h3>
                         </div>
 
@@ -67,6 +67,10 @@ export default function Login({ status, canResetPassword }) {
 
                             <div className="mt-4" >
                                 <Button className="btn-primary w-full" disabled={processing} >Login <PlayIcon className={'text-white text-opacity-80 size-4'} /></Button>
+                            </div>
+
+                            <div className='text-center'>
+                                <Link className='text-primary text-sm font-medium' href={route('password.request')} >Forgot Password</Link>
                             </div>
                         </form>
                     </div>

@@ -8,6 +8,7 @@ use App\Concerns\Models\HasQuery;
 use App\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Model {
@@ -37,12 +38,12 @@ class User extends Model {
         ];
     }
 
-    function scopeIsPatient(){
-        $this->where('type', Role::PATIENT);
+    function scopeIsPatient(Builder $query){
+        $query->where('type', Role::PATIENT);
     }
 
-    function scopeIsDoctor(){
-        $this->where('type', Role::DOCTOR);
+    function scopeIsDoctor(Builder $query){
+        $query->where('type', Role::DOCTOR);
     }
 
     function getFullNameAttribute(){

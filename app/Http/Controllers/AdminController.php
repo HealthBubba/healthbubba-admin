@@ -36,6 +36,7 @@ class AdminController extends Controller
             'email' => ['required','email', Rule::unique('admins', 'email')->ignore($admin?->id, 'id')],
             'phone' => 'required|numeric',
             'password' => [Rule::requiredIf(!is_null($admin))],
+            'access_level' => ['required', new Enum(Role::class)]
         ]);
 
         $validated['created_at'] = now();

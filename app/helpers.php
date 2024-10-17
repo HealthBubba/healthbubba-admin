@@ -4,6 +4,7 @@ use App\Library\AcademicYears;
 use App\Library\Toast;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 if(!function_exists('status')) {
     function status($status, $message = '', $data = []){
@@ -28,6 +29,17 @@ if(!function_exists('toast')) {
 if(!function_exists('jsonify')) {
     function jsonify(array $arr = []) : object {
         return json_decode(json_encode($arr));
+    }
+}
+
+if (!function_exists('randomDate')) {
+    function randomDate($sStartDate, $sEndDate){
+        $fMin = strtotime($sStartDate);
+        $fMax = strtotime($sEndDate);
+
+        $fVal = mt_rand($fMin, $fMax);
+
+        return Date::parse($fVal);
     }
 }
 

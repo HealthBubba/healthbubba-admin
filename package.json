@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.1.5",
+        "apexcharts": "^3.54.1",
+        "react-apexcharts": "^1.4.1",
         "react-toastify": "^10.0.6",
         "reapop": "^4.2.2"
     }

@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user() ? new AdminResource($request->user()) : null,
             ],
             'toast' =>  $request->session()->get('toast'),
+            'payload' => $request->session()->get('payload'),
             'roles' => Role::options(),
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),

@@ -8,12 +8,16 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::middleware('auth')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/trends', [DashboardController::class, 'trends'])
+            ->withoutMiddleware([HandleInertiaRequests::class])
+            ->name('dashboard.trends');
     
     Route::prefix('practitioners')->group(function(){
         Route::get('', [HealthPractitionerController::class, 'index'])->name('practitioners');

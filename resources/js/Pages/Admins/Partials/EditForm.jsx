@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react'
+import { useForm, usePage } from '@inertiajs/react'
 import Button from '@/Components/Button/Button'
 import Input from '@/Components/Form/Input'
 import InputError from '@/Components/Form/InputError'
@@ -6,6 +6,7 @@ import Label from '@/Components/Form/Label'
 import Password from '@/Components/Form/Password'
 import { PlayIcon } from '@heroicons/react/24/solid'
 import React from 'react'
+import Select from '@/Components/Form/Select'
 
 export default function EditForm({admin = null}) {
 
@@ -14,8 +15,11 @@ export default function EditForm({admin = null}) {
 		lastname: admin?.lastname,
 		email: admin?.email,
 		phone: admin?.phone,
-		password: ''
+		password: '',
+        access_level: admin?.access_level
 	})
+
+    const { props } = usePage()
 
 	const submit = (e) => {
 		e.preventDefault()
@@ -46,6 +50,15 @@ export default function EditForm({admin = null}) {
                 <Label>Phone Number</Label>
                 <Input onChange={e => form.setData('phone', e.currentTarget.value)} value={form.data.phone} placeholder="Phone Number" className={'w-full'} />
                 <InputError message={form.errors.phone} />
+            </div>
+
+            <div>
+                <Label>Select Role</Label>
+                <Select onChange={e => form.setData('access_level', e.currentTarget.value)} value={form.data.access_level} className={'w-full'} >
+                    <option value="" disabled>Select Role</option>
+                    {Object.keys(props.roles).map(role => <option value={role} >{props.roles[role]}</option>)}
+                </Select>
+                <InputError message={form.errors.access_level} />
             </div>
 
             <div>
