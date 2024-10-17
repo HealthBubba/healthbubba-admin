@@ -12,13 +12,14 @@ export default function DashboardLayout ({ children, title }) {
 
     const ref = useRef(null)
 
-    const hide = (e) => {
-        if(show && !e.target?.contains(ref.current)) setShow(false)
-    }
+    // const hide = (e) => {
+    //     // if(show && !e.target?.contains(ref.current)) setShow(false)
+    // }
 
-    useEffect(() => {
-        document.addEventListener('click', hide)
-    }, [show])
+    // useEffect(() => {
+    //     if(show) document.addEventListener('click', hide)
+    //     return document.removeEventListener('click', hide)
+    // }, [show])
 
     return (
         <>
