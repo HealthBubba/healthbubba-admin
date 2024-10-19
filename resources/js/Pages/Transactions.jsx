@@ -1,4 +1,6 @@
+import DatePicker from '@/Components/Form/DatePicker';
 import Pagination from '@/Components/Pagination';
+import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
@@ -17,15 +19,17 @@ export default function ({transactions}) {
                     </div>
                     <div className="flex space-x-2">
                         <div>
-                            <button className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                <AdjustmentsHorizontalIcon className='size-5' />         
+                            {/* <button className="border-2 p-1 h-full px-3 font-medium items-center space-x-1 text-sm rounded-lg inline-flex">
+                                <SettingIcon className='size-5' />         
                                 <span>Date</span>
-                            </button>
+                            </button> */}
+
+                            <DatePicker />
                         </div>
                         <div>
                             <Menu>
-                                <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                    <AdjustmentsHorizontalIcon className='size-5' />         
+                                <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex font-medium">
+                                    <SettingIcon className='size-5' />         
                                     <span>All Status</span>
                                     <ChevronDownIcon className='size-3' />         
                                 </MenuButton>

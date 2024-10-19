@@ -1,12 +1,12 @@
 import { Badge } from '@/Components/Badge';
 import Pagination from '@/Components/Pagination';
+import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AppointmentItem from '@/Partials/Appointments/AppointmentItem';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { Link, router } from '@inertiajs/react';
-import { useMemo } from 'react';
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { router } from '@inertiajs/react';
 
 export default function ({appointments, stats}) {
 
@@ -24,9 +24,9 @@ export default function ({appointments, stats}) {
                     <div className="p-4 flex space-x-2">
                         <div>
                             <Menu>
-                                <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                    <AdjustmentsHorizontalIcon className='size-5' />         
-                                    <span className='font-medium'>All Appointments</span>
+                                <MenuButton className="border-2 p-1 font-medium h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
+                                    <SettingIcon className='size-5' />         
+                                    <span >All Appointments</span>
                                     <ChevronDownIcon className='size-3' />         
                                 </MenuButton>
                                 <MenuItems transition anchor="bottom start" className="min-w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >

@@ -22,8 +22,9 @@ class DashboardController extends Controller
         $pending = Appointment::isPending()->count();
         $completed = Appointment::isCompleted()->count();
         $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
+        $revenue = Transaction::whereTransactionType('appointment')->sum('amount'); 
         
-        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed'));
+        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed', 'revenue'));
     }
 
     function trends(Request $request){

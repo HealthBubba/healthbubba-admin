@@ -13,7 +13,7 @@
     }
 
     tbody tr {
-        @apply hover:bg-[#F8F5FF] table-row
+        @apply hover:bg-[#F8F5FF] duration-500 table-row cursor-pointer
     }
 
     tbody {

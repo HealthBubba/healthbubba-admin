@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use App\Http\Resources\PatientResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class PatientController extends Controller {
     
 
     function index(Request $request){
-        $patients = User::isPatient()
+        $patients = User::whereType(Role::PATIENT)
                         ->when($request->keyword, function($query, $keyword) {
                             $query->where('first_name', 'LIKE', "%$keyword%")
                                 ->orWhere('last_name', 'LIKE', "%$keyword%")

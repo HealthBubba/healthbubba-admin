@@ -7,7 +7,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link, usePage } from '@inertiajs/react';
 
-export default function Dashboard({patients, practitioners, appointments, pending, transactions, completed}) {
+export default function Dashboard({patients, practitioners, revenue, appointments, pending, transactions, completed}) {
 
     const {props} = usePage()
 
@@ -24,7 +24,7 @@ export default function Dashboard({patients, practitioners, appointments, pendin
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Consultation Revenue'} isPrice amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Consultation Revenue'} isPrice amount={revenue} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Orders'} amount={2000}  direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
@@ -32,7 +32,7 @@ export default function Dashboard({patients, practitioners, appointments, pendin
                     <StatsItem title={'Ongoing Orders'} amount={2000} direction={Direction.up} percentage={36} />
                 </div>
 
-                <div className="md:flex space-y-5">
+                <div className="md:flex md:space-x-4 space-y-5 md:space-y-0">
                     <div className="md:w-4/6">
                         <div className="card">
                             <Chart />

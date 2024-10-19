@@ -31,7 +31,7 @@ export const PractitionerItem = ({user}) => {
             <td>APPT56789</td>
             <td>
                 <Menu>
-                    <MenuButton className="btn border-2 p-1 rounded-lg">
+                    <MenuButton className="btn border-2 p-1 bg-white rounded-lg">
                         <EllipsisHorizontalIcon className='size-5' />                                        
                     </MenuButton>
                     <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >

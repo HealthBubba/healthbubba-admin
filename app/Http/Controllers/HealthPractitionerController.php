@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use App\Http\Resources\PractitionerResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Inertia\Inertia;
 class HealthPractitionerController extends Controller {
     
     function index(Request $request){
-        $users = User::isDoctor()
+        $users = User::whereType(Role::DOCTOR)
                     ->when($request->keyword, function($query, $keyword) {
                         $query->where('first_name', 'LIKE', "%$keyword%")
                             ->orWhere('last_name', 'LIKE', "%$keyword%")

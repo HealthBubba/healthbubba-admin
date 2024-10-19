@@ -1,4 +1,5 @@
 import Pagination from '@/Components/Pagination';
+import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PractitionerItem } from '@/Partials/HealthPractitioners/PractitionerItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
@@ -15,8 +16,8 @@ export default function ({users}) {
                 <div className="p-4 md:flex md:space-x-2">
                     <div>
                         <Menu>
-                            <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                <AdjustmentsHorizontalIcon className='size-5' />         
+                            <MenuButton className="border-2 p-1 h-full px-3 font-medium items-center space-x-1 text-sm rounded-lg inline-flex">
+                                <SettingIcon className='size-5' />         
                                 <span>Filter</span>
                                 <ChevronDownIcon className='size-3' />         
                             </MenuButton>

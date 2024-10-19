@@ -1,8 +1,9 @@
 import { Badge } from '@/Components/Badge';
+import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { Link } from '@inertiajs/react';
 import { useMemo } from 'react';
 
@@ -28,7 +29,7 @@ export default function () {
                             <div>
                                 <Menu>
                                     <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                        <AdjustmentsHorizontalIcon className='size-5' />         
+                                        <SettingIcon className='size-5' />         
                                         <span className='font-medium'>All Orders</span>
                                         <ChevronDownIcon className='size-3' />         
                                     </MenuButton>
@@ -70,7 +71,7 @@ export default function () {
                         <div>
                             <Menu>
                                 <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                    <AdjustmentsHorizontalIcon className='size-5' />         
+                                    <SettingIcon className='size-5' />         
                                     <span className='font-medium'>All Type</span>
                                     <ChevronDownIcon className='size-3' />         
                                 </MenuButton>

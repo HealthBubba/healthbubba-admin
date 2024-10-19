@@ -1,10 +1,10 @@
 import Pagination from '@/Components/Pagination';
+import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PatientItem from '@/Partials/Patients/PatientItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { Head, Link, router } from '@inertiajs/react';
-import { useMemo } from 'react';
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { Head, router } from '@inertiajs/react';
 
 export default function ({patients}) {
 
@@ -16,7 +16,7 @@ export default function ({patients}) {
                     <div>
                         <Menu>
                             <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                <AdjustmentsHorizontalIcon className='size-5' />         
+                                <SettingIcon className='size-5' />         
                                 <span>Filter</span>
                                 <ChevronDownIcon className='size-3' />         
                             </MenuButton>
