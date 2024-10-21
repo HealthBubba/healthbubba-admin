@@ -42,8 +42,8 @@ export default function ({onChange = null}) {
 
                     <div>
                         <p className="font-medium text-sm">Click to Upload</p>
-                        <p className="text-muted text-xs">CSV 10MB max.</p>
-                        <input type="file" hidden accept='pdf' onChange={handleChange} />
+                        <p className="text-muted text-xs">PDF - 10MB max.</p>
+                        <input type="file" hidden accept='.pdf' onChange={handleChange} />
                     </div>
                 </div>
             </Disclose>

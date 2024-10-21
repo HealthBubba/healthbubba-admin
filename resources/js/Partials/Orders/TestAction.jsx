@@ -18,8 +18,6 @@ export const TestAction = ({order}) => {
         files: []
     })
 
-    console.log(order)
-
     function upload(){
         form.post(route('orders.tests.upload', {order: order.id}), {
             onSuccess(){
@@ -107,7 +105,7 @@ export const TestAction = ({order}) => {
 
             <Disclose show={!!order.source} >
                 <EmbedPDF>
-                    <a href={order.source} className='text-primary'>View Test Result <ChevronRightIcon className='size-4' /></a>
+                    <a href={order.source} className='text-primary flex space-x-4 items-center'>View Test Result <ChevronRightIcon className='size-4' /></a>
                 </EmbedPDF>
             </Disclose>
 
