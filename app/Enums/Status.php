@@ -8,5 +8,8 @@ enum Status:string {
     case VERIFIED = 'verified';
     case PENDING = 'pending';
     case ACTIVE = 'active';
+    case COMPLETED = 'completed';
+    case CONFIRMED = 'confirmed';
+    case FAILED = 'failed';
     
 }

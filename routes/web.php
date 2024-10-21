@@ -41,7 +41,17 @@ Route::middleware('auth')->group(function(){
     });
     
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments');
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+
+    Route::prefix('orders')->group(function(){
+        Route::get('', [OrderController::class, 'index'])->name('orders');
+        Route::prefix('{order}')->group(function(){
+            Route::prefix('tests')->group(function(){
+                Route::post('', [OrderController::class, 'upload'])->name('orders.tests.upload');
+            });
+
+        });
+    });
+
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
     
     Route::prefix('admins')->group(function(){

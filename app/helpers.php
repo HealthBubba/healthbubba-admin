@@ -2,6 +2,7 @@
 
 use App\Library\AcademicYears;
 use App\Library\Toast;
+use App\Library\Uploader;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -40,6 +41,12 @@ if (!function_exists('randomDate')) {
         $fVal = mt_rand($fMin, $fMax);
 
         return Date::parse($fVal);
+    }
+}
+
+if(!function_exists('upload')) {
+    function upload() {
+        return new Uploader;
     }
 }
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class Appointment extends Model {
     use HasFactory, HasUuids, HasQuery;
 
-    protected $fillable = [];
+    protected $fillable = ['patient_id', 'doctor_id', 'appointment_id'];
 
     public $timestamps = false;
 
@@ -20,7 +20,7 @@ class Appointment extends Model {
         return $this->belongsTo(User::class, 'patient_id', 'id');
     }
 
-    function doctors(){
+    function doctor(){
         return $this->belongsTo(User::class, 'doctor_id', 'id');
     }
 

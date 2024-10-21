@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.1.5",
+        "@simplepdf/react-embed-pdf": "^1.8.1",
         "apexcharts": "^3.54.1",
         "react-apexcharts": "^1.4.1",
         "react-date-range": "^2.0.1",

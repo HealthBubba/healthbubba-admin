@@ -4,23 +4,22 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { useMemo } from 'react';
+import OrderItem from '../Partials/Orders/OrderItem';
+import Pagination from '@/Components/Pagination';
 
-export default function () {
-
-    const practitioners = useMemo(() => {
-        // return 
-    }, [])
+export default function ({orders, total, completed, pending, revenue}) {
 
     return (
         <AuthenticatedLayout title="Manage Orders">
+            <Head title="Manage Orders" />
             <div className="space-y-2">
                 <div className="grid grid-cols-4 gap-3 mb-5">
-                    <StatsItem title={'Total Orders'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Completed Orders'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Cancelled Orders'} amount={2000} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Revenue Generated'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Orders'} amount={total} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Completed Orders'} amount={completed} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Cancelled Orders'} amount={pending} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Revenue Generated'} amount={revenue} isPrice direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="card p-0 rounded-xl">
@@ -101,72 +100,24 @@ export default function () {
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>Type</th>
                                     <th>Patient name</th>
                                     <th >Practitioner Name</th>
-                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Order Date</th>
+                                    <th>Test/Prescription Details</th>
                                     <th>Payment Status</th>
-                                    <th>Amount</th>
-                                    <th>Next Step</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX12345</td>
-                                    <td>Alexander Ogunyemi</td>
-                                    <td>Jane Smith</td>
-                                    <td>Payment</td>
-                                    <td>N 5,000,000</td>
-                                    <td>
-                                        <Badge>Successful</Badge>
-                                    </td>
-                                    <td>Bank Transfer</td>
-                                    <td>APPT56789</td>
-                                    <td>
-                                        <Menu>
-                                            <MenuButton className="border-2 p-1 rounded-lg">
-                                                <EllipsisHorizontalIcon className='size-5' />                                        
-                                            </MenuButton>
-                                            <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                                <div className='p-1'>
-                                                    <MenuItem >
-                                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Suspend</button>
-                                                    </MenuItem>
-                                                </div>
-
-                                                <div className="border-t-[1.5px]"></div>
-
-                                                <div className='p-1'>
-                                                    <MenuItem>
-                                                        <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</button>
-                                                    </MenuItem>
-                                                </div>
-                                            </MenuItems>
-                                        </Menu>
-                                    </td>
-                                </tr>
+                                {orders.data.map(order => <OrderItem key={order.id} order={order} />)}
                             </tbody>
                         </table>
                     </div>
 
-                    <div className="p-5 flex text-muted justify-between text-sm">
-                        <div>
-                            <p className=''>1 - 14 of 200 results</p>
-                        </div>
-                        <div className='flex space-x-5 '>
-                            <div>
-                                <p>1 of 16 pages</p>
-                            </div>
-                            <div className='flex space-x-3'>
-                                <Link href='#' className='text-muted/75'>Prev</Link>
-                                <Link href='#'>Next</Link>
-                            </div>
-                        </div>
-                    </div>
+                    <Pagination items={orders} />
                 </div>
             </div>
         </AuthenticatedLayout>
