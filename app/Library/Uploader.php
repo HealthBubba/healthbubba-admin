@@ -42,8 +42,8 @@ class Uploader {
     static function saveToStorage($file){
         $ext = $file->getClientOriginalExtension();
         $imageName = Str::random().'.'.$ext;
-        $file->move(public_path('/images/storage'), $imageName);
-        return asset('/images/storage/'.$imageName);
+        $file->move(public_path('/uploads/storage'), $imageName);
+        return asset("/uploads/storage/{$imageName}");
     }
 
     static function updateFile($file, $oldFile){
