@@ -49,10 +49,10 @@ export default function DashboardLayout ({ children, title }) {
                         </div>
                     </Disclose>
 
-                    <main className="h-full md:ms-[22%] w-full md:flex-1">
+                    <main className="h-full md:ms-[22%] w-full md:flex-1 pb-10">
                         <Header open={setShow} title={title} />
 
-                        <div className="md:p-5 p-2">
+                        <div className="md:p-5 p-2 ">
                             {children}
                         </div>
                     </main>

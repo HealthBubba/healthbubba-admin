@@ -13,22 +13,17 @@ export default function ({transactions}) {
         <AuthenticatedLayout title="Transactions">
             <Head title='Transactions' />
             <div className="card p-0 rounded-xl">
-                <div className="justify-between items-center flex p-4">
+                <div className="justify-between items-center md:flex p-4">
                     <div>
                         <h4 className='font-semibold'>Transactions</h4>
                     </div>
-                    <div className="flex space-x-2">
+                    <div className="md:flex space-x-2">
                         <div>
-                            {/* <button className="border-2 p-1 h-full px-3 font-medium items-center space-x-1 text-sm rounded-lg inline-flex">
-                                <SettingIcon className='size-5' />         
-                                <span>Date</span>
-                            </button> */}
-
                             <DatePicker />
                         </div>
                         <div>
                             <Menu>
-                                <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex font-medium">
+                                <MenuButton className="border-2 py-2 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex font-medium">
                                     <SettingIcon className='size-5' />         
                                     <span>All Status</span>
                                     <ChevronDownIcon className='size-3' />         
