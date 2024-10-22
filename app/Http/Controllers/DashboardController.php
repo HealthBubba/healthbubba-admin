@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Enums\Source;
+use App\Enums\Status;
+use App\Enums\TransactionTypes;
 use App\Http\Resources\TransactionResource;
 use App\Models\Appointment;
 use App\Models\Transaction;
@@ -23,8 +26,22 @@ class DashboardController extends Controller
         $completed = Appointment::isCompleted()->count();
         $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
         $revenue = Transaction::whereTransactionType('appointment')->sum('amount'); 
+        $orders = Transaction::where('transaction_type', TransactionTypes::MEDICATION)
+                        ->where('transaction_type', TransactionTypes::TEST)
+                        ->count();
+
+        $pending_orders = Transaction::where('transaction_type', TransactionTypes::MEDICATION)
+                        ->where('transaction_type', TransactionTypes::TEST)
+                        ->where('status', Status::PENDING)
+                        ->count();
+
+        $sources = [
+            'web' => Transaction::whereSource(Source::WEB)->count(),
+            'android' => Transaction::whereSource(Source::ANDROID)->count(),
+            'ios' => Transaction::whereSource(Source::IOS)->count()
+        ];
         
-        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed', 'revenue'));
+        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed', 'revenue', 'sources', 'orders', 'pending_orders'));
     }
 
     function trends(Request $request){

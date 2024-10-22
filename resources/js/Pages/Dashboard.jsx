@@ -6,10 +6,21 @@ import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link, usePage } from '@inertiajs/react';
+import { useMemo } from 'react';
 
-export default function Dashboard({patients, practitioners, revenue, appointments, pending, transactions, completed}) {
+export default function Dashboard({patients, practitioners, revenue, appointments, pending, transactions, orders, sources, completed, pending_orders}) {
 
     const {props} = usePage()
+
+    const percentages = useMemo(() => {
+        const total = sources.web + sources.android + sources.ios
+
+        return {
+            web: total ? (sources.web / total) * 100 : 0,
+            android: total ? (sources.android / total) * 100 : 0,
+            ios: total ? (sources.ios / total) * 100 : 0,
+        }
+    }, [sources])
 
     return (
         <AuthenticatedLayout title="Dashboard">
@@ -25,11 +36,11 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Consultation Revenue'} isPrice amount={revenue} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Orders'} amount={2000}  direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Orders'} amount={orders}  direction={Direction.up} percentage={36} />
                     <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled  Appointments'} amount={pending} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Ongoing Orders'} amount={2000} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Ongoing Orders'} amount={pending_orders} direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="md:flex md:space-x-4 space-y-5 md:space-y-0">
@@ -41,22 +52,22 @@ export default function Dashboard({patients, practitioners, revenue, appointment
 
                     <div className="md:w-2/6">
                         <div className="card h-full space-y-10">
-                            <div className="flex justify-between text-sm">
+                            <div className="flex justify-between items-center">
                                 <div>
                                     <h4 className='font-semibold'>Traffic Sources</h4>
                                 </div>
 
                                 <div>
-                                    <select className='appearance-none py-0 focus:outline-none focus:ring-none focus:border-none text-sm border-0 w-auto' >
+                                    <select className='appearance-none py-0 px-0 bg-none active:outline-none active:ring-0 focus:outline-0 focus:ring-0 focus:border-0 text-sm border-0 w-auto' >
                                         <option value="">Last 7 Days</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div className='space-y-7'>
-                                <ProgressBar title='Total Order from iOS' value='1,43,382' percent={40} />
-                                <ProgressBar title='Total Order from Android' value='1,43,382' percent={40} />
-                                <ProgressBar title='Total Order from Web' value='1,43,382' percent={40} />
+                                <ProgressBar title='Total Order from iOS' value={sources.ios} percent={percentages.ios} />
+                                <ProgressBar title='Total Order from Android' value={sources.android} percent={percentages.android} />
+                                <ProgressBar title='Total Order from Web' value={sources.web} percent={percentages.web} />
                             </div>
                         </div>
                     </div>

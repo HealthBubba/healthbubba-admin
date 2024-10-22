@@ -17,7 +17,7 @@ export default function ({transactions}) {
                     <div>
                         <h4 className='font-semibold'>Transactions</h4>
                     </div>
-                    <div className="md:flex space-x-2">
+                    <div className="md:flex space-y-2 md:space-y-0 md:space-x-2">
                         <div>
                             <DatePicker />
                         </div>

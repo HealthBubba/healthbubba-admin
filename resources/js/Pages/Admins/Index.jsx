@@ -41,12 +41,12 @@ export default function ({admins}) {
         <AuthenticatedLayout title="Admins">
             <Head title='Admins' />
             <div className="card p-0 rounded-xl">
-                <div className="p-4 flex justify-between items-center">
+                <div className="p-4 md:flex justify-between items-center">
                     <div className="inline-flex items-center space-x-2">
                         <UserCircleIcon className='size-7' />
                         <p className='font-semibold'>Users</p>
                     </div>
-                    <div className=" flex items-center  space-x-2">
+                    <div className="md:flex items-center space-y-3 md:space-y-0 md:space-x-2">
                         <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                             <div className='px-2'>
                                 <MagnifyingGlassIcon className='size-4 text-muted' />

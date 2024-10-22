@@ -33,7 +33,8 @@ class OrderResource extends JsonResource
             'is_paid' => $this->status ? '' : '',
             'payment_status' => '',
             'source' => $this->source,
-            'date' => $this->created_at?->format('jS F Y h:i A')
+            'date' => $this->created_at?->format('jS F Y h:i A'),
+            'result' => $this->result?->result,
         ];
     }
 

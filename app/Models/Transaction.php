@@ -39,5 +39,9 @@ class Transaction extends Model
         return $this->belongsTo(PatientMedication::class, 'model_id', 'id');
     }
 
+    function result(){
+        return $this->hasOne(TestResult::class, 'transaction_id');
+    }
+
 
 }

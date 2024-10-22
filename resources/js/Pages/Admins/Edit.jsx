@@ -32,10 +32,9 @@ export default function Edit({admin}) {
     return (
         <AuthenticatedLayout title={<BreadCrumbs name={admin.data.full_name} />} >
             <Head title={admin.data.full_name} />
-            <div className="py-10">
-                <div className="w-2/3 mx-auto flex space-x-5">
-                    <div className="w-1/3 space-y-6">
-
+            <div className="md:py-10 py-5">
+                <div className="md:w-2/3 mx-auto md:flex space-y-5 md:space-x-5">
+                    <div className="md:w-1/3 space-y-6">
                         <div className="space-y-3">
                             <div>
                                 <Avatar />
@@ -70,7 +69,8 @@ export default function Edit({admin}) {
                             </div>
                         </div>
                     </div>
-                    <div className="w-2/3">
+
+                    <div className="md:w-2/3">
                         <div className="p-1 bg-gray-100 rounded-xl border space-y-2">
                             <div className="pt-3">
                                 <Disclose show={tab == ''}>

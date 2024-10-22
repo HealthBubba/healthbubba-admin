@@ -6,6 +6,7 @@ use App\Enums\Status;
 use App\Enums\TransactionTypes;
 use App\Http\Resources\OrderResource;
 use App\Library\Uploader;
+use App\Models\TestResult;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -46,10 +47,12 @@ class OrderController extends Controller
 
 
         $items = $request->files->get('files');
-        $files = Uploader::upload($items[0]);
+        $file = Uploader::upload($items[0]);
         
-        $order->source = $files;
-        $order->save();
+        TestResult::create([
+            'transaction_id' => $order->id,
+            'result' => $file
+        ]);
 
         toast('Test Result Uploaded Successfully', 'Upload Successful')->success();
         return back();

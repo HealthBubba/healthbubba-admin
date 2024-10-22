@@ -13,7 +13,7 @@ export default function ({appointments, stats}) {
     return (
         <AuthenticatedLayout title="Manage Orders">
             <div className="space-y-2">
-                <div className="grid grid-cols-4 gap-3 mb-5">
+                <div className="grid md:grid-cols-4 grid-cols-1 gap-3 mb-5">
                     <StatsItem title={'Total Appointments'} amount={stats.total} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Appointments'} amount={stats.completed} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled Appointments'} amount={stats.cancelled} direction={Direction.up} percentage={36} />
@@ -21,7 +21,7 @@ export default function ({appointments, stats}) {
                 </div>
 
                 <div className="card p-0 rounded-xl">
-                    <div className="p-4 flex space-x-2">
+                    <div className="p-4 md:flex space-y-2 md:space-x-2">
                         <div>
                             <Menu>
                                 <MenuButton className="border-2 p-1 font-medium h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
@@ -91,7 +91,7 @@ export default function ({appointments, stats}) {
                             </thead>
 
                             <tbody>
-                                {appointments.data.map(appointment => <AppointmentItem appointment={appointment} />)}
+                                {appointments.data.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
                             </tbody>
                         </table>
                     </div>

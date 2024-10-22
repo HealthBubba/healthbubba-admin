@@ -9,7 +9,7 @@ const defaultValue = {
     endDate: null 
 }
 
-export default ({val = { startDate: null, endDate: null }, onChange: isChanged = null}) => {
+export default ({val = { startDate: null, endDate: null }, onChange: isChanged = null, className = ''}) => {
 
     const [value, setValue] = useState(val)
     const onChange = (value) => {
@@ -18,15 +18,15 @@ export default ({val = { startDate: null, endDate: null }, onChange: isChanged =
     }
 
     return (
-        <div className='border-2 h-full font-medium items-center space-x-1 text-sm rounded-lg inline-flex'>
+        <div className={`border-2 h-full font-medium items-center space-x-1 text-sm rounded-lg inline-flex ${className}`}>
             <label className="inline-flex px-3 p-1 cursor-pointer items-center space-x-1">
                 <SettingIcon className='size-5' />         
                 <Datepicker 
                     value={value}
                     primaryColor={"green"}
                     toggleClassName="hidden"
-                    inputClassName="border-0 bg-transparent cursor-pointer focus:ring-0 focus:border-0 focus:outline-0 py-1 px-0 text-sm"
-                    containerClassName="relative"
+                    inputClassName="border-0 bg-transparent cursor-pointer focus:ring-0 focus:border-0 focus:outline-0 py-1 px-0 text-sm w-full"
+                    containerClassName="relative max-w-xl"
                     readOnly
                     placeholder='Date'
                     onChange={onChange}

@@ -15,7 +15,7 @@ export default function ({orders, total, completed, pending, revenue}) {
         <AuthenticatedLayout title="Manage Orders">
             <Head title="Manage Orders" />
             <div className="space-y-2">
-                <div className="grid grid-cols-4 gap-3 mb-5">
+                <div className="grid md:grid-cols-4 grid-cols-2 gap-3 mb-5">
                     <StatsItem title={'Total Orders'} amount={total} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Orders'} amount={completed} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled Orders'} amount={pending} direction={Direction.up} percentage={36} />
@@ -23,8 +23,8 @@ export default function ({orders, total, completed, pending, revenue}) {
                 </div>
 
                 <div className="card p-0 rounded-xl">
-                    <div className="p-4 flex justify-between">
-                        <div className="flex space-x-2">
+                    <div className="p-4 md:flex space-y-2 md:space-y-0 justify-between">
+                        <div className="md:flex space-y-2 md:space-y-0 md:space-x-2">
                             <div>
                                 <Menu>
                                     <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
