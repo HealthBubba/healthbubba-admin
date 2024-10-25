@@ -12,5 +12,5 @@ export default forwardRef(function ({ type = 'text', className = '', isFocused =
         if (isFocused) inputRef.current?.focus();
     }, [isFocused]);
 
-    return <input type={type} ref={inputRef} className={`w-full rounded-lg focus:border-0 border-gray-200 focus:ring-1 focus:ring-primary shadow-sm shadow-black/5 text-sm ${className}`} {...props} />
+    return <input type={type} ref={inputRef} className={`w-full rounded-lg focus:border-0 border-gray-100 focus:ring-1 focus:ring-primary shadow-sm shadow-black/5 text-sm ${className}`} {...props} />
 });

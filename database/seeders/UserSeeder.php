@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $admin = Admin::create([
             'firstname' => 'Super',
             'lastname' => 'Admin',
-            'email' => 'admin@localhost.com',
+            'email' => 'admin@'.env('APP_DOMAIN'),
             'phone' => '08025281607',
             'password' => Hash::make('1234567890'),
             'access_level' => Role::SUPERADMIN,

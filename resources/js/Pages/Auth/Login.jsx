@@ -33,10 +33,10 @@ export default function Login({ status, canResetPassword }) {
                     <img src="/assets/imgs/logo.svg" alt="" />
                 </div>
 
-                <div className="card shadow-sm max-w-md px-5 py-5 mx-auto">
-                    <div className="space-y-3" >
+                <div className="card border-gray-100 shadow-sm max-w-md px-5 min-h-[50vh] flex items-center py-5 mx-auto">
+                    <div className="space-y-3 w-full" >
                         <div className="text-center mb-5">
-                            <h3 className="text-xl font-semibold">Login Account</h3>
+                            <h3 className="text-xl font-medium">Login Account</h3>
                         </div>
 
                         <form onSubmit={submit} className="space-y-4">
