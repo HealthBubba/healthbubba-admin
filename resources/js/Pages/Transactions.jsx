@@ -72,14 +72,14 @@ export default function ({transactions}) {
                             <tr>
                                 <th>S/N</th>
                                 <th>Transaction ID</th>
-                                <th >Date/Time</th>
+                                <th>Date/Time</th>
                                 <th>Patient name</th>
-                                <th>Practitioner Name</th>
+                                {/* <th>Practitioner Name</th> */}
                                 <th>Type</th>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Payment Method</th>
-                                <th>Appointment ID</th>
+                                {/* <th>Payment Method</th> */}
+                                {/* <th>Appointment ID</th> */}
                             </tr>
                         </thead>
 

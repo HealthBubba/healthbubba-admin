@@ -14,7 +14,7 @@ export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
-        remember: false,
+        // remember: false,
     });
 
     const submit = (e) => {
@@ -35,7 +35,7 @@ export default function Login({ status, canResetPassword }) {
                 <div className="card border-gray-100 shadow-sm max-w-md px-5 min-h-[50vh] flex items-center py-5 mx-auto">
                     <div className="space-y-3 w-full" >
                         <div className="">
-                            <h3 className="text-lg font-medium">Login to your Account</h3>
+                            <h3 className="text-lg text-center font-medium">Login to your Account</h3>
                         </div>
 
                         <form onSubmit={submit} className="space-y-4">

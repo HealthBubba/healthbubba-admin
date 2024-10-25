@@ -1,6 +1,0 @@
-import{j as s}from"./app-CenqEzKj.js";import{u,M as p}from"./useModal-Bs-84mE0.js";import{B as a}from"./Button-1u2x1NHq.js";function N({children:l,className:r="",title:i="Are you sure?",caption:o="Are you sure you wish to proceed?",type:n="danger",onConfirm:t=e=>{},cancelLabel:d="Cancel",confirmLabel:m="Proceed",loading:x=!1,onCancel:c=e=>{e()}}){const e=u(),h=()=>{c&&c(e.close),e.close()},j=()=>t(e.close);return s.jsxs(s.Fragment,{children:[s.jsx("span",{role:"button",onClick:e.open,className:r,children:l}),s.jsx(p,{...e,children:s.jsxs("div",{className:"space-y-5",children:[s.jsxs("div",{className:"space-y-1",children:[s.jsx("p",{className:"text-lg font-medium",children:i}),s.jsx("p",{className:"text-[#4B5563] md:text-base",children:o})]}),s.jsxs("div",{className:"flex justify-end space-x-3",children:[s.jsx("div",{children:s.jsx(a,{onClick:h,className:"btn-light",children:d})}),s.jsx("div",{children:s.jsx(a,{onClick:j,loading:x,className:`
-                                    ${n=="success"&&"btn-primary"}
-                                    ${n=="warning"&&"btn-warning"}
-                                    ${n=="light"&&"btn-light"}
-                                    ${n=="danger"&&"btn-danger"}
-                                `,children:m})})]})]})})]})}export{N as S};

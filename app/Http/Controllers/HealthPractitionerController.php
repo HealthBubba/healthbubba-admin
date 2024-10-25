@@ -31,6 +31,26 @@ class HealthPractitionerController extends Controller {
         ]);
     }
 
+    function approve(User $user) {
+        $user->is_doctor_verified = true;
+        $user->save();
+
+        // Dispatch approval message if neccessary
+
+        toast('Health practitioner account verified successfully!')->success();
+        return back();
+    }
+    
+    function disapprove(User $user) {
+        $user->is_doctor_verified = false;
+        $user->save();
+
+        // Dispatch disapproval message if neccessary
+    
+        toast('Health practitioner account verified successfully!')->success();
+        return back();
+    }
+
     function destroy(User $user){
         $user->delete();
         toast('Health practitioner account deleted successfully!')->success();

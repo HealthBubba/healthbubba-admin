@@ -21,8 +21,8 @@ class TransactionResource extends JsonResource
             'status' => $this->status,
             'reference' => $this->transaction_reference,
             'type' => $this->transaction_type,
-            'date' => null,
-            'user' => new PatientResource($this->user),
+            'date' => $this->created_at->toDayDateTimeString(),
+            'user' => new PatientResource($this->patient),
         ];
     }
 }

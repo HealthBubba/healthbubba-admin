@@ -3,6 +3,7 @@
 use App\Library\AcademicYears;
 use App\Library\Toast;
 use App\Library\Uploader;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -15,8 +16,8 @@ if(!function_exists('status')) {
 }
 
 if(!function_exists('authenticated')){
-    function authenticated($relations = []) : User | null {
-        return User::with($relations)->find(Auth::id());
+    function authenticated($relations = []) : Admin | null {
+        return Admin::with($relations)->find(Auth::id());
     }
 }
 

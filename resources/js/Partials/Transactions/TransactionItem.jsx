@@ -9,14 +9,14 @@ export default function TransactionItem({transaction}) {
             <td>{transaction.reference}</td>
             <td>{transaction.date}</td>
             <td>{transaction.user?.full_name}</td>
-            <td>Payment</td>
+            {/* <td>Payment</td> */}
             <td>{transaction.type}</td>
             <td><Currency /> {transaction.amount.toLocaleString()}</td>
             <td>
                 <Badge status={transaction.status}>{transaction.status}</Badge>
             </td>
-            <td>Bank Transfer</td>
-            <td>APPT56789</td>
+            {/* <td>Bank Transfer</td> */}
+            {/* <td>APPT56789</td> */}
         </tr>
     )
 }
