@@ -14,7 +14,11 @@ class Admin extends Authenticatable {
 
     protected $fillable = ['firstname', 'lastname', 'email', 'phone', 'password', 'is_active', 'access_level', 'last_login_at', 'created_at'];
 
-    protected $hidden = ['password'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
 
     public $timestamps = false;
     protected $guard_name = 'web';
@@ -30,6 +34,8 @@ class Admin extends Authenticatable {
         'is_active' => true,
         'access_level' => Role::ADMIN
     ];
+
+    
 
     protected static function booted(){
         static::created(function(Admin $admin) {

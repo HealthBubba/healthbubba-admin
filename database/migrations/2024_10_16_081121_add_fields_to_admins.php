@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('access_level');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('is_active');
             $table->string('phone')->nullable();

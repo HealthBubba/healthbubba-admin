@@ -6,6 +6,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import Button from '@/Components/Button/Button';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import Password from '@/Components/Form/Password';
+import Checkbox from '@/Components/Form/Checkbox';
 
 
 export default function Login({ status, canResetPassword }) {
@@ -19,9 +20,7 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('login'), {
-            onFinish: () => reset('password'),
-        });
+        post(route('login'));
     };
 
     return (
@@ -35,8 +34,8 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="card border-gray-100 shadow-sm max-w-md px-5 min-h-[50vh] flex items-center py-5 mx-auto">
                     <div className="space-y-3 w-full" >
-                        <div className="text-center mb-5">
-                            <h3 className="text-xl font-medium">Login Account</h3>
+                        <div className="">
+                            <h3 className="text-lg font-medium">Login to your Account</h3>
                         </div>
 
                         <form onSubmit={submit} className="space-y-4">
@@ -64,6 +63,10 @@ export default function Login({ status, canResetPassword }) {
                                 />
                                 <InputError message={errors.password} className="mt-2" />
                             </div>
+
+                            {/* <div className="mt-4">
+                                <Checkbox checked={data.remember} onChange={e => setData('remember', e.target.checked)}  >Remember Me</Checkbox>
+                            </div> */}
 
                             <div className="mt-4" >
                                 <Button className="btn-primary w-full" disabled={processing} >Login <PlayIcon className={'text-white text-opacity-80 size-4'} /></Button>
