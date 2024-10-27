@@ -39,7 +39,7 @@ export default function DashboardLayout ({ children, title }) {
 
             <div className="min-h-screen flex bg-[#FAFAFB]">
                 <div className="w-full md:flex ">
-                    <aside className="md:w-[22%] hidden md:block  fixed bottom-0 top-0">
+                    <aside className="md:w-[20%] hidden md:block  fixed bottom-0 top-0">
                         <Sidebar />
                     </aside>
 
@@ -49,7 +49,7 @@ export default function DashboardLayout ({ children, title }) {
                         </div>
                     </Disclose>
 
-                    <main className="h-full md:ms-[22%] w-full md:flex-1 pb-10">
+                    <main className="h-full md:ms-[20%] w-full md:flex-1 pb-10">
                         <Header open={setShow} title={title} />
 
                         <div className="md:p-5 p-2 ">

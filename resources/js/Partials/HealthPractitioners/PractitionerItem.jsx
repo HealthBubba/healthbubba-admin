@@ -2,6 +2,7 @@ import { Badge } from '@/Components/Badge'
 import Disclose from '@/Components/Disclose'
 import Swal from '@/Components/Swal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { router } from '@inertiajs/react'
 import React from 'react'
@@ -31,7 +32,7 @@ export const PractitionerItem = ({user}) => {
             <td>{user.no.toLocaleString()}</td>
             <td>{user.full_name}</td>
             <td>{user.email}</td>
-            <td>Jane Smith</td>
+            {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
             <td></td>
             <td>
@@ -70,12 +71,14 @@ export const PractitionerItem = ({user}) => {
                 </Disclose>
                 
                 <Disclose show={!user.is_doctor_verified} >
-                    <Swal title="Disapprove User Account" type={'danger'} onConfirm={destroy} caption="Are you sure you want to delete this user's account? This action cannot be undone." className="inline-flex w-full rounded-full p-3 text-primary hover:bg-success/10">
-                        <CheckIcon className='size-6' />
-                    </Swal>
-                    <Swal title="Approve User Account" type={'danger'} onConfirm={destroy} caption="Are you sure you want to delete this user's account? This action cannot be undone." className="inline-flex w-full rounded-lg p-3 text-muted hover:bg-red/10">
-                        <CheckIcon className='size-6' />
-                    </Swal>
+                    <div className="flex items-center space-x-2">
+                        <Swal title="Approve Verification Request" type={'success'} onConfirm={approve} caption="Are you sure you want to approve this verification request?" className="inline-flex w-full rounded-full p-2 text-primary bg-primary/10">
+                            <CheckIcon className='size-4' />
+                        </Swal>
+                        <Swal title="Decline Verification Request" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to decline this verification request?" className="inline-flex w-full rounded-full p-2 text-red-600 bg-red-500/10">
+                            <XMarkIcon className='size-4' />
+                        </Swal>
+                    </div>
                 </Disclose>
             </td>
         </tr>

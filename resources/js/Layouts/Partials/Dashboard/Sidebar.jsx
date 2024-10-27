@@ -37,7 +37,7 @@ export default function () {
                     </li>
 
                     <li>
-                        <SidebarItem name={'Manage Tests & Medication Orders '} url={route('orders')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Tests & Medication Orders '} url={route('orders')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 
