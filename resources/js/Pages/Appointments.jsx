@@ -74,7 +74,7 @@ export default function ({appointments, stats}) {
 
                     <div className="border-t ml-4"></div>
 
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto relative">
                         <table className='border-b'>
                             <thead>
                                 <tr>

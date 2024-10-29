@@ -57,30 +57,31 @@ export default function ({users}) {
                 </div>
 
                 <div className="border-t ml-4"></div>
+                <div>
+                    <div className="overflow-x-auto relative">
+                        <table className='border-b'>
+                            <thead>
+                                <tr>
+                                    <th>S/N</th>
+                                    <th>Name</th>
+                                    <th >Practitioner ID</th>
+                                    {/* <th>Specialization</th> */}
+                                    <th>License No.</th>
+                                    <th>License Expiry</th>
+                                    <th>Status</th>
+                                    <th>Consultations</th>
+                                    <th>Earnings</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                <div className="overflow-x-auto">
-                    <table className='border-b'>
-                        <thead>
-                            <tr>
-                                <th>S/N</th>
-                                <th>Name</th>
-                                <th >Practitioner ID</th>
-                                {/* <th>Specialization</th> */}
-                                <th>License No.</th>
-                                <th>License Expiry</th>
-                                <th>Status</th>
-                                <th>Consultations</th>
-                                <th>Earnings</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {
-                                users.data.map((user) => <PractitionerItem key={user.id} user={user} />)
-                            }
-                        </tbody>
-                    </table>
+                            <tbody>
+                                {
+                                    users.data.map((user) => <PractitionerItem key={user.id} user={user} />)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <Pagination items={users} />

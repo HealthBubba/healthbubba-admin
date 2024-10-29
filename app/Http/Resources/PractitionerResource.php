@@ -29,13 +29,16 @@ class PractitionerResource extends JsonResource
             'is_doctor_verified' => $this->is_doctor_verified,
             'is_verified' => $this->licence_number_verified && $this->is_doctor_verified,
             'status' => $this->status(),
-            'is_active' => $this->is_active
+            'is_active' => $this->is_active,
+            'earnings' => $this->transactions()->where('transactions.status', Status::CONFIRMED)->sum('amount'),
+            'consultations' => $this->doctorsAppointments()->count()
         ];
     }
 
     function status(){
         if(!$this->is_active) return Status::SUSPENDED->value;
-        if($this->is_doctor_verified && $this->licence_number_verified) return Status::VERIFIED->value;
+        // && $this->licence_number_verified
+        if($this->is_doctor_verified) return Status::VERIFIED->value;
         return Status::PENDING->value;
     }
 

@@ -16,14 +16,6 @@ class Appointment extends Model {
 
     public $timestamps = false;
 
-    function patient(){
-        return $this->belongsTo(User::class, 'patient_id', 'id');
-    }
-
-    function doctor(){
-        return $this->belongsTo(User::class, 'doctor_id', 'id');
-    }
-
     function scopeWithSerialNo(Builder $query){
         return $query->select('*')->addSelect(DB::raw('ROW_NUMBER() OVER (ORDER BY appointment_id) AS no'));
     }
@@ -34,5 +26,18 @@ class Appointment extends Model {
 
     function scopeIsPending(Builder $query){
         return $query->where('status', false);
+    }
+
+    
+    function patient(){
+        return $this->belongsTo(User::class, 'patient_id', 'id');
+    }
+
+    function doctor(){
+        return $this->belongsTo(User::class, 'doctor_id', 'id');
+    }
+
+    function transactions(){
+        return $this->hasOne(Transaction::class, 'model_id', 'appointment_id');
     }
 }

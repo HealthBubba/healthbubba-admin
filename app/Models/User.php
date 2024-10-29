@@ -61,4 +61,8 @@ class User extends Authenticatable {
         return $this->hasMany(Appointment::class, 'doctor_id');
     }
 
+    function transactions(){
+        return $this->through('doctorsAppointments')->has('transactions');
+    }
+
 }

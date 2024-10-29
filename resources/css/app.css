@@ -9,11 +9,11 @@
     }
 
     table {
-        @apply align-top text-left min-w-full overflow-auto border-collapse divide-y table-fixed;
+        @apply align-top text-left min-w-full overflow-auto border-collapse divide-y table-fixed max-w-none clear-both;
     }
 
     tbody tr {
-        @apply hover:bg-[#F8F5FF] duration-500 table-row cursor-pointer
+        @apply hover:bg-gray-50 duration-500 table-row cursor-pointer
     }
 
     tbody {

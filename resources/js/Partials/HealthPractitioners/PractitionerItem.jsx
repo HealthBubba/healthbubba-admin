@@ -1,4 +1,5 @@
 import { Badge } from '@/Components/Badge'
+import Currency from '@/Components/Currency'
 import Disclose from '@/Components/Disclose'
 import Swal from '@/Components/Swal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
@@ -38,8 +39,8 @@ export const PractitionerItem = ({user}) => {
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
             </td>
-            <td>Bank Transfer</td>
-            <td>APPT56789</td>
+            <td>{user.consultations}</td>
+            <td><Currency />{user.earnings.toLocaleString()}</td>
             <td>
                 <Disclose show={user.is_doctor_verified} >
                     <Menu>
@@ -72,10 +73,10 @@ export const PractitionerItem = ({user}) => {
                 
                 <Disclose show={!user.is_doctor_verified} >
                     <div className="flex items-center space-x-2">
-                        <Swal title="Approve Verification Request" type={'success'} onConfirm={approve} caption="Are you sure you want to approve this verification request?" className="inline-flex w-full rounded-full p-2 text-primary bg-primary/10">
+                        <Swal title="Approve Verification Request" type={'success'} onConfirm={approve} caption="Are you sure you want to approve this verification request?" className="inline-flex w-full rounded-full p-2 text-primary bg-primary/10 hover:bg-primary hover:text-white">
                             <CheckIcon className='size-4' />
                         </Swal>
-                        <Swal title="Decline Verification Request" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to decline this verification request?" className="inline-flex w-full rounded-full p-2 text-red-600 bg-red-500/10">
+                        <Swal title="Decline Verification Request" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to decline this verification request?" className="inline-flex w-full rounded-full p-2 text-red-600 bg-red-500/10 hover:bg-red-500 hover:text-white">
                             <XMarkIcon className='size-4' />
                         </Swal>
                     </div>

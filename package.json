@@ -23,6 +23,8 @@
         "@heroicons/react": "^2.1.5",
         "@simplepdf/react-embed-pdf": "^1.8.1",
         "apexcharts": "^3.54.1",
+        "datatables.net-dt": "^2.1.8",
+        "datatables.net-react": "^1.0.0",
         "react-apexcharts": "^1.4.1",
         "react-date-range": "^2.0.1",
         "react-tailwindcss-datepicker": "^1.7.2",
