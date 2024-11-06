@@ -1,4 +1,5 @@
 import { Badge } from '@/Components/Badge'
+import Currency from '@/Components/Currency'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import React from 'react'
@@ -15,7 +16,7 @@ export default function AppointmentItem({appointment}) {
             <td>
                 <Badge status={appointment.payment_status ? 'paid' : 'unpaid'} >{appointment.payment_status ? 'Paid' : 'Unpaid'}</Badge>
             </td>
-            <td>Bank Transfer</td>
+            <td><Currency />{appointment.transaction?.amount}</td>
             <td>APPT56789</td>
         </tr>
     )
