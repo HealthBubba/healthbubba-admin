@@ -21,11 +21,12 @@ class TransactionResource extends JsonResource
             'status' => $this->status,
             'reference' => $this->transaction_reference,
             'type' => $this->transaction_type,
+            'model_id' => $this->model_id,
             'date' => $this->created_at?->toDayDateTimeString(),
             'user' => new PatientResource($this->patient),
-            'appointment' => new AppointmentResource($this->appointment),
-            'tests' => new TestResource($this->appointment),
-            'medication' => new MedicationResource($this->appointment),
+            'appointment' => $this->appointment,
+            'tests' => new TestResource($this->test),
+            'medication' => new MedicationResource($this->medication),
         ];
     }
 }
