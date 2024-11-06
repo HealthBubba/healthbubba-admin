@@ -37,7 +37,7 @@ class Appointment extends Model {
         return $this->belongsTo(User::class, 'doctor_id', 'id');
     }
 
-    function transactions(){
+    function transaction(){
         return $this->hasOne(Transaction::class, 'model_id', 'appointment_id');
     }
 }

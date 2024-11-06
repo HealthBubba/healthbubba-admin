@@ -23,6 +23,9 @@ class TransactionResource extends JsonResource
             'type' => $this->transaction_type,
             'date' => $this->created_at?->toDayDateTimeString(),
             'user' => new PatientResource($this->patient),
+            'appointment' => new AppointmentResource($this->appointment),
+            'tests' => new TestResource($this->appointment),
+            'medication' => new MedicationResource($this->appointment),
         ];
     }
 }

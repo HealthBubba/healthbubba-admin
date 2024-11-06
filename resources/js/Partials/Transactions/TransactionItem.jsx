@@ -16,7 +16,7 @@ export default function TransactionItem({transaction}) {
                 <Badge status={transaction.status}>{transaction.status}</Badge>
             </td>
             {/* <td>Bank Transfer</td> */}
-            {/* <td>APPT56789</td> */}
+            <td>{transaction.appointment?.id}</td>
         </tr>
     )
 }

@@ -79,7 +79,7 @@ export default function ({transactions}) {
                                 <th>Amount</th>
                                 <th>Status</th>
                                 {/* <th>Payment Method</th> */}
-                                {/* <th>Appointment ID</th> */}
+                                <th>Appointment ID</th>
                             </tr>
                         </thead>
 

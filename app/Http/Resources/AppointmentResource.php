@@ -20,6 +20,7 @@ class AppointmentResource extends JsonResource
             'no' => $this->no,
             'patient' => new PatientResource($this->patient),
             'doctor' => new PractitionerResource($this->doctor),
+            'transaction' => new TransactionResource($this->transaction),
             'payment_status' => $this->is_appointment_paid,
             'date' => Date::parse("{$this->date} {$this->time}")->toDayDateTimeString(),
             'status' => $this->status,
