@@ -62,7 +62,7 @@ class User extends Authenticatable {
     }
 
     function transactions(){
-        return $this->through('doctorsAppointments')->has('transactions');
+        return $this->through('doctorsAppointments')->has('transaction');
     }
 
 }
