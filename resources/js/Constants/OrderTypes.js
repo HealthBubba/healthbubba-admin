@@ -1,5 +1,5 @@
 export default {
-    test: 'test',
-    medication: 'medication',
+    test: 'TEST',
+    medication: 'MEDICATION',
     appointment: 'appointment'
 }

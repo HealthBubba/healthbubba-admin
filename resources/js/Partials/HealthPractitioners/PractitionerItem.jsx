@@ -35,7 +35,7 @@ export const PractitionerItem = ({user}) => {
             <td>{user.email}</td>
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
-            <td></td>
+            {/* <td></td> */}
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
             </td>

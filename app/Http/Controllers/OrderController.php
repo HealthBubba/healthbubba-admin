@@ -6,6 +6,8 @@ use App\Enums\Status;
 use App\Enums\TransactionTypes;
 use App\Http\Resources\OrderResource;
 use App\Library\Uploader;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\TestResult;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -14,9 +16,7 @@ use Inertia\Inertia;
 class OrderController extends Controller
 {
     function index(Request $request){
-        $query = Transaction::withSerialNo()->where('transaction_type', TransactionTypes::MEDICATION)
-                    ->orWhere('transaction_type',  TransactionTypes::TEST)
-                    ->with(['medication', 'test', 'patient']);
+        $query = Order::withSerialNo()->with(['items', 'user']);
 
         $orders = $query->when($request->status, function($query, $status){
             $query->whereStatus($status);
@@ -30,16 +30,17 @@ class OrderController extends Controller
         ->paginate();
 
         $total = $query->count();
-        $completed = $query->whereStatus(Status::COMPLETED)->count();
-        $pending = $query->whereStatus(Status::PENDING)->count();
-        $revenue = $query->whereStatus(Status::COMPLETED)->sum('amount');
-        
-        $orders = OrderResource::collection($orders);
+        // ->whereStatus(Status::COMPLETED)
+        $completed = $query->count();
+        $pending = $query->count();
+        $revenue = $query->sum('order_value');
+
+        // $orders = OrderResource::collection($orders);
 
         return Inertia::render('Orders', compact('total', 'completed', 'pending', 'revenue', 'orders'));
     }
 
-    function upload(Request $request, Transaction $order) {
+    function upload(Request $request, OrderItem $order) {
         $request->validate([
             'files' => 'required|array',
             'files.*' => 'required|mimes:pdf'
@@ -49,13 +50,26 @@ class OrderController extends Controller
         $items = $request->files->get('files');
         $file = Uploader::upload($items[0]);
         
-        TestResult::create([
-            'transaction_id' => $order->id,
+        $order->result()->create([
+            'order_item_id' => $order->order_item_id,
+            'order_id' => $order->order->id,
+            'user_id' => $order->order?->user?->id,
             'result' => $file
         ]);
 
         toast('Test Result Uploaded Successfully', 'Upload Successful')->success();
         return back();
-
     }
+    
+    function status(Request $request, Order $order) {
+        $request->validate(['status' => 'requried']);
+        
+        $order->status = $request->status;
+        $order->save();
+        
+        toast('Order status updated successfully', 'Order Updated')->success();
+        return back();    
+    }
+
+
 }

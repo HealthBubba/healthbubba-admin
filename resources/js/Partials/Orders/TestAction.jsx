@@ -19,68 +19,20 @@ export const TestAction = ({order}) => {
     })
 
     function upload(){
-        form.post(route('orders.tests.upload', {order: order.id}), {
+        form.post(route('orders.tests.upload', {order: order.order_item_id}), {
             onSuccess(){
                 modal.close()
                 form.reset()
             }
         })
     }
-
+    
     return (
         <>
             <Disclose show={!order.source} >
-                <Menu>
-                    <MenuButton className="border-2 max-w-32 p-1 bg-white flex items-center space-x-2 rounded-lg">
-                        <div className="flex-1 overflow-hidden text-ellipsis">
-                            <p className='w-full text-nowrap block'>Test Scheduled</p>
-                        </div>
-                        <div className='shrink-0'>
-                            <ChevronDownIcon className='size-4' />                                        
-                        </div>
-                    </MenuButton>
-                    <MenuItems transition anchor="bottom end" className="min-w-52 text-left origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                        <div className='p-1'>
-                            <MenuItem >
-                                <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Pending confirmation</button>
-                            </MenuItem>
-                        </div>
+                <button onClick={modal.open} className="inline-flex rounded-lg py-2 px-3 text-primary hover:bg-primary/20 bg-primary/10">Upload result</button>
 
-                        <div className="border-t-[1.5px]"></div>
-                        
-                        <div className='p-1'>
-                            <MenuItem >
-                                <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Confirmed</button>
-                            </MenuItem>
-                        </div>
-
-                        <div className="border-t-[1.5px]"></div>
-
-                        <div className='p-1'>
-                            <MenuItem >
-                                <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Test Scheduled</button>
-                            </MenuItem>
-                        </div>
-
-                        <div className="border-t-[1.5px]"></div>
-
-                        <div className='p-1'>
-                            <MenuItem >
-                                <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">In Progress</button>
-                            </MenuItem>
-                        </div>
-
-                        <div className="border-t-[1.5px]"></div>
-
-                        <div className='p-1'>
-                            <MenuItem>
-                                <button onClick={modal.open} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Completed</button>
-                            </MenuItem>
-                        </div>
-                    </MenuItems>
-                </Menu>
-
-                <Modal className='py-0 max-w-2xl' {...modal}>
+                <Modal className='py-0 max-w-3xl' {...modal}>
                     <div className="flex divide-x">
                         <div className="w-1/2 py-5 pe-6">
                             <h4 className='font-semibold'>Complete Order</h4>

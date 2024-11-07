@@ -9,7 +9,7 @@ class TestResult extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['test_id', 'transaction_id', 'result'];
+    protected $fillable = ['test_id', 'order_item_id', 'order_id', 'user_id', 'result'];
 
     function order(){
         return $this->belongsTo(Transaction::class, 'id');

@@ -8,6 +8,7 @@ import { Head, Link } from '@inertiajs/react';
 import { useMemo } from 'react';
 import OrderItem from '../Partials/Orders/OrderItem';
 import Pagination from '@/Components/Pagination';
+import SingleOrder from '@/Partials/Orders/SingleOrder';
 
 export default function ({orders, total, completed, pending, revenue}) {
 
@@ -68,7 +69,7 @@ export default function ({orders, total, completed, pending, revenue}) {
                         </div>
 
                         <div>
-                            <Menu>
+                            {/* <Menu>
                                 <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
                                     <SettingIcon className='size-5' />         
                                     <span className='font-medium'>All Type</span>
@@ -89,7 +90,7 @@ export default function ({orders, total, completed, pending, revenue}) {
                                         </MenuItem>
                                     </div>
                                 </MenuItems>
-                            </Menu>
+                            </Menu> */}
                         </div>
                     </div>
 
@@ -100,24 +101,23 @@ export default function ({orders, total, completed, pending, revenue}) {
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Type</th>
-                                    <th>Patient name</th>
-                                    <th >Practitioner Name</th>
+                                    <th>Order ID</th>
+                                    <th>User</th>
+                                    <th>Amount</th>
                                     <th>Status</th>
                                     <th>Order Date</th>
-                                    <th>Test/Prescription Details</th>
                                     <th>Payment Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {orders.data.map(order => <OrderItem key={order.id} order={order} />)}
+                                {orders.data.map(order => <SingleOrder key={order.id} order={order} />)}
                             </tbody>
                         </table>
                     </div>
 
-                    <Pagination items={orders} />
+                    {/* <Pagination items={orders} /> */}
                 </div>
             </div>
         </AuthenticatedLayout>

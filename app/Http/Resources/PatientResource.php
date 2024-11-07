@@ -25,12 +25,15 @@ class PatientResource extends JsonResource
             'phone' => $this->phone,
             'dob' => $this->dob,
             'sex' => $this->sex,
+            'phone' => $this->phone,
             'weight' => $this->weight,
             'title' => $this->title,
             'status' => $this->status(),
+            'is_active' => $this->is_active,
             'appointments' => $appointments,
             'appointments_count' => $appointments->count(),
-            'next_appointment_date' => $appointments->where('date', '>', now())->first('date')
+            'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),
+            'transactions_sum' => $this->payments->sum('amount')
         ];
     }
 

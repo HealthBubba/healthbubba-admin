@@ -1,4 +1,5 @@
 import { Badge } from '@/Components/Badge'
+import Currency from '@/Components/Currency'
 import Swal from '@/Components/Swal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
@@ -15,20 +16,19 @@ export default function PatientItem({patient}) {
         router.get(route('patients.destroy', {user: patient.id}))
     }
 
-
     return (
         <tr>
             <td>{patient.no}</td>
             <td>{patient.full_name}</td>
             <td>{patient.email}</td>
             {/* <td>Jane Smith</td> */}
-            <td></td>
+            <td>{patient.phone}</td>
             <td>{patient?.next_appointment_date?.date}</td>
             <td>
                 <Badge className='capitalize' status={patient.status} >{patient.status}</Badge>
             </td>
-            <td>Bank Transfer</td>
-            <td>APPT56789</td>
+            <td>{patient.appointments_count}</td>
+            <td><Currency />{patient.transactions_sum.toLocaleString()}</td>
             <td>
                 <Menu>
                     <MenuButton className="border-2 p-1 rounded-lg">
