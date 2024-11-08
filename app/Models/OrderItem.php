@@ -20,6 +20,6 @@ class OrderItem extends Model
     }
 
     function result(){
-        return $this->hasMany(TestResult::class, 'order_item_id', 'order_item_id');
+        return $this->hasOne(TestResult::class, 'order_item_id', 'order_item_id');
     }
 }

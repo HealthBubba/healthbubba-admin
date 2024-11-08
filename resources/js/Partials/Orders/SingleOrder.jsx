@@ -28,7 +28,7 @@ export default function SingleOrder({order}) {
                 <td>8898921</td>
                 <td>{order.is_order_paid ? 'Paid' : 'Unpaid'}</td>
                 <td className='text-left flex gap-2'>
-                    <Menu>
+                    {/* <Menu>
                         <MenuButton className="border-2 max-w-32 p-1 bg-white flex items-center space-x-2 rounded-lg">
                             <div className="flex-1 overflow-hidden text-ellipsis">
                                 <p className='w-full text-nowrap block'>Test Scheduled</p>
@@ -68,13 +68,13 @@ export default function SingleOrder({order}) {
                                 </MenuItem>
                             </div>
                         </MenuItems>
-                    </Menu>
+                    </Menu> */}
 
                     <button className='border-2 p-1 bg-white rounded-lg' onClick={() => setShow(!show)} ><PlusIcon className='size-4' /></button>
                 </td>
             </tr>
 
-            <Disclose show={show && order.items.length > 0}>
+            <Disclose show={show}>
                 <tr>
                     <td colSpan={9} className='bg-gray-50'>
                         <div className="mb-2">

@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function(){
         Route::prefix('orderItem/{order:order_item_id}')->group(function(){
             Route::prefix('tests')->group(function(){
                 Route::post('', [OrderController::class, 'upload'])->name('orders.tests.upload');
+                Route::prefix('{testResult}')->group(function(){
+                    Route::get('delete', [OrderController::class, 'deleteResult'])->name('orders.tests.delete');
+                });
             });
             
         });

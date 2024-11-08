@@ -16,7 +16,7 @@ use Inertia\Inertia;
 class OrderController extends Controller
 {
     function index(Request $request){
-        $query = Order::withSerialNo()->with(['items', 'user']);
+        $query = Order::withSerialNo()->with(['items.result', 'user']);
 
         $orders = $query->when($request->status, function($query, $status){
             $query->whereStatus($status);
@@ -68,6 +68,13 @@ class OrderController extends Controller
         $order->save();
         
         toast('Order status updated successfully', 'Order Updated')->success();
+        return back();    
+    }
+    
+    function deleteResult(OrderItem $order, TestResult $testResult) {
+        $testResult->delete();
+        
+        toast('Test result deleted successfully', 'Test Result Deleted')->success();
         return back();    
     }
 
