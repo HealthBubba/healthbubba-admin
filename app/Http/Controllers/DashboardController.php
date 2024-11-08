@@ -8,6 +8,7 @@ use App\Enums\Status;
 use App\Enums\TransactionTypes;
 use App\Http\Resources\TransactionResource;
 use App\Models\Appointment;
+use App\Models\Order;
 use App\Models\Transaction;
 use App\Models\User;
 use Flowframe\Trend\Trend;
@@ -26,14 +27,9 @@ class DashboardController extends Controller
         $completed = Appointment::isCompleted()->count();
         $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
         $revenue = Transaction::whereTransactionType('appointment')->sum('amount'); 
-        $orders = Transaction::where('transaction_type', TransactionTypes::MEDICATION)
-                        ->where('transaction_type', TransactionTypes::TEST)
-                        ->count();
+        $orders = Order::count();
 
-        $pending_orders = Transaction::where('transaction_type', TransactionTypes::MEDICATION)
-                        ->where('transaction_type', TransactionTypes::TEST)
-                        ->where('status', Status::PENDING)
-                        ->count();
+        $pending_orders = Transaction::count();
 
         $sources = [
             'web' => Transaction::whereSource(Source::WEB)->count(),
