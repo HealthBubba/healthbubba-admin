@@ -93,13 +93,10 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                                     <th>S/N</th>
                                     <th>Transaction ID</th>
                                     <th>Date/Time</th>
-                                    <th >Patient Name</th>
-                                    <th >Practitioner Name</th>
+                                    <th>Patient name</th>
                                     <th>Type</th>
                                     <th>Amount</th>
                                     <th>Status</th>
-                                    <th>Payment Method</th>
-                                    <th>Appointment ID</th>
                                 </tr>
                             </thead>
 
