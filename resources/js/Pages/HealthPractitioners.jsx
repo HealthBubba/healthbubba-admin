@@ -3,9 +3,8 @@ import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PractitionerItem } from '@/Partials/HealthPractitioners/PractitionerItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { AdjustmentsHorizontalIcon, ChevronDownIcon, EllipsisHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { Head, Link, router } from '@inertiajs/react';
-import { useMemo } from 'react';
 
 export default function ({users}) {
 
@@ -65,9 +64,9 @@ export default function ({users}) {
                                     <th>S/N</th>
                                     <th>Name</th>
                                     <th >Practitioner ID</th>
-                                    {/* <th>Specialization</th> */}
                                     <th>License No.</th>
-                                    {/* <th>License Expiry</th> */}
+                                    <th>License Expiry</th>
+                                    <th>Licence Doc</th>
                                     <th>Status</th>
                                     <th>Consultations</th>
                                     <th>Earnings</th>

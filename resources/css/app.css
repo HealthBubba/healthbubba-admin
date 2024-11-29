@@ -109,3 +109,5 @@
         box-shadow: 0px 1px 1px 0px #0307120A inset;
     }
 }
+
+@import 'photoswipe/dist/photoswipe.css'

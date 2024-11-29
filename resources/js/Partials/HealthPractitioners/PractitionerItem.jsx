@@ -1,13 +1,14 @@
 import { Badge } from '@/Components/Badge'
 import Currency from '@/Components/Currency'
 import Disclose from '@/Components/Disclose'
+import Modal from '@/Components/Modal'
 import Swal from '@/Components/Swal'
+import useModal from '@/Hooks/useModal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { router } from '@inertiajs/react'
 import React from 'react'
-import { toast } from 'react-toastify'
 
 export const PractitionerItem = ({user}) => {
 
@@ -28,6 +29,8 @@ export const PractitionerItem = ({user}) => {
         router.get(route('practitioners.destroy', {user: user.id}))
     }
 
+    const modal = useModal()
+
     return (
         <tr>
             <td>{user.no.toLocaleString()}</td>
@@ -35,7 +38,9 @@ export const PractitionerItem = ({user}) => {
             <td>{user.email}</td>
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
-            {/* <td></td> */}
+            <td>
+                <img className='cursor-pointer' onClick={modal.open} src="/assets/imgs/avatars/avatar.png" alt="" />
+            </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
             </td>
@@ -73,15 +78,24 @@ export const PractitionerItem = ({user}) => {
                 
                 <Disclose show={!user.is_doctor_verified} >
                     <div className="flex items-center space-x-2">
-                        <Swal title="Approve Verification Request" type={'success'} onConfirm={approve} caption="Are you sure you want to approve this verification request?" className="inline-flex w-full rounded-full p-2 text-primary bg-primary/10 hover:bg-primary hover:text-white">
-                            <CheckIcon className='size-4' />
-                        </Swal>
-                        <Swal title="Decline Verification Request" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to decline this verification request?" className="inline-flex w-full rounded-full p-2 text-red-600 bg-red-500/10 hover:bg-red-500 hover:text-white">
-                            <XMarkIcon className='size-4' />
-                        </Swal>
+                        <div>
+                            <Swal title="Approve Verification Request" type={'success'} onConfirm={approve} caption="Are you sure you want to approve this verification request?" className="inline-flex w-full rounded-full p-2 text-primary bg-primary/10 hover:bg-primary hover:text-white">
+                                <CheckIcon className='size-4' />
+                            </Swal>
+                        </div>
+
+                        <div>
+                            <Swal title="Decline Verification Request" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to decline this verification request?" className="inline-flex w-full rounded-full p-2 text-red-600 bg-red-500/10 hover:bg-red-500 hover:text-white">
+                                <XMarkIcon className='size-4' />
+                            </Swal>
+                        </div>
                     </div>
                 </Disclose>
             </td>
+
+            <Modal className='min-h-[90vh] max-w-2xl' {...modal}>
+                <img src="/assets/imgs/avatars/avatar.png" className='w-full' alt="" />
+            </Modal>
         </tr>
     )
 }

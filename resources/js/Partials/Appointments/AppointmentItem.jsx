@@ -17,7 +17,6 @@ export default function AppointmentItem({appointment}) {
                 <Badge status={appointment.payment_status ? 'paid' : 'unpaid'} >{appointment.payment_status ? 'Paid' : 'Unpaid'}</Badge>
             </td>
             <td><Currency />{appointment.transaction?.amount}</td>
-            <td>APPT56789</td>
         </tr>
     )
 }

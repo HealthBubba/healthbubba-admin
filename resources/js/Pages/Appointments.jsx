@@ -86,7 +86,6 @@ export default function ({appointments, stats}) {
                                     <th>Order Date</th>
                                     <th>Payment Status</th>
                                     <th>Amount</th>
-                                    <th>Next Step</th>
                                 </tr>
                             </thead>
 
