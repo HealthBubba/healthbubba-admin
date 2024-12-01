@@ -39,7 +39,12 @@ export const PractitionerItem = ({user}) => {
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
             <td>
-                <img className='cursor-pointer' onClick={modal.open} src="/assets/imgs/avatars/avatar.png" alt="" />
+                <Disclose show={!!user.doctor_license} >
+                    <img className='cursor-pointer' onClick={modal.open} src={user.doctor_license} alt="" />
+                </Disclose>
+                <Disclose show={!user.doctor_license && user.other_document} >
+                    <img className='cursor-pointer' onClick={modal.open} src={user.other_document} alt="" />
+                </Disclose>
             </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
@@ -93,8 +98,15 @@ export const PractitionerItem = ({user}) => {
                 </Disclose>
             </td>
 
-            <Modal className='min-h-[90vh] max-w-2xl' {...modal}>
-                <img src="/assets/imgs/avatars/avatar.png" className='w-full' alt="" />
+            <Modal className='h-[90vh] max-w-2xl' {...modal}>
+                <div className="overflow-y-auto space-y-5">
+                    <Disclose show={user.doctor_licence}>
+                        <img src={user.doctor_license} className='w-full' alt="" />
+                    </Disclose>
+                    <Disclose show={user.other_document}>
+                        <img src={user.other_document} className='w-full' alt="" />
+                    </Disclose>
+                </div>
             </Modal>
         </tr>
     )
