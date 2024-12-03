@@ -8,6 +8,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { router } from '@inertiajs/react'
+import { EmbedPDF } from '@simplepdf/react-embed-pdf'
 import React from 'react'
 
 export const PractitionerItem = ({user}) => {
@@ -31,6 +32,8 @@ export const PractitionerItem = ({user}) => {
 
     const modal = useModal()
 
+    console.log(user.doctor_license)
+
     return (
         <tr>
             <td>{user.no.toLocaleString()}</td>
@@ -39,12 +42,12 @@ export const PractitionerItem = ({user}) => {
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
             <td>
+                {/* <img className='cursor-pointer w-5' onClick={modal.open} src={user.doctor_license} alt="" /> */}
                 <Disclose show={!!user.doctor_license} >
-                    <img className='cursor-pointer' onClick={modal.open} src={user.doctor_license} alt="" />
+                    <EmbedPDF>
+                        <a href={user.doctor_license} className='text-primary flex space-x-4 items-center'>View Licence</a>
+                    </EmbedPDF>
                 </Disclose>
-                {/* <Disclose show={!user.doctor_license && user.other_document} >
-                    <img className='cursor-pointer' onClick={modal.open} src={user.other_document} alt="" />
-                </Disclose> */}
             </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
@@ -98,16 +101,15 @@ export const PractitionerItem = ({user}) => {
                 </Disclose>
             </td>
 
-            <Modal className='h-[90vh] max-w-2xl' {...modal}>
+            {/* <Modal className='h-[90vh] max-w-2xl' {...modal}>
                 <div className="overflow-y-auto space-y-5">
-                    <Disclose show={user.doctor_licence}>
-                        <img src={user.doctor_license} className='w-full' alt="" />
-                    </Disclose>
-                    {/* <Disclose show={user.other_document}>
+                    <img src={user.doctor_license} className='w-full' alt="" />
+            
+                    <Disclose show={user.other_document}>
                         <img src={user.other_document} className='w-full' alt="" />
-                    </Disclose> */}
+                    </Disclose>
                 </div>
-            </Modal>
+            </Modal> */}
         </tr>
     )
 }
