@@ -32,8 +32,6 @@ export const PractitionerItem = ({user}) => {
 
     const modal = useModal()
 
-    console.log(user.doctor_license)
-
     return (
         <tr>
             <td>{user.no.toLocaleString()}</td>
