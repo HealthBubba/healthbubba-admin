@@ -1,1 +1,0 @@
-import{j as t}from"./app-CAUEZc0i.js";function r({children:e}){return t.jsx("div",{className:"flex min-h-screen flex-col items-center bg-white pt-6 justify-center px-2 sm:pt-0",children:e})}export{r as G};

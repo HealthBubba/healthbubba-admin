@@ -1,1 +1,0 @@
-import{j as t,Y as e}from"./app-CAUEZc0i.js";import{D as o}from"./AuthenticatedLayout-pxGpmzW_.js";import"./Disclose-Cba31f_p.js";function s(){return t.jsx(o,{title:"Health Practitioners",children:t.jsx(e,{title:"Welcome"})})}export{s as default};

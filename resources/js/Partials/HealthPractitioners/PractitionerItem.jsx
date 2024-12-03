@@ -42,9 +42,9 @@ export const PractitionerItem = ({user}) => {
                 <Disclose show={!!user.doctor_license} >
                     <img className='cursor-pointer' onClick={modal.open} src={user.doctor_license} alt="" />
                 </Disclose>
-                <Disclose show={!user.doctor_license && user.other_document} >
+                {/* <Disclose show={!user.doctor_license && user.other_document} >
                     <img className='cursor-pointer' onClick={modal.open} src={user.other_document} alt="" />
-                </Disclose>
+                </Disclose> */}
             </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
@@ -103,9 +103,9 @@ export const PractitionerItem = ({user}) => {
                     <Disclose show={user.doctor_licence}>
                         <img src={user.doctor_license} className='w-full' alt="" />
                     </Disclose>
-                    <Disclose show={user.other_document}>
+                    {/* <Disclose show={user.other_document}>
                         <img src={user.other_document} className='w-full' alt="" />
-                    </Disclose>
+                    </Disclose> */}
                 </div>
             </Modal>
         </tr>
