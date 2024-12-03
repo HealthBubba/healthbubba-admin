@@ -8,7 +8,6 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { router } from '@inertiajs/react'
-import { EmbedPDF } from '@simplepdf/react-embed-pdf'
 import React from 'react'
 
 export const PractitionerItem = ({user}) => {
@@ -40,10 +39,14 @@ export const PractitionerItem = ({user}) => {
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
             <td>
-                <a href={user.doctor_license} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
+                <Disclose show={!!user.doctor_license} >
+                    <a href={user.doctor_license} target='_blank' className='text-primary flex space-x-4 items-center'>View License</a>
+                </Disclose>
             </td>
             <td>
-                <a href={user.other_document} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
+                <Disclose show={!!user.other_document} >
+                    <a href={user.other_document} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
+                </Disclose>
             </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
