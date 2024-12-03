@@ -40,12 +40,10 @@ export const PractitionerItem = ({user}) => {
             {/* <td>Jane Smith</td> */}
             <td>{user.licence_number}</td>
             <td>
-                {/* <img className='cursor-pointer w-5' onClick={modal.open} src={user.doctor_license} alt="" /> */}
-                <Disclose show={!!user.doctor_license} >
-                    <EmbedPDF>
-                        <a href={user.doctor_license} className='text-primary flex space-x-4 items-center'>View Licence</a>
-                    </EmbedPDF>
-                </Disclose>
+                <a href={user.doctor_license} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
+            </td>
+            <td>
+                <a href={user.other_document} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
             </td>
             <td>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>

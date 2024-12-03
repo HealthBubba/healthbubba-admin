@@ -65,8 +65,8 @@ export default function ({users}) {
                                     <th>Name</th>
                                     <th >Practitioner ID</th>
                                     <th>License No.</th>
-                                    {/* <th>License Expiry</th> */}
                                     <th>Licence Doc</th>
+                                    <th>Other Document</th>
                                     <th>Status</th>
                                     <th>Consultations</th>
                                     <th>Earnings</th>
