@@ -24,7 +24,7 @@ class HealthPractitionerController extends Controller {
                             'pending' => $query->where('is_doctor_verified', false)->where('is_active', true),
                             default => null
                         };
-                    })->withSerialNo()->paginate();
+                    })->withSerialNo()->latest()->paginate();
 
         return Inertia::render('HealthPractitioners', [
             'users' => PractitionerResource::collection($users)

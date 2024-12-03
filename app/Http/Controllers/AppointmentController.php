@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class AppointmentController extends Controller
 {
     function index(Request $request){
-        $appointments = Appointment::withSerialNo()->paginate();
+        $appointments = Appointment::withSerialNo()->latest()->paginate();
         $stats = [
             'total' => Appointment::count(),
             'completed' => Appointment::whereIsAppointmentPaid(true)->count(),

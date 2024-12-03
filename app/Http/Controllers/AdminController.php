@@ -16,7 +16,7 @@ use Inertia\Inertia;
 class AdminController extends Controller
 {
     function index(){
-        $admins = Admin::withSerialNo()->paginate();
+        $admins = Admin::withSerialNo()->latest()->paginate();
 
         return Inertia::render('Admins/Index', [
             'admins' => AdminResource::collection($admins)

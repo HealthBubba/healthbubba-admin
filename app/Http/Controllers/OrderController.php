@@ -27,6 +27,7 @@ class OrderController extends Controller
         ->when($request->keyword, function($query, $keyword){
             $query->where('reference', $keyword);
         })
+        ->latest()
         ->paginate();
 
         $total = $query->count();

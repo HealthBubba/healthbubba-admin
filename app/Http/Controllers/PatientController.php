@@ -25,7 +25,7 @@ class PatientController extends Controller {
                                 default => null
                             };
                         })
-                        ->withSerialNo()->paginate();
+                        ->withSerialNo()->latest()->paginate();
 
         return Inertia::render('Patients', [
             'patients' => PatientResource::collection($patients)
