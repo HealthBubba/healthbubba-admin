@@ -7,7 +7,7 @@ export default function Pagination({items}) {
     return (
         <div className="p-5 flex text-muted justify-between text-sm">
             <div>
-                <p className=''>{items.from} - {meta.to} of {meta.total} results</p>
+                <p className=''>{meta.from} - {meta.to} of {meta.total} results</p>
             </div>
             <div className='flex space-x-5 '>
                 <div>
