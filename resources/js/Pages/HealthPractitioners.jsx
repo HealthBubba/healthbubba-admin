@@ -63,7 +63,8 @@ export default function ({users}) {
                                 <tr>
                                     <th>S/N</th>
                                     <th>Name</th>
-                                    <th >Practitioner ID</th>
+                                    <th >Email</th>
+                                    <th >Phone</th>
                                     <th>License No.</th>
                                     <th>Licence Doc</th>
                                     <th>Other Document</th>
