@@ -7,6 +7,7 @@ use App\Http\Resources\PractitionerResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class HealthPractitionerController extends Controller {
@@ -52,7 +53,11 @@ class HealthPractitionerController extends Controller {
     }
 
     function destroy(User $user){
-        $user->delete();
+        try {
+            $user->delete();
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+        }
         toast('Health practitioner account deleted successfully!')->success();
         return back();
     }

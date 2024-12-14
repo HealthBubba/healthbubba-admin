@@ -6,6 +6,7 @@ use App\Enums\Role;
 use App\Http\Resources\PatientResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class PatientController extends Controller {
@@ -33,7 +34,11 @@ class PatientController extends Controller {
     }
 
     function destroy(User $user){
-        $user->delete();
+        try {
+            $user->delete();
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+        }
         toast('Patient account deleted successfully!')->success();
         return back();
     }
