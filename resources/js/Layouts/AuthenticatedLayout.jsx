@@ -39,21 +39,23 @@ export default function DashboardLayout ({ children, title }) {
 
             <div className="min-h-screen flex bg-[#FAFAFB]">
                 <div className="w-full md:flex ">
-                    <aside className="md:w-[20%] hidden md:block  fixed bottom-0 top-0">
+                    <aside className="md:w-[20%] hidden md:block z-[999999] fixed bottom-0 top-0">
                         <Sidebar />
                     </aside>
 
                     <Disclose show={show} >
-                        <div ref={ref} className="w-5/6 h-full fixed md:hidden bottom-0 top-0 z-[99999]">
+                        <div ref={ref} className="w-5/6 max-w-full h-full fixed md:hidden bottom-0 top-0 z-[99999]">
                             <Sidebar />
                         </div>
                     </Disclose>
 
                     <main className="h-full md:ms-[20%] w-full md:flex-1 pb-10">
-                        <Header open={setShow} title={title} />
+                        <div className="max-w-full w-full overflow-x-auto">
+                            <Header open={setShow} title={title} />
 
-                        <div className="md:p-5 p-2 ">
-                            {children}
+                            <div className="md:p-5 p-2 ">
+                                {children}
+                            </div>
                         </div>
                     </main>
                 </div>

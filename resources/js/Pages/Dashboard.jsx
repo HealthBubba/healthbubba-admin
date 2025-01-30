@@ -74,7 +74,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                 </div>
 
 
-                <div className="card p-0 rounded-xl">
+                <div className="card p-0 w-full max-w-full rounded-xl">
                     <div className="p-4 flex justify-between">
                         <div>
                         <p className='font-semibold'>Transactions</p>
@@ -87,7 +87,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <div className="border-t ml-4"></div>
 
                     <div className="p-4 overflow-x-auto">
-                        <table>
+                        <table className='w-full'>
                             <thead>
                                 <tr>
                                     <th>S/N</th>
