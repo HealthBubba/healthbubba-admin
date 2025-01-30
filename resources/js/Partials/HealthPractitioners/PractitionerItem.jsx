@@ -77,6 +77,16 @@ export const PractitionerItem = ({user}) => {
 
                             <div className='p-1'>
                                 <MenuItem>
+                                    <Swal title="Unverify User" type={'danger'} onConfirm={disapprove} caption="Are you sure you want to unverify this user?" className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">
+                                        Unverify User
+                                    </Swal>
+                                </MenuItem>
+                            </div>
+
+                            <div className="border-t-[1.5px]"></div>
+
+                            <div className='p-1'>
+                                <MenuItem>
                                     <Swal title="Delete User Account" type={'danger'} onConfirm={destroy} caption="Are you sure you want to delete this user's account? This action cannot be undone." className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Delete</Swal>
                                 </MenuItem>
                             </div>

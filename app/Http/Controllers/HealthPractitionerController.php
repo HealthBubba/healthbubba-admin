@@ -62,7 +62,7 @@ class HealthPractitionerController extends Controller {
 
         // Dispatch disapproval message if neccessary
     
-        toast('Health practitioner account verified successfully!')->success();
+        toast('Health practitioner account unverified successfully!')->success();
         return back();
     }
 
