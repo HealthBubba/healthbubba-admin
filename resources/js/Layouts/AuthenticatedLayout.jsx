@@ -49,7 +49,7 @@ export default function DashboardLayout ({ children, title }) {
                         </div>
                     </Disclose>
 
-                    <main className="h-full md:ms-[20%] w-full md:flex-1 pb-10">
+                    <main className="h-full md:ms-[20%] max-w-full w-full pb-10">
                         <div className="max-w-full w-full overflow-x-auto">
                             <Header open={setShow} title={title} />
 
