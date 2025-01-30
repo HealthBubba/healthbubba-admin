@@ -56,9 +56,9 @@ export default function ({users}) {
                 </div>
 
                 <div className="border-t ml-4"></div>
-                <div>
-                    <div className="overflow-x-auto relative max-w-full w-full">
-                        <table className='border-b w-full'>
+                <div className='w-full' >
+                    <div className="overflow-x-auto relative max-w-full">
+                        <table className='border-b min-w-full'>
                             <thead>
                                 <tr>
                                     <th>S/N</th>
