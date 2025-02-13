@@ -5,7 +5,6 @@ import React from 'react'
 export default function TransactionItem({transaction}) {
     return (
         <tr>
-            <td>{transaction.no}</td>
             <td>{transaction.reference}</td>
             <td>{transaction.date}</td>
             <td>{transaction.user?.full_name}</td>

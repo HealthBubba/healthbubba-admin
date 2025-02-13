@@ -70,7 +70,6 @@ export default function ({transactions}) {
                     <table className='border-b'>
                         <thead>
                             <tr>
-                                <th>S/N</th>
                                 <th>Transaction ID</th>
                                 <th>Date/Time</th>
                                 <th>Patient name</th>

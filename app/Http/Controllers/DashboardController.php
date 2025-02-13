@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $pending = Appointment::isPending()->count();
         $completed = Appointment::isCompleted()->count();
         $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
-        $revenue = Transaction::whereTransactionType('appointment')->sum('amount'); 
+        $revenue = Transaction::whereStatus('confirmed')->sum('amount'); 
         $orders = Order::count();
 
         $pending_orders = Transaction::count();

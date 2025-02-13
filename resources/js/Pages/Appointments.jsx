@@ -78,7 +78,6 @@ export default function ({appointments, stats}) {
                         <table className='border-b'>
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
                                     <th>Patient name</th>
                                     <th >Practitioner Name</th>
                                     <th>Type</th>

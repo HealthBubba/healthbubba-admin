@@ -1,0 +1,1 @@
+import{j as t,Y as e}from"./app-DC-ibCVu.js";import{D as o}from"./AuthenticatedLayout-DPP7zrt1.js";import"./Disclose-BiQgVDCL.js";function s(){return t.jsx(o,{title:"Health Practitioners",children:t.jsx(e,{title:"Welcome"})})}export{s as default};

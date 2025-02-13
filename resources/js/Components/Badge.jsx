@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
 const states = {
-    success: ['successfull', 'verified', 'paid'],
+    success: ['successfull', 'verified', 'confirmed', 'paid'],
     warning: ['pending', 'suspended'],
     danger: ['failed',],
     info: ['unpaid']

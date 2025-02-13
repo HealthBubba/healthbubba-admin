@@ -7,7 +7,6 @@ import React from 'react'
 export default function AppointmentItem({appointment}) {
     return (
         <tr>
-            <td>{appointment.no}</td>
             <td>{appointment.patient?.full_name}</td>
             <td>{appointment.doctor?.full_name}</td>
             <td>Payment</td>
