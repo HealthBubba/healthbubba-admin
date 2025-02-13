@@ -1,13 +1,16 @@
 import DatePicker from '@/Components/Form/DatePicker';
 import Pagination from '@/Components/Pagination';
+import useSearchParams from '@/Hooks/useSearchParams';
 import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 
 export default function ({transactions}) {
+
+    const params = useSearchParams()
 
     return (
         <AuthenticatedLayout title="Transactions">
@@ -19,7 +22,7 @@ export default function ({transactions}) {
                     </div>
                     <div className="md:flex space-y-2 md:space-y-0 md:space-x-2">
                         <div>
-                            <DatePicker />
+                            <DatePicker val={{endDate: params.endDate, startDate: params.startDate}} onChange={(value) => router.reload({data: value})} />
                         </div>
                         <div>
                             <Menu>
@@ -86,6 +89,18 @@ export default function ({transactions}) {
                             {transactions.data.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
                         </tbody>
                     </table>
+
+                    {
+                            transactions.data?.length < 1 
+
+                            ?
+
+                            <p className='text-center py-3' >No records found</p>
+
+                            :
+
+                            ''
+                        }
                 </div>
 
                 <Pagination items={transactions} />

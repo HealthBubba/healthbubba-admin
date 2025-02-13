@@ -1,5 +1,7 @@
+import DatePicker from '@/Components/Form/DatePicker';
 import DateRangePicker from '@/Components/Form/DateRangePicker';
 import Pagination from '@/Components/Pagination';
+import useSearchParams from '@/Hooks/useSearchParams';
 import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PractitionerItem } from '@/Partials/HealthPractitioners/PractitionerItem';
@@ -9,6 +11,8 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { Head, Link, router } from '@inertiajs/react';
 
 export default function ({users, totalDoctors}) {
+
+    const params = useSearchParams()
 
     return (
         <AuthenticatedLayout title="Health Practitioners">
@@ -55,7 +59,7 @@ export default function ({users, totalDoctors}) {
                             </Menu>
                         </div>
                         <div>
-                            <DateRangePicker onChange={(start, end) =>  router.reload({data: {startdate: start, enddate: end}})} />
+                            <DatePicker val={{endDate: params.endDate, startDate: params.startDate}} onChange={(value) => router.reload({data: value})} />
                         </div>
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
@@ -92,6 +96,18 @@ export default function ({users, totalDoctors}) {
                                     }
                                 </tbody>
                             </table>
+
+                            {
+                                users.data?.length < 1 
+
+                                ?
+
+                                <p className='text-center py-3' >No records found</p>
+
+                                :
+
+                                ''
+                            }
                         </div>
                     </div>
 

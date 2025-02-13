@@ -28,8 +28,8 @@ class PatientController extends Controller {
                                 default => null
                             };
                         })
-                        ->when($request->startdate && $request->enddate, function($query, $startdate) use($request){
-                            $query->whereBetween('created_at', [$request->startdate, $request->enddate]);
+                        ->when($request->endDate && $request->startDate, function($query) use($request){
+                            $query->whereBetween('created_at', [$request->startDate, $request->endDate]);
                         })
                         ->withSerialNo()->latest()->paginate();
 

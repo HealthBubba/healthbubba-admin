@@ -1,6 +1,8 @@
 import Filters from '@/Components/Filters';
+import DatePicker from '@/Components/Form/DatePicker';
 import DateRangePicker from '@/Components/Form/DateRangePicker';
 import Pagination from '@/Components/Pagination';
+import useSearchParams from '@/Hooks/useSearchParams';
 import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PatientItem from '@/Partials/Patients/PatientItem';
@@ -10,6 +12,8 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { Head, router } from '@inertiajs/react';
 
 export default function ({patients, totalPatients}) {
+
+    const params = useSearchParams()
 
     return (
         <AuthenticatedLayout title="Patients">
@@ -55,7 +59,7 @@ export default function ({patients, totalPatients}) {
                             </Menu>
                         </div>
                         <div>
-                            <DateRangePicker onChange={(start, end) =>  router.reload({data: {startdate: start, enddate: end}})} />
+                            <DatePicker val={{endDate: params.endDate, startDate: params.startDate}} onChange={(value) => router.reload({data: value})} />
                         </div>
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center  border-[#E5E7EB] rounded-lg border-2">
@@ -91,6 +95,18 @@ export default function ({patients, totalPatients}) {
                                 }
                             </tbody>
                         </table>
+
+                        {
+                            patients.data?.length < 1 
+
+                            ?
+
+                            <p className='text-center py-3' >No records found</p>
+
+                            :
+
+                            ''
+                        }
                     </div>
 
                     <Pagination items={patients} />
