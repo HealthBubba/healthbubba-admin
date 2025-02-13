@@ -33,7 +33,6 @@ export const PractitionerItem = ({user}) => {
 
     return (
         <tr>
-            <td>{user.no.toLocaleString()}</td>
             <td>{user.full_name}</td>
             <td>{user.email}</td>
             <td>{user.phone}</td>

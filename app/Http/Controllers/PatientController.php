@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\Role;
 use App\Http\Resources\PatientResource;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +18,7 @@ class PatientController extends Controller {
                         ->when($request->keyword, function($query, $keyword) {
                             $query->where('first_name', 'LIKE', "%$keyword%")
                                 ->orWhere('last_name', 'LIKE', "%$keyword%")
+                                ->orWhere('phone', 'LIKE', "%$keyword%")
                                 ->orWhere('email', 'LIKE', "%$keyword%");
                         })
                         ->when($request->status, function($query, $filter) {
@@ -26,10 +28,17 @@ class PatientController extends Controller {
                                 default => null
                             };
                         })
+                        ->when($request->startdate && $request->enddate, function($query, $startdate) use($request){
+                            $query->whereBetween('created_at', [$request->startdate, $request->enddate]);
+                        })
                         ->withSerialNo()->latest()->paginate();
 
+        $totalPatients = Patient::count();
+        // $totalDeletedPatients = 
+
         return Inertia::render('Patients', [
-            'patients' => PatientResource::collection($patients)
+            'patients' => PatientResource::collection($patients),
+            'totalPatients' => $totalPatients
         ]);
     }
 

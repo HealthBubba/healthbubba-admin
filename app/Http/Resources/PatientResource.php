@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Enums\Status;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Date;
 
 class PatientResource extends JsonResource
 {
@@ -33,7 +34,8 @@ class PatientResource extends JsonResource
             'appointments' => $appointments,
             'appointments_count' => $appointments->count(),
             'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),
-            'transactions_sum' => $this->payments->sum('amount')
+            'transactions_sum' => $this->payments->sum('amount'),
+            'joined_date' => Date::parse($this->created_at)->format('jS M, Y')
         ];
     }
 

@@ -21,6 +21,7 @@ class DashboardController extends Controller
 {
     function index() {
         $patients = User::whereType(Role::PATIENT)->count();
+        
         $practitioners = User::whereType(Role::DOCTOR)->count();
         $appointments = Appointment::count();
         $pending = Appointment::isPending()->count();

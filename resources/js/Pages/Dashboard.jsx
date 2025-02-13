@@ -32,15 +32,21 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <p className='text-muted'>Here’s all your activities for today</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Consultation Revenue'} isPrice amount={revenue} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Orders'} amount={orders}  direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Cancelled  Appointments'} amount={pending} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Ongoing Orders'} amount={pending_orders} direction={Direction.up} percentage={36} />
+                <div className="space-y-4 card">
+                    <div>
+                        <h2 className='font-semibold'>Account Breakdown</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <StatsItem title={'Total Active Patients'} amount={patients} direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Total Active Practitioners'} amount={practitioners}  direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Total Consultation Revenue'} isPrice amount={revenue} direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Total Orders'} amount={orders}  direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Cancelled  Appointments'} amount={pending} direction={Direction.up} percentage={36} />
+                        <StatsItem title={'Ongoing Orders'} amount={pending_orders} direction={Direction.up} percentage={36} />
+                    </div>
                 </div>
 
                 <div className="md:flex md:space-x-4 space-y-5 md:space-y-0">

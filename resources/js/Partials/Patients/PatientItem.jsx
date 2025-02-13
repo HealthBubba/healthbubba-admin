@@ -18,17 +18,16 @@ export default function PatientItem({patient}) {
 
     return (
         <tr>
-            <td>{patient.no}</td>
             <td>{patient.full_name}</td>
             <td>{patient.email}</td>
             {/* <td>Jane Smith</td> */}
             <td>{patient.phone}</td>
-            <td>{patient?.next_appointment_date?.date}</td>
             <td>
                 <Badge className='capitalize' status={patient.status} >{patient.status}</Badge>
             </td>
             <td>{patient.appointments_count}</td>
             <td><Currency />{patient.transactions_sum.toLocaleString()}</td>
+            <td>{patient.joined_date}</td>
             <td>
                 <Menu>
                     <MenuButton className="border-2 p-1 rounded-lg">

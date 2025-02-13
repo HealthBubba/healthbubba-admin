@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\Role;
 use App\Http\Resources\PractitionerResource;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,10 +27,15 @@ class HealthPractitionerController extends Controller {
                             'pending' => $query->where('is_doctor_verified', false)->where('is_active', true),
                             default => null
                         };
+                    })
+                    ->when($request->startdate && $request->enddate, function($query, $startdate) use($request){
+                        $query->whereBetween('created_at', [$request->startdate, $request->enddate]);
                     })->withSerialNo()->latest()->paginate();
 
+                    
         return Inertia::render('HealthPractitioners', [
-            'users' => PractitionerResource::collection($users)
+            'users' => PractitionerResource::collection($users),
+            'totalDoctors' => Doctor::count()
         ]);
     }
 
