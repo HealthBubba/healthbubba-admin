@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
-export const Avatar = ({image, className, ...props}) => {
+const defaultImage = "/assets/imgs/avatars/avatar.svg";
+export const Avatar = ({image = defaultImage, className, ...props}) => {
+    const src = useMemo(() => {
+        if(!image) return defaultImage;
+        return image
+    }, [image])
     return (
-        <img src="/assets/imgs/avatars/avatar.svg" className={`size-14 ${className}`} {...props} />
+        <img src={src} onError={(e) => e.currentTarget.src = defaultImage} className={`size-14 rounded ${className}`} {...props} />
     )
 }

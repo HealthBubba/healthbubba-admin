@@ -3,7 +3,7 @@ import Currency from '@/Components/Currency'
 import Swal from '@/Components/Swal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import React from 'react'
 
 export default function PatientItem({patient}) {
@@ -33,7 +33,12 @@ export default function PatientItem({patient}) {
                     <MenuButton className="border-2 p-1 rounded-lg">
                         <EllipsisHorizontalIcon className='size-5' />                                        
                     </MenuButton>
-                    <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
+                    <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] divide-y bg-white transition duration-100 ease-out text-sm" >
+                        <div className='p-1'>
+                            <MenuItem >
+                                <Link href={route('patients.show', {user: patient.id})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">View</Link>
+                            </MenuItem>
+                        </div>
                         <div className='p-1'>
                             <MenuItem >
                                 <Swal 
@@ -45,8 +50,6 @@ export default function PatientItem({patient}) {
                                     className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">{patient.is_active ? 'Suspend' : 'Restore'}</Swal>
                             </MenuItem>
                         </div>
-
-                        <div className="border-t-[1.5px]"></div>
 
                         <div className='p-1'>
                             <MenuItem>

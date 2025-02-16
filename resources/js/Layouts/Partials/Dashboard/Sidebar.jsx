@@ -17,7 +17,7 @@ export default function () {
                 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Dashboard'} url={route('dashboard')} icon={AppIcon} isActive={true} />
+                        <SidebarItem name={'Dashboard'} url={route('dashboard')} icon={AppIcon}  isActive={true} />
                     </li>
 
                     <li>
@@ -25,7 +25,7 @@ export default function () {
                     </li>
                     
                     <li>
-                        <SidebarItem name={'Patient'} url={route('patients')} icon={HospitalBedIcon} />
+                        <SidebarItem name={'Patient'} url={route('patients')} is_current={route().has('patients*')} icon={HospitalBedIcon} />
                     </li>
                 </ul>
                 

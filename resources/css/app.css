@@ -47,6 +47,10 @@
         @apply py-2 px-4 rounded-xl relative space-x-2 inline-flex justify-center transition-all duration-150  gap-1 items-center active:scale-95  text-sm
     }
 
+    .btn-sm {
+        @apply py-1.5 px-3;
+    }
+
     .btn-primary {
         @apply bg-primary rounded-[6px] overflow-hidden text-white ring-2 ring-primary shadow-md shadow-primary-200  hover:shadow-none
     }

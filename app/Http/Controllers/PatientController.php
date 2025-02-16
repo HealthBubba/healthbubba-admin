@@ -36,9 +36,19 @@ class PatientController extends Controller {
         $totalPatients = Patient::count();
         // $totalDeletedPatients = 
 
-        return Inertia::render('Patients', [
+        return Inertia::render('Patients/Index', [
             'patients' => PatientResource::collection($patients),
             'totalPatients' => $totalPatients
+        ]);
+    }
+
+    function show(Request $request, User $user) {
+        $transactions = $user->transactions()->whereStatus('confirmed');
+
+        return Inertia::render('Patients/Details', [
+            'patient' => new PatientResource($user),
+            'transactions' => $transactions->count(),
+            'amount_spent' => $transactions->sum('amount')
         ]);
     }
 
