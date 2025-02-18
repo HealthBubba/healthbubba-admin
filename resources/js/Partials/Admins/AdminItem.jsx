@@ -12,10 +12,6 @@ export default function ({admin, setSelected}) {
 
     return (
         <tr>
-            <td>
-                <Checkbox />
-            </td>
-            <td>{admin.no}</td>
             <td>{admin.full_name}</td>
             <td>{admin.role}</td>
             <td>{admin.is_active ? 'Active' : 'Suspended'}</td>

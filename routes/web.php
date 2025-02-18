@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function(){
         Route::get('', [HealthPractitionerController::class, 'index'])->name('practitioners');
     
         Route::prefix('{user}')->group(function(){
+            Route::post('upload', [HealthPractitionerController::class, 'upload'])->name('practitioners.upload');
             Route::get('approve', [HealthPractitionerController::class, 'approve'])->name('practitioners.approve');
             Route::get('disapprove', [HealthPractitionerController::class, 'disapprove'])->name('practitioners.disapprove');
             Route::get('destroy', [HealthPractitionerController::class, 'destroy'])->name('practitioners.destroy');

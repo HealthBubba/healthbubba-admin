@@ -1,0 +1,1 @@
+import{j as t,Y as e}from"./app-Brgi-b_-.js";import{D as o}from"./AuthenticatedLayout-CcS0gXUw.js";import"./Disclose-B_-fIrXb.js";function s(){return t.jsx(o,{title:"Health Practitioners",children:t.jsx(e,{title:"Welcome"})})}export{s as default};

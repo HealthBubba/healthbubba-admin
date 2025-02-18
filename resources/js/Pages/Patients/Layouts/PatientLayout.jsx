@@ -30,8 +30,8 @@ export default function ({children, title}) {
             <Head title={`${title}- ${patient.full_name}`} />
             <div className="space-y-5 h-full flex flex-col">
                 <div className="card space-y-4 pb-0">
-                    <div className="grid md:grid-cols-12 md:divide-x">
-                        <div className="col-span-4 space-y-3 p-5">
+                    <div className="grid md:grid-cols-12 gap-3 md:divide-x">
+                        <div className="md:col-span-4 space-y-3 md:p-5">
                             <div className='space-y-2'>
                                 <Avatar className='mx-auto' image={patient.picture}  />
                                 <div className='text-center text-sm'>
@@ -42,13 +42,13 @@ export default function ({children, title}) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-8 p-5 space-y-4">
+                        <div className="md:col-span-8 md:p-5 space-y-4">
                             <div className="grid md:grid-cols-3 gap-5">
                                 <StatsItem title={'Transactions'} amount={patient.transactions_count} direction={Direction.up} percentage={36} />
                                 <StatsItem title={'Amount Spent'} amount={patient.transactions_sum} direction={Direction.up} percentage={36} />
                             </div>
 
-                            <div className='flex space-x-3' >
+                            <div className='flex gap-2 flex-wrap ' >
                                 <Disclose show={patient.email_verified} >
                                     <div>
                                         <Swal title="Verify this User's Email" type={'success'} onConfirm={verifyEmail} caption="Are you sure you want to verify this user's Email Address?" className="btn btn-primary btn-sm">Verify Email</Swal>
@@ -70,6 +70,7 @@ export default function ({children, title}) {
                         </div>
                     </div>
 
+                    <div className='overflow-x-auto scrollbar-hidden' >
                     <ul className='flex space-x-3 text-sm'>
                         <li className={`p-2  ${route().current() == 'patients.show' ? 'border-primary border-b-4' : ''}`}>
                         <Link href={route('patients.show', {user: patient.id})} >Overview</Link>
@@ -87,6 +88,7 @@ export default function ({children, title}) {
                             <Link href={route('patients.orders', {user: patient.id})} >Orders</Link>
                         </li>
                     </ul>
+                    </div>
                 </div>
 
                 <div className="card flex-1">

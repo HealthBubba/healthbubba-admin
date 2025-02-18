@@ -11,7 +11,7 @@ export default function ({patient: {data: patient}}) {
                         <h4 className='font-semibold'>Personal Information</h4>
                     </div>
 
-                    <div className='grid md:grid-cols-4 gap-4 text-sm' >
+                    <div className='grid md:grid-cols-4 grid-cols-1 gap-4 text-sm' >
                         <div>
                             <h4 className='font-medium'>First Name</h4>
                             <p>{patient.first_name}</p>

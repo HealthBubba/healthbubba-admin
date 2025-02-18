@@ -9,6 +9,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { router } from '@inertiajs/react'
 import React from 'react'
+import UploadLicence from './UploadLicence'
 
 export const PractitionerItem = ({user}) => {
 
@@ -44,7 +45,7 @@ export const PractitionerItem = ({user}) => {
                 </Disclose>
 
                 <Disclose show={!user.doctor_license}>
-
+                    <UploadLicence user={user} />
                 </Disclose>
             </td>
             <td>

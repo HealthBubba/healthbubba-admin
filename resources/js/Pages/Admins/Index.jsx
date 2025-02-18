@@ -66,10 +66,6 @@ export default function ({admins}) {
                     <table className='border-b'>
                         <thead>
                             <tr>
-                                <th>
-                                    <Checkbox onChange={e => selectAll(e.currentTarget.checked)} checked={all}  />
-                                </th>
-                                <th>S/N</th>
                                 <th>Name</th>
                                 <th >Role</th>
                                 <th>Status</th>

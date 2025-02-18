@@ -72,6 +72,28 @@ class HealthPractitionerController extends Controller {
         return back();
     }
 
+    function upload(Request $request, User $user) {
+        $request->validate([
+            'licence' => 'required|file|mimes:jpg,pdf,png,jpeg',
+        ]);
+        // dd($request->file('licence')->getRealPath());
+
+        $uploadedFileUrl = cloudinary()
+                                ->upload($request->file('licence')->getRealPath(), [
+                                    'folder' => 'doctor_documents',
+                                    'resource_type' => "image",
+                                    'format' => "jpg", // Converts PDF to JPG
+                                    'pages' => true,
+                                ])
+                                ->getSecurePath();
+
+        $user->doctor_license = $uploadedFileUrl;
+        $user->save();
+
+        toast("Doctor licence uploaded successfully")->success();
+        return back();
+    }
+
     function destroy(User $user){
         try {
             $user->delete();

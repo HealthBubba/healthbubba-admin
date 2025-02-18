@@ -1,0 +1,1 @@
+import{j as t}from"./app-Brgi-b_-.js";import r from"./PatientLayout-DGQl_ipH.js";import"./AuthenticatedLayout-CcS0gXUw.js";import"./Disclose-B_-fIrXb.js";import"./Badge-Dlql8J-C.js";import"./StatsItem-CtVyzOSG.js";import"./Swal-D3p1DOCz.js";import"./Button-BE__pn81.js";function u(){return t.jsx(r,{title:"Overview"})}export{u as default};
