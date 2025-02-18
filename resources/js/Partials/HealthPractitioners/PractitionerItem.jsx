@@ -42,6 +42,10 @@ export const PractitionerItem = ({user}) => {
                 <Disclose show={!!user.doctor_license} >
                     <a href={user.doctor_license} target='_blank' className='text-primary flex space-x-4 items-center'>View License</a>
                 </Disclose>
+
+                <Disclose show={!user.doctor_license}>
+
+                </Disclose>
             </td>
             <td>
                 <Disclose show={!!user.other_document} >

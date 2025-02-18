@@ -20,7 +20,6 @@ export default function SingleOrder({order}) {
     return (
         <>
             <tr >
-                <td>{order.no}</td>
                 <td>{order.order_id}</td>
                 <td>{order.user.full_name}</td>
                 <td><Currency /> {order.order_value}</td>

@@ -1,5 +1,5 @@
 import SettingIcon from '@/Icons/SettingIcon';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import { CalendarDateRangeIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react'
 import Datepicker from "react-tailwindcss-datepicker";
 import Disclose from '../Disclose';
@@ -26,7 +26,7 @@ export default ({val = { startDate: null, endDate: null }, onChange: isChanged =
     return (
         <div className={`border-2 h-full font-medium items-center space-x-1 text-sm rounded-lg inline-flex ${className}`}>
             <label className="inline-flex px-3 p-1 cursor-pointer items-center space-x-1">
-                <SettingIcon className='size-5' />         
+                <CalendarDateRangeIcon className='size-5' />         
                 <Datepicker 
                     value={value}
                     primaryColor={"green"}

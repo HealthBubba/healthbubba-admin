@@ -45,7 +45,7 @@ export default function ({
                                 onClick={confirm} 
                                 loading={loading} 
                                 className={`
-                                    ${type == 'success' && 'btn-primary'}
+                                    ${type == 'success' && 'btn-success'}
                                     ${type == 'warning' && 'btn-warning'}
                                     ${type == 'light' && 'btn-light'}
                                     ${type == 'danger' && 'btn-danger'}

@@ -30,11 +30,13 @@ class PatientResource extends JsonResource
             'weight' => $this->weight,
             'title' => $this->title,
             'status' => $this->status(),
+            'email_verified' => $this->email_verified,
             'is_active' => $this->is_active,
             'appointments' => $appointments,
             'appointments_count' => $appointments->count(),
             'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),
             'transactions_sum' => $this->payments->sum('amount'),
+            'transactions_count' => $this->transactions()->whereStatus('confirmed')->count(),
             'joined_date' => Date::parse($this->created_at)->format('jS M, Y')
         ];
     }

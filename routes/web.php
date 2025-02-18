@@ -37,6 +37,11 @@ Route::middleware('auth')->group(function(){
     Route::prefix('patients')->group(function(){
         Route::get('/', [PatientController::class, 'index'])->name('patients');
         Route::prefix('{user}')->group(function(){
+            Route::get('verify-email', [PatientController::class, 'verifyEmail'])->name('patients.verify-email');
+            Route::get('orders', [PatientController::class, 'orders'])->name('patients.orders');
+            Route::get('transactions', [PatientController::class, 'transactions'])->name('patients.transactions');
+            Route::get('edit', [PatientController::class, 'edit'])->name('patients.edit');
+            Route::get('appointments', [PatientController::class, 'appointments'])->name('patients.appointments');
             Route::get('', [PatientController::class, 'show'])->name('patients.show');
             Route::get('destroy', [PatientController::class, 'destroy'])->name('patients.destroy');
         });

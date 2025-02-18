@@ -1,5 +1,5 @@
 import React from 'react'
-import PatientLayout from './PatientLayout'
+import PatientLayout from './Layouts/PatientLayout'
 
 export default function ({patient: {data: patient}}) {
 

@@ -100,7 +100,6 @@ export default function ({orders, total, completed, pending, revenue}) {
                         <table className='border-b'>
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
                                     <th>Order ID</th>
                                     <th>User</th>
                                     <th>Amount</th>

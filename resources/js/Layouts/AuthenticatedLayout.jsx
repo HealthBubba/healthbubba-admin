@@ -37,8 +37,8 @@ export default function DashboardLayout ({ children, title }) {
                 transition={Bounce}
             />
 
-            <div className="min-h-screen flex bg-[#FAFAFB]">
-                <div className="w-full md:flex ">
+            <div className="min-h-screen flex flex-col">
+                <div className="w-full md:flex  ">
                     <aside className="md:w-[20%] hidden md:block z-[99] fixed bottom-0 top-0">
                         <Sidebar />
                     </aside>
@@ -49,11 +49,11 @@ export default function DashboardLayout ({ children, title }) {
                         </div>
                     </Disclose>
 
-                    <main className="h-full md:ms-[20%] md:w-[80%] pb-10">
-                        <div className="max-w-full w-full overflow-x-auto">
+                    <main className="md:ms-[20%] md:w-[80%]">
+                        <div className="max-w-full flex flex-col min-h-screen w-full overflow-x-auto">
                             <Header open={setShow} title={title} />
 
-                            <div className="md:p-5 p-2 ">
+                            <div className="md:p-5 flex-1 p-2 ">
                                 {children}
                             </div>
                         </div>

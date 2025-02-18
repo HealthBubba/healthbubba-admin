@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Http\Resources\AppointmentResource;
+use App\Http\Resources\OrderResource;
 use App\Http\Resources\PatientResource;
+use App\Http\Resources\TransactionResource;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,12 +46,59 @@ class PatientController extends Controller {
     }
 
     function show(Request $request, User $user) {
-        $transactions = $user->transactions()->whereStatus('confirmed');
-
         return Inertia::render('Patients/Details', [
             'patient' => new PatientResource($user),
-            'transactions' => $transactions->count(),
-            'amount_spent' => $transactions->sum('amount')
+        ]);
+    }
+
+    function edit(Request $request, User $user) {
+        return Inertia::render('Patients/Edit', [
+            'patient' => new PatientResource($user),
+        ]);
+    }
+
+    function verifyEmail(Request $request, User $user) {
+        $user->email_verified = true;
+        $user->save();
+
+        toast('Patient Email address verified successfully!')->success();
+        return back();
+    }
+
+    function transactions(Request $request, User $user) {
+        $transactions = $user->transactions()->whereStatus('confirmed')->paginate();
+
+        return Inertia::render('Patients/Transactions', [
+            'patient' => new PatientResource($user),
+            'transactions' => TransactionResource::collection($transactions),
+        ]);
+    }
+
+    function appointments(Request $request, User $user) {
+        $appointments = $user->patientAppointments()->paginate();
+
+        return Inertia::render('Patients/Appointments', [
+            'patient' => new PatientResource($user),
+            'appointments' => AppointmentResource::collection($appointments),
+        ]);
+    }
+
+    function orders(Request $request, User $user) {
+        $orders = $user->orders()->with(['items.result', 'user'])->when($request->status, function($query, $status){
+                                $query->whereStatus($status);
+                            })
+                            ->when($request->type, function($query, $type){
+                                $query->whereType($type);
+                            })
+                            ->when($request->keyword, function($query, $keyword){
+                                $query->where('reference', $keyword);
+                            })
+                            ->latest()
+                            ->paginate();
+
+        return Inertia::render('Patients/Orders', [
+            'patient' => new PatientResource($user),
+            'orders' => $orders,
         ]);
     }
 
