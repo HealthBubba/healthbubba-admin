@@ -1,0 +1,1 @@
+import{q as t,j as r}from"./app-21hr-4y7.js";import i from"./HealthPractitionersLayout-CaSrbXzS.js";import"./AuthenticatedLayout-DJP9Shvn.js";import"./Disclose-Bi8GMOkl.js";import"./Badge-Dn5c_TPx.js";import"./StatsItem-DFrXBfr2.js";import"./Swal-BnItVo33.js";import"./Button-FXnIFPIj.js";function c(){return t(),r.jsx(i,{title:"Prescriptions"})}export{c as default};

@@ -83,21 +83,20 @@ export default function () {
     }, [filter])
 
     return (
-        <div>
-            <div className="md:flex justify-between items-center space-y-2">
-                <div>
-                    <h3 className='font-semibold'>Signup report</h3>
-                </div>
+        <div className='space-y-3' >
+            <div className="md:flex justify-between items-center">
+                <h3 className='font-semibold'>Signup report</h3>
 
-                <div className='flex flex-wrap md:space-x-2 '>
-                    <button onClick={() => setFilter(filters.year)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.year ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>12 Months</button>
-                    <button onClick={() => setFilter(filters.half_year)} className={`btn card  hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.half_year ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>6 Months</button>
-                    <button onClick={() => setFilter(filters.month)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.month ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>30 Days</button>
-                    <button onClick={() => setFilter(filters.week)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.week ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>7 Days</button>
-                </div>
                 <div>
                     <button className="btn card p-2 text-xs font-semibold"><FilePlusIcon /> Export PDF</button>
                 </div>
+            </div>
+
+            <div className='flex flex-wrap md:space-x-2 '>
+                <button onClick={() => setFilter(filters.year)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.year ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>12 Months</button>
+                <button onClick={() => setFilter(filters.half_year)} className={`btn card  hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.half_year ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>6 Months</button>
+                <button onClick={() => setFilter(filters.month)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.month ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>30 Days</button>
+                <button onClick={() => setFilter(filters.week)} className={`btn card hover:border-[#A1A1AA] hover:border p-2 text-xs ${filter == filters.week ? 'border border-[#A1A1AA] font-semibold' : 'border-0 text-muted' }`}>7 Days</button>
             </div>
 
             <div>
@@ -105,7 +104,6 @@ export default function () {
                     options={options.options}
                     series={options.series}
                     height={200}
-        
                     type='area'
                 />
             </div>

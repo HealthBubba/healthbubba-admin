@@ -1,1 +1,0 @@
-import{j as e}from"./app-Brgi-b_-.js";function a({children:r,className:s,...t}){return e.jsx("div",{className:"",children:e.jsx("select",{className:`rounded-[8px] border border-[#F3F3F3] shadow-inner text-gray-500 w-full ${s}`,...t,children:r})})}export{a as S};

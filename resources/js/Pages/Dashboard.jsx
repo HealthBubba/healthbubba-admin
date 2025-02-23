@@ -44,13 +44,13 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                 </div>
 
                 <div className="md:flex md:space-x-4 space-y-5 md:space-y-0">
-                    <div className="md:w-4/6">
+                    <div className="md:w-1/2">
                         <div className="card">
                             <Chart />
                         </div>
                     </div>
 
-                    <div className="md:w-2/6">
+                    <div className="md:w-1/2">
                         <div className="card h-full space-y-10">
                             <div className="flex justify-between items-center">
                                 <div>

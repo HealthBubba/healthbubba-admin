@@ -1,0 +1,1 @@
+import{q as t,j as o}from"./app-21hr-4y7.js";import r from"./HealthPractitionersLayout-CaSrbXzS.js";import"./AuthenticatedLayout-DJP9Shvn.js";import"./Disclose-Bi8GMOkl.js";import"./Badge-Dn5c_TPx.js";import"./StatsItem-DFrXBfr2.js";import"./Swal-BnItVo33.js";import"./Button-FXnIFPIj.js";function l(){return t(),o.jsx(r,{title:"Consultations"})}export{l as default};

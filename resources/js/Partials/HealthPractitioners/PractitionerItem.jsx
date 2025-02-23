@@ -7,7 +7,7 @@ import useModal from '@/Hooks/useModal'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import React from 'react'
 import UploadLicence from './UploadLicence'
 
@@ -65,6 +65,14 @@ export const PractitionerItem = ({user}) => {
                             <EllipsisHorizontalIcon className='size-5' />                                        
                         </MenuButton>
                         <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
+                            <div className='p-1'>
+                                <MenuItem>
+                                    <Link className='inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10' href={route('practitioners.show', {user: user.id})} >View</Link>
+                                </MenuItem>
+                            </div>
+
+                            <div className="border-t-[1.5px]"></div>
+
                             <div className='p-1'>
                                 <MenuItem >
                                     <Swal 

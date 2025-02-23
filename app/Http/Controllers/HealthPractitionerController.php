@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\Role;
 use App\Http\Resources\PractitionerResource;
+use App\Http\Resources\TransactionResource;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,9 +34,41 @@ class HealthPractitionerController extends Controller {
                     })->withSerialNo()->latest()->paginate();
 
                     
-        return Inertia::render('HealthPractitioners', [
+        return Inertia::render('HealthPractitioners/Index', [
             'users' => PractitionerResource::collection($users),
             'totalDoctors' => Doctor::count()
+        ]);
+    }
+
+    function show(User $user) {
+        return Inertia::render('HealthPractitioners/Show', [
+            'user' => new PractitionerResource($user)
+        ]);
+    }
+
+    function edit(User $user) {
+        return Inertia::render('HealthPractitioners/Edit', [
+            'user' => new PractitionerResource($user)
+        ]);
+    }
+
+    function transactions(Doctor $user) {
+        $transactions = $user->transactions()->paginate();
+        return Inertia::render('HealthPractitioners/Transactions', [
+            'user' => new PractitionerResource($user),
+            'transactions' => TransactionResource::collection($transactions)
+        ]);
+    }
+
+    function consultations(User $user) {
+        return Inertia::render('HealthPractitioners/Consultations', [
+            'user' => new PractitionerResource($user)
+        ]);
+    }
+
+    function prescriptions(User $user) {
+        return Inertia::render('HealthPractitioners/Prescriptions', [
+            'user' => new PractitionerResource($user)
         ]);
     }
 
