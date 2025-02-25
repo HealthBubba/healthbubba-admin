@@ -15,7 +15,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::withoutMiddleware(HandleInertiaRequests::class)->group(function(){
-        Route::get('/trends', [DashboardController::class, 'trends'])->name('dashboard.trends');
+        Route::prefix('trends')->group(function(){
+            Route::get('', [DashboardController::class, 'trends'])->name('dashboard.trends');
+            Route::get('revenue', [DashboardController::class, 'revenueTrends'])->name('dashboard.trends.revenue');
+            Route::get('consultants', [DashboardController::class, 'consultantTrends'])->name('dashboard.trends.consultants');
+        });
     });
     
     Route::prefix('practitioners')->group(function(){

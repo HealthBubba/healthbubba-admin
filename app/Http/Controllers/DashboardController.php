@@ -42,13 +42,31 @@ class DashboardController extends Controller
     }
 
     function trends(Request $request){
-        $patients = $this->query(Trend::query(User::whereType(Role::PATIENT)), $request->filter);
-        $practitioners = $this->query(Trend::query(User::whereType(Role::DOCTOR)), $request->filter);
+        $patients = $this->query(Trend::query(User::whereType(Role::PATIENT)), $request->filter, fn($query) => $query->count());
+        $practitioners = $this->query(Trend::query(User::whereType(Role::DOCTOR)), $request->filter, fn($query) => $query->count());
 
         return response()->json(compact('patients', 'practitioners'));
     }
 
-    function query(Trend $query, $filter) {
+    function revenueTrends(Request $request) {
+        $transactions = $this->query(Trend::query(Transaction::whereStatus(Status::CONFIRMED)), $request->filter, fn($query) => $query->sum('amount'));
+        return response()->json(compact('transactions'));
+    }
+
+    function consultantTrends() {
+
+        $verified = User::isDoctor()->isVerified()->count();
+        $unverified = User::isDoctor()->isUnverified()->count();
+        $pendingVerification = User::isDoctor()->isPendingVerification()->count();
+
+        return response()->json([
+            'verified' => $verified,
+            'unverified' => $unverified,
+            'pending' => $pendingVerification
+        ]);
+    }
+
+    function query(Trend $query, $filter, Callable $queryAction ) {
         $start_date = now()->subDays($filter);
         $end_date = now(); 
 
@@ -58,17 +76,19 @@ class DashboardController extends Controller
         );
 
         $query = match($filter) {
+            'all_time' => $query->perYear(),
             '365' => $query->perMonth(),
             '180' => $query->perMonth(),
             '30' => $query->perDay(),
             '7' => $query->perDay()
         };
 
-        $trend = $query->count();
+        $trend = $queryAction($query);
 
         return $trend->map(function ($trend) use($filter){
             return [
                 'date' => match ($filter) {
+                    // '' => Date::parse($trend->date)->format('Y'),
                     '365' => Date::parse($trend->date)->format('M'),
                     '180' => Date::parse($trend->date)->format('M'),
                     '30' =>  Date::parse($trend->date)->format('jS M'),

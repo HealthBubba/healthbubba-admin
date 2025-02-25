@@ -1,10 +1,11 @@
-import Chart from '@/Components/Chart';
 import ProgressBar from '@/Components/ProgressBar';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import ConsultantsChart from '@/Partials/Charts/ConsultantsChart';
+import RevenueChart from '@/Partials/Charts/RevenueChart';
+import SignupChart from '@/Partials/Charts/SignupChart';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import TransactionItem from '@/Partials/Transactions/TransactionItem';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { ArrowLongRightIcon, ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { useMemo } from 'react';
 
@@ -43,14 +44,20 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <StatsItem title={'Ongoing Orders'} amount={pending_orders} direction={Direction.up} percentage={36} />
                 </div>
 
-                <div className="md:flex md:space-x-4 space-y-5 md:space-y-0">
-                    <div className="md:w-1/2">
-                        <div className="card">
-                            <Chart />
-                        </div>
+                <div className="md:grid gap-4 grid-cols-2">
+                    <div className="card">
+                        <SignupChart />
                     </div>
 
-                    <div className="md:w-1/2">
+                    <div className="card">
+                        <RevenueChart />
+                    </div>
+
+                    <div className="card">
+                        <ConsultantsChart />
+                    </div>
+
+                    <div className="">
                         <div className="card h-full space-y-10">
                             <div className="flex justify-between items-center">
                                 <div>

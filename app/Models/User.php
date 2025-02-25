@@ -6,9 +6,9 @@ namespace App\Models;
 
 use App\Concerns\Models\HasQuery;
 use App\Enums\Role;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Notifications\Notifiable;
@@ -47,6 +47,18 @@ class User extends Authenticatable {
 
     function scopeIsDoctor(Builder $query){
         $query->where('type', Role::DOCTOR);
+    }
+
+    function scopeIsVerified(Builder $query){
+        $query->where('is_doctor_verified', true);
+    }
+
+    function scopeIsUnverified(Builder $query){
+        $query->where('is_doctor_verified', false)->whereNull('doctor_license');
+    }
+
+    function scopeIsPendingVerification(Builder $query){
+        $query->where('is_doctor_verified', false)->whereNotNull('doctor_license');
     }
 
     function getFullNameAttribute(){
