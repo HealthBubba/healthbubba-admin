@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function(){
         Route::prefix('{user}')->group(function(){
             Route::get('', [HealthPractitionerController::class, 'show'])->name('practitioners.show');
             Route::get('edit', [HealthPractitionerController::class, 'edit'])->name('practitioners.edit');
+            Route::post('update', [HealthPractitionerController::class, 'update'])->name('practitioners.update');
             Route::get('transactions', [HealthPractitionerController::class, 'transactions'])->name('practitioners.transactions');
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');
             Route::get('prescriptions', [HealthPractitionerController::class, 'prescriptions'])->name('practitioners.prescriptions');

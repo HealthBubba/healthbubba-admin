@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Http\Requests\Practitioner\UpdatePractitionerRequest;
 use App\Http\Resources\PractitionerResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Doctor;
@@ -109,21 +110,24 @@ class HealthPractitionerController extends Controller {
         $request->validate([
             'licence' => 'required|file|mimes:jpg,pdf,png,jpeg',
         ]);
-        // dd($request->file('licence')->getRealPath());
 
-        $uploadedFileUrl = cloudinary()
-                                ->upload($request->file('licence')->getRealPath(), [
-                                    'folder' => 'doctor_documents',
-                                    'resource_type' => "image",
-                                    'format' => "jpg", // Converts PDF to JPG
-                                    'pages' => true,
-                                ])
-                                ->getSecurePath();
+        $uploadedFileUrl = cloudinaryUpload($request->file('licence')->getRealPath());
 
         $user->doctor_license = $uploadedFileUrl;
         $user->save();
 
         toast("Doctor licence uploaded successfully")->success();
+        return back();
+    }
+
+    function update(UpdatePractitionerRequest $request, User $user) {
+        $validated = $request->validated();
+        $validated['picture'] = $request->hasFile('picture') ? cloudinaryUpload($request->file('picture')->getRealPath()) : null;
+
+        $user->fill($validated);
+        $user->save();
+
+        toast("Doctor profile updated successfully")->success();
         return back();
     }
 

@@ -51,6 +51,20 @@ if(!function_exists('upload')) {
     }
 }
 
+if(!function_exists('cloudinaryUpload')) {
+    function cloudinaryUpload($file, $folder = 'doctor_documents') {
+        return cloudinary()
+                ->upload($file->getRealPath(), [
+                    'folder' => $folder,
+                    'resource_type' => "image",
+                    'format' => "jpg", // Converts PDF to JPG
+                    'pages' => true,
+                ])
+                ->getSecurePath();
+    }
+}
+
+
 
 
 
