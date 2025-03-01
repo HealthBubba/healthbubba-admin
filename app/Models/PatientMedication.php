@@ -18,4 +18,8 @@ class PatientMedication extends Model
     function doctor(){
         return $this->belongsTo(User::class, 'doctor_id', 'id');
     }
+
+    function medication(){
+        return $this->belongsTo(User::class, 'medication_id', 'medication_id');
+    }
 }
