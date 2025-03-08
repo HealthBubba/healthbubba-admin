@@ -58,7 +58,12 @@ Route::middleware('auth')->group(function(){
         });
     });
     
-    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments');
+    Route::prefix('appointments')->group(function(){
+        Route::get('', [AppointmentController::class, 'index'])->name('appointments');
+        Route::prefix('{appointment:appointment_id}')->group(function(){
+            Route::get('', [AppointmentController::class, 'show'])->name('appointments.show');
+        });
+    });
 
     Route::prefix('orders')->group(function(){
         Route::get('', [OrderController::class, 'index'])->name('orders');

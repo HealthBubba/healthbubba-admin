@@ -6,12 +6,13 @@ import AppointmentItem from '@/Partials/Appointments/AppointmentItem';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { router } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 
 export default function ({appointments, stats}) {
 
     return (
-        <AuthenticatedLayout title="Manage Orders">
+        <AuthenticatedLayout title="Manage Appointments">
+            <Head title="Manage Appointments" />
             <div className="space-y-2">
                 <div className="grid md:grid-cols-4 grid-cols-1 gap-3 mb-5">
                     <StatsItem title={'Total Appointments'} amount={stats.total} direction={Direction.up} percentage={36} />
@@ -89,7 +90,7 @@ export default function ({appointments, stats}) {
                             </thead>
 
                             <tbody>
-                                {appointments.data.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
+                                {appointments.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
                             </tbody>
                         </table>
                     </div>

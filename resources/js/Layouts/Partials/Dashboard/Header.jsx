@@ -32,7 +32,7 @@ export default function ({title, open}) {
                             <span className="aspect-square rounded-full">
                                 <Avatar className="size-6" />
                             </span>
-                            <p className='text-sm font-medium hidden md:block text-gray-700'>{props?.auth?.user.data.firstname}</p>
+                            <p className='text-sm font-medium hidden md:block text-gray-700'>{props?.auth?.user.firstname}</p>
                             <ChevronDownIcon className="size-3 ms-3" />        
                         </MenuButton>
                         <MenuItems transition anchor="bottom end" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm z-50" >

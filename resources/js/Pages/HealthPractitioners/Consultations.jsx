@@ -6,7 +6,7 @@ import Pagination from '@/Components/Pagination'
 
 export default function () {
 
-    const {props: {user: {data: user}, consultations: appointments}} = usePage()
+    const {props: {user, consultations: appointments}} = usePage()
 
     return (
         <HealthPractitionersLayout title="Consultations">

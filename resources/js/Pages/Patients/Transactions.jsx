@@ -3,7 +3,7 @@ import PatientLayout from './Layouts/PatientLayout'
 import Pagination from '@/Components/Pagination'
 import TransactionItem from '@/Partials/Transactions/TransactionItem'
 
-export default function ({patient: {data: patient}, transactions}) {
+export default function ({patient, transactions}) {
     return (
         <PatientLayout patient={patient} title="Transactions" >
             <div className="overflow-x-auto">

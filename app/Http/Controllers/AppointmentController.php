@@ -23,4 +23,11 @@ class AppointmentController extends Controller
             'stats' => $stats
         ]);
     }
+
+    function show(Request $request, Appointment $appointment){
+        $appointment = new AppointmentResource($appointment);
+        return Inertia::render('Appointments/Show', [
+            'appointment' => $appointment
+        ]);
+    }
 }

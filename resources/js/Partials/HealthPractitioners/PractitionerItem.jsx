@@ -10,6 +10,7 @@ import { CheckIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { Link, router } from '@inertiajs/react'
 import React from 'react'
 import UploadLicence from './UploadLicence'
+import TableLink from '@/Components/Table/TableLink'
 
 export const PractitionerItem = ({user}) => {
 
@@ -34,11 +35,11 @@ export const PractitionerItem = ({user}) => {
 
     return (
         <tr>
-            <td>{user.full_name}</td>
-            <td>{user.email}</td>
-            <td>{user.phone}</td>
+            <TableLink href={route('practitioners.show', {user: user.id})}>{user.full_name}</TableLink>
+            <TableLink href={route('practitioners.show', {user: user.id})}>{user.email}</TableLink>
+            <TableLink href={route('practitioners.show', {user: user.id})}>{user.phone}</TableLink>
             {/* <td>Jane Smith</td> */}
-            <td>{user.licence_number}</td>
+            <TableLink href={route('practitioners.show', {user: user.id})}>{user.licence_number}</TableLink>
             <td>
                 <Disclose show={!!user.doctor_license} >
                     <a href={user.doctor_license} target='_blank' className='text-primary flex space-x-4 items-center'>View License</a>
@@ -48,16 +49,16 @@ export const PractitionerItem = ({user}) => {
                     <UploadLicence user={user} />
                 </Disclose>
             </td>
-            <td>
+            <td >
                 <Disclose show={!!user.other_document} >
                     <a href={user.other_document} target='_blank' className='text-primary flex space-x-4 items-center'>View</a>
                 </Disclose>
             </td>
-            <td>
+            <TableLink href={route('practitioners.show', {user: user.id})}>
                 <Badge className='capitalize' status={user.status} >{user.status}</Badge>
-            </td>
-            <td>{user.consultations}</td>
-            <td><Currency />{user.earnings.toLocaleString()}</td>
+            </TableLink>
+            <TableLink href={route('practitioners.show', {user: user.id})}>{user.consultations}</TableLink>
+            <TableLink href={route('practitioners.show', {user: user.id})}><Currency />{user.earnings.toLocaleString()}</TableLink>
             <td>
                 <Disclose show={user.is_doctor_verified} >
                     <Menu>

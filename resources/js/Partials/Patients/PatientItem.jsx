@@ -1,6 +1,7 @@
 import { Badge } from '@/Components/Badge'
 import Currency from '@/Components/Currency'
 import Swal from '@/Components/Swal'
+import TableLink from '@/Components/Table/TableLink'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import { Link, router } from '@inertiajs/react'
@@ -18,16 +19,16 @@ export default function PatientItem({patient}) {
 
     return (
         <tr>
-            <td>{patient.full_name}</td>
-            <td>{patient.email}</td>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.full_name}</TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.email}</TableLink>
             {/* <td>Jane Smith</td> */}
-            <td>{patient.phone}</td>
-            <td>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.phone}</TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}>
                 <Badge className='capitalize' status={patient.status} >{patient.status}</Badge>
-            </td>
-            <td>{patient.appointments_count}</td>
-            <td><Currency />{patient.transactions_sum.toLocaleString()}</td>
-            <td>{patient.joined_date}</td>
+            </TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.appointments_count}</TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}><Currency />{patient.transactions_sum.toLocaleString()}</TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.joined_date}</TableLink>
             <td>
                 <Menu>
                     <MenuButton className="border-2 p-1 rounded-lg">

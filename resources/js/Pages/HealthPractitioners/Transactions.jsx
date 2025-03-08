@@ -6,7 +6,7 @@ import DoctorTransactionItem from './partials/DoctorTransactionItem'
 
 export default function () {
 
-    const {props: {user: {data: user}, transactions}} = usePage()
+    const {props: {user, transactions}} = usePage()
 
 
     return (
@@ -24,12 +24,12 @@ export default function () {
                     </thead>
 
                     <tbody>
-                        {transactions.data.map(transaction => <DoctorTransactionItem key={transaction.id} transaction={transaction} />)}
+                        {transactions.map(transaction => <DoctorTransactionItem key={transaction.id} transaction={transaction} />)}
                     </tbody>
                 </table>
 
                 {
-                    transactions.data?.length < 1 
+                    transactions.length < 1 
 
                     ?
 

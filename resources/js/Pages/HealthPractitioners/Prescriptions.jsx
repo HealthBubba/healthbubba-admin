@@ -6,7 +6,7 @@ import PrescriptionItem from './partials/PrescriptionItem'
 
 export default function () {
 
-    const {props: {user: {data: user}, prescriptions}} = usePage()
+    const {props: {user, prescriptions}} = usePage()
 
 
     return (
@@ -28,7 +28,7 @@ export default function () {
                     </thead>
 
                     <tbody>
-                        {prescriptions.data.map(prescription => <PrescriptionItem key={prescription.id} prescription={prescription} />)}
+                        {prescriptions.map(prescription => <PrescriptionItem key={prescription.id} prescription={prescription} />)}
                     </tbody>
                 </table>
             </div>

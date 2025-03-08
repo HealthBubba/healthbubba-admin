@@ -32,7 +32,7 @@ export default function ({children, title}) {
         router.get(route('patients.verify-email', {user: user.id}))
     }
 
-    const {props: {user: {data: user}}} = usePage()
+    const {props: {user}} = usePage()
 
     return (
         <AuthenticatedLayout title={`${user.full_name} - ${title}`} >

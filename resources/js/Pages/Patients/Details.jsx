@@ -1,7 +1,7 @@
 import React from 'react'
 import PatientLayout from './Layouts/PatientLayout'
 
-export default function ({patient: {data: patient}}) {
+export default function ({patient}) {
 
     return (
         <PatientLayout patient={patient} title="Overview" >

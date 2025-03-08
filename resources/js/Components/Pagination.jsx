@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react'
 import React from 'react'
 
 export default function Pagination({items}) {
-    const {data, links, meta} = items
+    const {links, meta} = items
 
     return (
         <div className="p-5 flex text-muted justify-between text-sm">

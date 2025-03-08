@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router, usePage } from '@inertiajs/react';
 import { Avatar } from '@/Components/Avatar';
 import { Badge } from '@/Components/Badge';
-import Button from '@/Components/Button/Button';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import Swal from '@/Components/Swal';
 import Disclose from '@/Components/Disclose';
@@ -23,7 +22,7 @@ export default function ({children, title}) {
         router.get(route('patients.verify-email', {user: patient.id}))
     }
 
-    const {props: {patient: {data: patient}}} = usePage()
+    const {props: {patient}} = usePage()
 
     return (
         <AuthenticatedLayout title={`${patient.full_name} - ${title}`} >

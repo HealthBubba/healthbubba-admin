@@ -4,7 +4,7 @@ import { usePage } from '@inertiajs/react'
 
 export default function () {
 
-    const {props: {user: {data: user}}} = usePage()
+    const {props: {user}} = usePage()
 
 
     return (
