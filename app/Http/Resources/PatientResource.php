@@ -32,6 +32,7 @@ class PatientResource extends JsonResource
             'status' => $this->status(),
             'email_verified' => $this->email_verified,
             'is_active' => $this->is_active,
+            'role' => $this->type,
             'appointments' => $appointments,
             'appointments_count' => $appointments->count(),
             'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),

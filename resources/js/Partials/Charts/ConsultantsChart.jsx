@@ -52,10 +52,7 @@ export default function () {
 
     const items = useCallback(() => {
         axios.get(route('dashboard.trends.consultants', {filter}))
-            .then(val => {
-                console.log(val.data)
-                setState(val.data)
-            })
+            .then(val => setState(val.data))
     }, [filter])
 
     useEffect(() => {

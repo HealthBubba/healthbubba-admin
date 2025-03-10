@@ -29,7 +29,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
 
             <div className="space-y-5">
                 <div className='mb-4'>
-                    <h3 className='font-semibold'>Hey {props.auth.user.data.firstname},</h3>
+                    <h3 className='font-semibold'>Hey {props.auth.user.firstname},</h3>
                     <p className='text-muted'>Here’s all your activities for today</p>
                 </div>
 
@@ -97,7 +97,6 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                         <table className='w-full'>
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
                                     <th>Transaction ID</th>
                                     <th>Date/Time</th>
                                     <th>Patient name</th>
@@ -108,7 +107,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                             </thead>
 
                             <tbody>
-                                {transactions.data.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
+                                {transactions.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
                             </tbody>
                         </table>
                     </div>

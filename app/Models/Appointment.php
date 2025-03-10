@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\Models\HasQuery;
+use App\Models\Appointment\AppointmentAttachment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,5 +40,9 @@ class Appointment extends Model {
 
     function transaction(){
         return $this->hasOne(Transaction::class, 'model_id', 'appointment_id');
+    }
+
+    function attachments(){
+        return $this->hasMany(AppointmentAttachment::class, 'appointment_id', 'appointment_id');
     }
 }

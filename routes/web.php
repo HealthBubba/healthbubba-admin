@@ -81,7 +81,13 @@ Route::middleware('auth')->group(function(){
         });
     });
 
-    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+    Route::prefix('transactions')->group(function(){
+        Route::get('', [TransactionController::class, 'index'])->name('transactions');
+        Route::prefix('{transaction:transaction_reference}')->group(function(){
+            Route::get('', [TransactionController::class, 'show'])->name('transactions.show');
+            Route::get('delete', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+        }); 
+    });
     
     Route::prefix('admins')->group(function(){
         Route::get('', [AdminController::class, 'index'])->name('admins');

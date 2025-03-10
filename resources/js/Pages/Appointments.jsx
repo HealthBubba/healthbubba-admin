@@ -90,7 +90,7 @@ export default function ({appointments, stats}) {
                             </thead>
 
                             <tbody>
-                                {appointments.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
+                                {appointments.data.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
                             </tbody>
                         </table>
                     </div>

@@ -16,8 +16,20 @@ class TransactionController extends Controller
                             })
                             ->latest()->paginate();
                             
-        return Inertia::render('Transactions', [
+        return Inertia::render('Transactions/Index', [
             'transactions' => TransactionResource::collection($transactions)
         ]);
+    }
+
+    function show(Request $request, Transaction $transaction) {
+        return Inertia::render('Transactions/Show', [
+            'transaction' => new TransactionResource($transaction)
+        ]);
+    }
+
+    function destroy(Transaction $transaction) {
+        $transaction->delete();
+        toast('Transaction Deleted Successfully', 'Success')->success();
+        return back();
     }
 }

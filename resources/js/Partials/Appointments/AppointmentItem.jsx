@@ -3,13 +3,18 @@ import Currency from '@/Components/Currency'
 import TableLink from '@/Components/Table/TableLink'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
+import { Link } from '@inertiajs/react'
 import React from 'react'
 
 export default function AppointmentItem({appointment}) {
     return (
         <tr>
-            <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.patient?.full_name}</TableLink>
-            <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.doctor?.full_name}</TableLink>
+            <td>
+                <Link href={route('patients.show', {user: appointment.patient?.id})} className='link'>{appointment.patient?.full_name}</Link>
+            </td>
+            <td>
+                <Link href={route('practitioners.show', {user: appointment.doctor?.id})} className='link' >{appointment.doctor?.full_name}</Link>
+            </td>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>Payment</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.status ? 'Completed' : 'Pending'}</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.date}</TableLink>

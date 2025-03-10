@@ -21,11 +21,11 @@ export default function () {
                     </li>
 
                     <li>
-                        <SidebarItem name={'Health Practitioners'} url={route('practitioners')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Health Practitioners'} url={route('practitioners')} is_current={route().current('practitioners.*')} icon={SethoscopeIcon} />
                     </li>
                     
                     <li>
-                        <SidebarItem name={'Patient'} url={route('patients')} is_current={route().has('patients*')} icon={HospitalBedIcon} />
+                        <SidebarItem name={'Patient'} url={route('patients')} is_current={route().current('patients.*')} icon={HospitalBedIcon} />
                     </li>
                 </ul>
                 
@@ -33,11 +33,11 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Manage Appointment Orders'} url={route('appointments')} icon={CubeIcon} />
+                        <SidebarItem name={'Manage Appointment Orders'} url={route('appointments')} is_current={route().current('appointments.*')} icon={CubeIcon} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Tests & Medication Orders '} url={route('orders')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Tests & Medication Orders '} url={route('orders')} is_current={route().current('orders.*')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 
@@ -45,11 +45,11 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Transactions'} url={route('transactions')} icon={CubeIcon} />
+                        <SidebarItem name={'Transactions'} url={route('transactions')} is_current={route().current('transactions.*')} icon={CubeIcon} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Admins'} url={route('admins')} is_current={route().current('admins.*') || route().current('admins')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Admins'} url={route('admins')} is_current={route().current('admins.*')} icon={SethoscopeIcon} />
                     </li>
                 </ul>
 

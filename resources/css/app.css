@@ -116,4 +116,12 @@
         box-shadow: 0px 2px 4px 0px #0307120A inset;
         box-shadow: 0px 1px 1px 0px #0307120A inset;
     }
+
+    .link {
+        @apply text-primary duration-500;
+    }
+
+    .link:hover {
+        @apply underline text-primary-500;
+    }
 }

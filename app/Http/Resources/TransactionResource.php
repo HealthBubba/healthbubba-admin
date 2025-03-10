@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,7 +24,7 @@ class TransactionResource extends JsonResource
             'type' => $this->transaction_type,
             'model_id' => $this->model_id,
             'date' => $this->created_at?->toDayDateTimeString(),
-            'user' => new PatientResource($this->patient),
+            'user' => $this->type == Role::PATIENT ? new PatientResource($this->patient) : new PractitionerResource($this->patient),
             'appointment' => $this->appointment,
             'tests' => new TestResource($this->test),
             'medication' => new MedicationResource($this->medication),

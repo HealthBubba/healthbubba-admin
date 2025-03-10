@@ -30,6 +30,7 @@ class PractitionerResource extends JsonResource
             'licence_number_verified' => $this->licence_number_verified,
             'doctor_license' => $this->doctor_license,
             'other_document' => $this->other_document,
+            'role' => $this->type,
             'title' => $this->title,
             'is_doctor_verified' => $this->is_doctor_verified,
             'is_verified' => $this->licence_number_verified && $this->is_doctor_verified,
