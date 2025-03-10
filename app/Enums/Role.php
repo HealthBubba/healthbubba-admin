@@ -6,6 +6,7 @@ enum Role:string {
 
     case DOCTOR = 'doctor';
     case PATIENT = 'patient';
+    case DEPENDENT = 'dependent';
     case UNSPECIFIED = 'unspecified';
 
     case ADMIN = 'admin';
@@ -21,6 +22,7 @@ enum Role:string {
             self::VIEWER => 'Viewer',
             self::DOCTOR => 'Doctor',
             self::PATIENT => 'Patient',
+            self::DEPENDENT => 'Dependent',
             self::UNSPECIFIED => 'Unspecified',
         };
     }
