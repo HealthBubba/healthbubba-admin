@@ -36,7 +36,7 @@ class OrderController extends Controller
         $pending = $query->count();
         $revenue = $query->sum('order_value');
 
-        // $orders = OrderResource::collection($orders);
+        $orders = OrderResource::collection($orders);
 
         return Inertia::render('Orders', compact('total', 'completed', 'pending', 'revenue', 'orders'));
     }

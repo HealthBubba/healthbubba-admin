@@ -6,7 +6,8 @@ import OrderItem from './OrderItem'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import Currency from '@/Components/Currency'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
+import { MinusIcon } from '@heroicons/react/24/outline'
 
 export default function SingleOrder({order}) {
 
@@ -16,15 +17,18 @@ export default function SingleOrder({order}) {
         router.post(route('orders.tests.status', {order: order.id, status}))
     }
 
-
     return (
         <>
-            <tr >
-                <td>{order.order_id}</td>
-                <td>{order.user.full_name}</td>
-                <td><Currency /> {order.order_value}</td>
+            <tr className={show ? 'bg-gray-50' : ''} >
+                <td>
+                    <p className='link' >{order.id}</p>
+                </td>
+                <td>
+                    <Link href={route('patients.show', {id: order.user.id})} className='link' >{order.user.full_name}</Link>
+                </td>
+                <td><Currency /> {order.amount}</td>
                 <td>{order.status}</td>
-                <td>8898921</td>
+                <td>{order.date}</td>
                 <td>{order.is_order_paid ? 'Paid' : 'Unpaid'}</td>
                 <td className='text-left flex gap-2'>
                     {/* <Menu>
@@ -69,7 +73,19 @@ export default function SingleOrder({order}) {
                         </MenuItems>
                     </Menu> */}
 
-                    <button className='border-2 p-1 bg-white rounded-lg' onClick={() => setShow(!show)} ><PlusIcon className='size-4' /></button>
+                    <button className='border-2 p-1 bg-white rounded-lg' onClick={() => setShow(!show)} >
+                        {
+                            show
+
+                            ?
+
+                            <MinusIcon className='size-4' />
+
+                            :
+
+                            <PlusIcon className='size-4' />
+                        }
+                    </button>
                 </td>
             </tr>
 

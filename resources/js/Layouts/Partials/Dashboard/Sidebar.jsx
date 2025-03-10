@@ -4,6 +4,7 @@ import { CubeIcon } from '@/Icons/CubeIcon';
 import HospitalBedIcon from '@/Icons/HospitalBedIcon';
 import SethoscopeIcon from '@/Icons/SethoscopeIcon';
 import React from 'react'
+import { EyeDropperIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function () {
     return (
@@ -25,7 +26,7 @@ export default function () {
                     </li>
                     
                     <li>
-                        <SidebarItem name={'Patient'} url={route('patients')} is_current={route().current('patients.*')} icon={HospitalBedIcon} />
+                        <SidebarItem name={'Patients'} url={route('patients')} is_current={route().current('patients.*')} icon={HospitalBedIcon} />
                     </li>
                 </ul>
                 
@@ -33,11 +34,14 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Manage Appointment Orders'} url={route('appointments')} is_current={route().current('appointments.*')} icon={CubeIcon} />
+                        <SidebarItem name={'Appointments'} url={route('appointments')} is_current={route().current('appointments.*')} icon={CubeIcon} />
                     </li>
 
                     <li>
-                        <SidebarItem name={'Tests & Medication Orders '} url={route('orders')} is_current={route().current('orders.*')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Tests & Medication Orders'} url={route('orders')} is_current={route().current('orders.*')} icon={SethoscopeIcon} />
+                    </li>
+                    <li>
+                        <SidebarItem name={'Transactions'} url={route('transactions')} is_current={route().current('transactions.*')} icon={CubeIcon} />
                     </li>
                 </ul>
 
@@ -45,11 +49,15 @@ export default function () {
 
                 <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Transactions'} url={route('transactions')} is_current={route().current('transactions.*')} icon={CubeIcon} />
+                        <SidebarItem name={'Medications'} url={route('medications')} is_current={route().current('medications.*')} icon={EyeDropperIcon} />
                     </li>
+                </ul>
 
+                <div className="border-y mx-2 border-dashed border-[#3B3B3D]"></div>
+
+                <ul className="space-y-1">
                     <li>
-                        <SidebarItem name={'Admins'} url={route('admins')} is_current={route().current('admins.*')} icon={SethoscopeIcon} />
+                        <SidebarItem name={'Admins'} url={route('admins')} is_current={route().current('admins.*')} icon={UserCircleIcon} />
                     </li>
                 </ul>
 

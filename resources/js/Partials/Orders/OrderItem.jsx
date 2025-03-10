@@ -15,9 +15,9 @@ export default function ({order}) {
             <td><Currency /> {order.price.toLocaleString()}</td>
             <td><Currency /> {(order.price * order.quantity).toLocaleString()}</td>
             <td className='text-left'>
-                <Disclose show={order.product_type == OrderTypes.medication} >
-                    {/* <MedicationAction /> */}
-                </Disclose>
+                {/* <Disclose show={order.product_type == OrderTypes.medication} >
+                    <MedicationAction />
+                </Disclose> */}
 
                 <Disclose show={order.product_type == OrderTypes.test} >
                     <TestAction order={order} />

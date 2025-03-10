@@ -11,7 +11,7 @@ export const SidebarItem = ({icon: Icon, name, url, is_current = false}) => {
     return (
         <Link href={url} className={`flex group justify-between space-x-3 p-2 px-3 hover:shadow-inner hover:shadow-white/10  items-center hover:bg-[#272729] duration-500 rounded-[10px] ${isActive || is_current ? 'shadow-white/10 bg-[#272729] shadow-inner' : ''}`}>
             <div className="flex space-x-3 items-center">
-                <Icon className="size-5" />
+                <Icon className="size-5 text-white" />
                 <p className="text-white text-[13px]">{name}</p>
             </div>
 

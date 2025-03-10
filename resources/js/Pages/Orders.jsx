@@ -100,11 +100,11 @@ export default function ({orders, total, completed, pending, revenue}) {
                         <table className='border-b'>
                             <thead>
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>User</th>
+                                    <th>Reference</th>
+                                    <th>Patient</th>
                                     <th>Amount</th>
                                     <th>Status</th>
-                                    <th>Order Date</th>
+                                    <th>Created At</th>
                                     <th>Payment Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -116,7 +116,7 @@ export default function ({orders, total, completed, pending, revenue}) {
                         </table>
                     </div>
 
-                    {/* <Pagination items={orders} /> */}
+                    <Pagination items={orders} />
                 </div>
             </div>
         </AuthenticatedLayout>

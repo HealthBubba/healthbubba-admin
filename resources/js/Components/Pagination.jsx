@@ -14,8 +14,8 @@ export default function Pagination({items}) {
                     <p>{meta.current_page} of {meta.last_page} pages</p>
                 </div>
                 <div className='flex space-x-3'>
-                    <Link href={links.prev} disabled={!!links.prev} className='disabled:text-muted/75 '>Prev</Link>
-                    <Link href={links.next} disabled={!!links.next} className='disabled:text-muted/75 ' >Next</Link>
+                    <Link href={links.prev} disabled={!!links.prev} className='link disabled:text-muted/75'>Prev</Link>
+                    <Link href={links.next} disabled={!!links.next} className='link disabled:text-muted/75 ' >Next</Link>
                 </div>
             </div>
         </div>
