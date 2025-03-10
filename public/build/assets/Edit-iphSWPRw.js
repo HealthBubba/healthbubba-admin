@@ -1,1 +1,0 @@
-import{j as t}from"./app-B4AOPEzS.js";import r from"./PatientLayout-MZbpkmD0.js";import"./AuthenticatedLayout-Dj1Kyy0I.js";import"./Disclose-BRsEFxz6.js";import"./Badge-qE1wWQQs.js";import"./StatsItem-CYIk4SI6.js";import"./Swal-J6zQABgx.js";import"./Button-IOYGDYV3.js";function u(){return t.jsx(r,{title:"Overview"})}export{u as default};

@@ -27,7 +27,7 @@ class TransactionResource extends JsonResource
             'user' => $this->type == Role::PATIENT ? new PatientResource($this->patient) : new PractitionerResource($this->patient),
             'appointment' => $this->appointment,
             'tests' => new TestResource($this->test),
-            'medication' => new MedicationResource($this->medication),
+            'medication' => $this->medication ? new MedicationResource($this->medication) : null,
         ];
     }
 }

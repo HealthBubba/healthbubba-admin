@@ -14,10 +14,10 @@ class MedicationResource extends JsonResource
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
-    {
+    {   
         return [
             'id' => $this->medication_id,
-            'category' => new MedicationCategoryResource($this->category),
+            'category' => $this->medication_category_id ? new MedicationCategoryResource($this->category) : null,
             'name' => $this->medication_name, 
             'description' => $this->medication_desc,
             'picture' => $this->medication_pic,
