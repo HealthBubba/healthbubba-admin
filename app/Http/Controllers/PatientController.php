@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Role;
 use App\Http\Resources\AppointmentResource;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\PatientMedicationResource;
 use App\Http\Resources\PatientResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Patient;
@@ -80,6 +81,15 @@ class PatientController extends Controller {
         return Inertia::render('Patients/Appointments', [
             'patient' => new PatientResource($user),
             'appointments' => AppointmentResource::collection($appointments),
+        ]);
+    }
+
+    function prescriptions(Request $request, User $user) {
+        $prescriptions = $user->medications()->paginate();
+
+        return Inertia::render('Patients/Prescriptions', [
+            'patient' => new PatientResource($user),
+            'prescriptions' => PatientMedicationResource::collection($prescriptions),
         ]);
     }
 

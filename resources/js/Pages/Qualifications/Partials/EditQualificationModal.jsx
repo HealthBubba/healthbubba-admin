@@ -14,7 +14,11 @@ export default function EditQualificationModal({modal, qualification = null}) {
     const updateForm = () => {
         form.post(route('qualifications.update', {
             qualification: qualification?.qualification_name
-        }))
+        }), {
+            onSuccess(){
+                !specialty ? form.reset() : null
+            }
+        })
     }
 
     return (

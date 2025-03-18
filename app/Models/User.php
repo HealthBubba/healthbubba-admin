@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Concerns\Models\HasQuery;
 use App\Enums\Role;
+use App\Models\Practitioners\PractitionerAvailability;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -74,7 +75,7 @@ class User extends Authenticatable {
     }
 
     function prescriptions(){
-        return $this->hasMany(PatientMedication::class, 'doctor_id');
+        return $this->hasMany(PatientMedication::class, 'doctor_id', 'id');
     }
 
     function payments(){
@@ -87,6 +88,14 @@ class User extends Authenticatable {
     
     function orders(){
         return $this->hasMany(Order::class, 'user_id');
+    }
+
+    function availabilities(){
+        return $this->hasMany(PractitionerAvailability::class, 'doctor_id', 'id');
+    }
+
+    function medications(){
+        return $this->hasMany(PatientMedication::class, 'patient_id', 'id');
     }
 
 }

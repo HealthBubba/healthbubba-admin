@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\QualificationResource;
 use App\Models\Qualification;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class QualificationController extends Controller
@@ -22,7 +23,7 @@ class QualificationController extends Controller
 
     function update(Request $request, Qualification $qualification) {
         $validated = $request->validate([
-            'qualification_name' => 'required|string|unique:qualifications,qualification_name'
+            'qualification_name' => ['required', 'string', Rule::unique('qualifications', 'qualification_name')->ignore($qualification?->qualification_id, 'qualification_id')]
         ]);
 
         $qualification = $qualification?->fill($validated) ?? new Qualification($validated);
@@ -30,6 +31,12 @@ class QualificationController extends Controller
 
         toast('Qualification updated successfully')->success();
 
+        return back();
+    }
+
+    function destroy(Qualification $qualification) {
+        $qualification->delete();
+        toast('Qualification Deleted Successfully')->success();
         return back();
     }
 }

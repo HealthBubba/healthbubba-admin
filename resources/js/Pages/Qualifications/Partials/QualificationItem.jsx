@@ -9,7 +9,7 @@ import EditQualificationModal from './EditQualificationModal'
 export default function QualificationItem({qualification}) {
 
     const destroy = () => {
-        router.get(route('qualifications.destroy', {qualification: qualification.id}))
+        router.get(route('qualifications.destroy', {qualification: qualification.qualification_id}))
     }
 
     const modal = useModal()

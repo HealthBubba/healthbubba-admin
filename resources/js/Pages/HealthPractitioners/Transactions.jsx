@@ -24,7 +24,7 @@ export default function () {
                     </thead>
 
                     <tbody>
-                        {transactions.map(transaction => <DoctorTransactionItem key={transaction.id} transaction={transaction} />)}
+                        {transactions.data.map(transaction => <DoctorTransactionItem key={transaction.id} transaction={transaction} />)}
                     </tbody>
                 </table>
 

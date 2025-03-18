@@ -1,1 +1,0 @@
-import{j as r}from"./app-ftXI9cVP.js";function a({children:e,className:s,...o}){return r.jsx("div",{children:r.jsx("select",{className:`rounded-[8px] border border-gray-100 shadow-sm shadow-black/5 text-gray-500 w-full ${s}`,...o,children:e})})}export{a as S};

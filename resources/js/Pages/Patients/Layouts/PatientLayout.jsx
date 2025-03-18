@@ -70,23 +70,26 @@ export default function ({children, title}) {
                     </div>
 
                     <div className='overflow-x-auto scrollbar-hidden' >
-                    <ul className='flex space-x-3 text-sm'>
-                        <li className={`p-2  ${route().current() == 'patients.show' ? 'border-primary border-b-4' : ''}`}>
-                        <Link href={route('patients.show', {user: patient.id})} >Overview</Link>
-                        </li>
-                        <li className={`p-2  ${route().current() == 'patients.edit' ? 'border-primary border-b-4' : ''}`}>
-                            <Link href={route('patients.edit', {user: patient.id})} >Edit</Link>
-                        </li>
-                        <li className={`p-2  ${route().current() == 'patients.transactions' ? 'border-primary border-b-4' : ''}`}>
-                            <Link href={route('patients.transactions', {user: patient.id})} >Transactions</Link>
-                        </li>
-                        <li className={`p-2  ${route().current() == 'patients.appointments' ? 'border-primary border-b-4' : ''}`}>
-                            <Link href={route('patients.appointments', {user: patient.id})} >Appointments</Link>
-                        </li>
-                        <li className={`p-2  ${route().current() == 'patients.orders' ? 'border-primary border-b-4' : ''}`}>
-                            <Link href={route('patients.orders', {user: patient.id})} >Orders</Link>
-                        </li>
-                    </ul>
+                        <ul className='flex space-x-3 text-sm'>
+                            <li className={`p-2  ${route().current() == 'patients.show' ? 'border-primary border-b-4' : ''}`}>
+                            <Link href={route('patients.show', {user: patient.id})} >Overview</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.edit' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.edit', {user: patient.id})} >Edit</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.transactions' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.transactions', {user: patient.id})} >Transactions</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.appointments' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.appointments', {user: patient.id})} >Appointments</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.orders' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.orders', {user: patient.id})} >Orders</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.prescriptions' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.prescriptions', {user: patient.id})} >Prescriptions</Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,14 @@ Route::middleware('auth')->group(function(){
         Route::post('{qualification?}', [QualificationController::class, 'update'])->name('qualifications.update');
         Route::prefix('{qualification}')->group(function(){
             Route::get('delete', [QualificationController::class, 'destroy'])->name('qualifications.destroy');
+        });
+    });
+
+    Route::prefix('specialties')->group(function(){
+        Route::get('', [SpecialtyController::class, 'index'])->name('specialties');
+        Route::post('{specialty?}', [SpecialtyController::class, 'update'])->name('specialties.update');
+        Route::prefix('{specialty}')->group(function(){
+            Route::get('delete', [SpecialtyController::class, 'destroy'])->name('specialties.destroy');
         });
     });
     
@@ -64,6 +73,7 @@ Route::middleware('auth')->group(function(){
             Route::get('transactions', [PatientController::class, 'transactions'])->name('patients.transactions');
             Route::get('edit', [PatientController::class, 'edit'])->name('patients.edit');
             Route::get('appointments', [PatientController::class, 'appointments'])->name('patients.appointments');
+            Route::get('prescriptions', [PatientController::class, 'prescriptions'])->name('patients.prescriptions');
             Route::get('destroy', [PatientController::class, 'destroy'])->name('patients.destroy');
         });
     });

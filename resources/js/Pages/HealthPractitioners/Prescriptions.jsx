@@ -8,7 +8,6 @@ export default function () {
 
     const {props: {user, prescriptions}} = usePage()
 
-
     return (
         <HealthPractitionersLayout title="Prescriptions">
             <div className="overflow-x-auto relative">
@@ -28,7 +27,7 @@ export default function () {
                     </thead>
 
                     <tbody>
-                        {prescriptions.map(prescription => <PrescriptionItem key={prescription.id} prescription={prescription} />)}
+                        {prescriptions.data.map(prescription => <PrescriptionItem key={prescription.id} prescription={prescription} />)}
                     </tbody>
                 </table>
             </div>

@@ -73,6 +73,7 @@ class HealthPractitionerController extends Controller {
 
     function prescriptions(User $user) {
         $prescriptions = $user->prescriptions()->paginate();
+        
         return Inertia::render('HealthPractitioners/Prescriptions', [
             'user' => new PractitionerResource($user),
             'prescriptions' => PatientMedicationResource::collection($prescriptions)

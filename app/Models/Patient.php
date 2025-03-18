@@ -14,4 +14,8 @@ class Patient extends User {
         });
     }
 
+    function medications(){
+        return $this->hasMany(PatientMedication::class, 'patient_id', 'id');
+    }
+
 }

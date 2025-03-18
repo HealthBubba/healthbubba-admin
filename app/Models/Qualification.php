@@ -10,6 +10,7 @@ class Qualification extends Model {
 
     protected $fillable = ['qualification_name', 'is_user_added', 'qualification_id'];
     public $timestamps = false;
+    public $primaryKey = 'qualification_id';
 
 
 
