@@ -43,13 +43,13 @@ class HealthPractitionerController extends Controller {
         ]);
     }
 
-    function show(User $user) {
+    function show(Doctor $user) {
         return Inertia::render('HealthPractitioners/Show', [
             'user' => new PractitionerResource($user)
         ]);
     }
 
-    function edit(User $user) {
+    function edit(Doctor $user) {
         return Inertia::render('HealthPractitioners/Edit', [
             'user' => new PractitionerResource($user)
         ]);

@@ -4,7 +4,7 @@ import { CubeIcon } from '@/Icons/CubeIcon';
 import HospitalBedIcon from '@/Icons/HospitalBedIcon';
 import SethoscopeIcon from '@/Icons/SethoscopeIcon';
 import React from 'react'
-import { EyeDropperIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { CheckBadgeIcon, EyeDropperIcon, ListBulletIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function () {
     return (
@@ -41,7 +41,7 @@ export default function () {
                         <SidebarItem name={'Tests & Medication Orders'} url={route('orders')} is_current={route().current('orders.*')} icon={SethoscopeIcon} />
                     </li>
                     <li>
-                        <SidebarItem name={'Transactions'} url={route('transactions')} is_current={route().current('transactions.*')} icon={CubeIcon} />
+                        <SidebarItem name={'Transactions'} url={route('transactions')} is_current={route().current('transactions.*')} icon={ListBulletIcon} />
                     </li>
                 </ul>
 
@@ -50,6 +50,9 @@ export default function () {
                 <ul className="space-y-1">
                     <li>
                         <SidebarItem name={'Medications'} url={route('medications')} is_current={route().current('medications.*')} icon={EyeDropperIcon} />
+                    </li>
+                    <li>
+                        <SidebarItem name={'Qualifications'} url={route('qualifications')} is_current={route().current('qualifications.*')} icon={CheckBadgeIcon} />
                     </li>
                 </ul>
 

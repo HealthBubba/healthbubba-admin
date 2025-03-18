@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\Status;
+use App\Http\Resources\Practitioner\PractitionerAvailabilityResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -37,7 +38,8 @@ class PractitionerResource extends JsonResource
             'status' => $this->status(),
             'is_active' => $this->is_active,
             'earnings' => $this->transactions()->where('transactions.status', Status::CONFIRMED)->sum('amount'),
-            'consultations' => $this->doctorsAppointments()->count()
+            'consultations' => $this->doctorsAppointments()->count(),
+            'availabilities' => PractitionerAvailabilityResource::collection($this->availabilities)
         ];
     }
 

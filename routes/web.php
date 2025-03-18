@@ -8,6 +8,7 @@ use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,14 @@ Route::middleware('auth')->group(function(){
             Route::get('', [DashboardController::class, 'trends'])->name('dashboard.trends');
             Route::get('revenue', [DashboardController::class, 'revenueTrends'])->name('dashboard.trends.revenue');
             Route::get('consultants', [DashboardController::class, 'consultantTrends'])->name('dashboard.trends.consultants');
+        });
+    });
+
+    Route::prefix('qualifications')->group(function(){
+        Route::get('', [QualificationController::class, 'index'])->name('qualifications');
+        Route::post('{qualification?}', [QualificationController::class, 'update'])->name('qualifications.update');
+        Route::prefix('{qualification}')->group(function(){
+            Route::get('delete', [QualificationController::class, 'destroy'])->name('qualifications.destroy');
         });
     });
     

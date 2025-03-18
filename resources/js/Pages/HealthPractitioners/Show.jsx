@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import HealthPractitionersLayout from './layouts/HealthPractitionersLayout'
 import { usePage } from '@inertiajs/react'
+
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export default function () {
 
     const {props: {user}} = usePage()
 
+    console.log(user.availabilities)
 
     return (
         <HealthPractitionersLayout title="Overview">
@@ -18,43 +21,85 @@ export default function () {
                     <div className='grid md:grid-cols-4 grid-cols-1 gap-4 text-sm' >
                         <div>
                             <h4 className='font-medium'>First Name</h4>
-                            <p>{user.first_name}</p>
+                            <p className="text-gray-600">{user.first_name}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Last Name</h4>
-                            <p>{user.last_name}</p>
+                            <p className="text-gray-600">{user.last_name}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Email Address</h4>
-                            <p>{user.email}</p>
+                            <p className="text-gray-600">{user.email}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Phone Number</h4>
-                            <p>{user.phone}</p>
+                            <p className="text-gray-600">{user.phone}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Date of Birth</h4>
-                            <p>{user.dob}</p>
+                            <p className="text-gray-600">{user.dob ?? 'N/A'}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Gender</h4>
-                            <p>{user.sex}</p>
+                            <p className="text-gray-600">{user.sex ?? 'N/A'}</p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Weight</h4>
-                            <p>{user.weight} {user.weight_unit} </p>
+                            <p className="text-gray-600">{user.weight ?? 'N/A'} {user.weight_unit} </p>
                         </div>
                         <div>
                             <h4 className='font-medium'>Height</h4>
-                            <p>{user.height} {user.height_unit} </p>
+                            <p className="text-gray-600">{user.height ?? 'N/A'} {user.height_unit} </p>
                         </div>
                         <div className='col-span-2' >
                             <h4 className='font-medium'>Address</h4>
-                            <p>{user.address}</p>
+                            <p className="text-gray-600">{user.address ?? 'N/A'}</p>
                         </div>
+                    </div>
+                </div>
+
+                <div className="border"></div>
+
+                <div className='space-y-3'>
+                    <div>
+                        <h4 className='font-semibold'>Available Days</h4>
+                    </div>
+
+                    <div className="gap-3 grid md:grid-cols-7">
+                        { days.map(day => <AvailableDay user={user} day={day} key={day} />) }
                     </div>
                 </div>
             </div>
         </HealthPractitionersLayout>
+    )
+}
+
+const AvailableDay = ({day, user}) => {
+    const existingDay = useMemo(() => {
+        return user.availabilities.find(weekday => day.includes(weekday.day_of_week))
+    }, [])
+
+    const isAvailable = useMemo(() => {
+        if(!existingDay) return false;
+        return existingDay.is_available;
+    }, [])
+    
+    return (
+        <div className={`border-2 px-3 py-2 rounded ${isAvailable ? 'border-primary bg-primary-50' : 'bg-gray-50'}`} >
+            <p className='font-medium' >{day}</p>
+            <div className='text-[13px]' >
+                {
+                    isAvailable
+
+                    ?
+
+                    <p>{existingDay.start_time} - {existingDay.end_time}</p>
+                    
+                    :
+                    
+                    <p>Not Available</p>
+                }
+            </div>
+        </div>
     )
 }
