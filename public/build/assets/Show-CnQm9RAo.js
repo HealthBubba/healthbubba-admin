@@ -1,1 +1,0 @@
-import{j as t}from"./app-DTXfO_M1.js";import{D as o}from"./AuthenticatedLayout-BC9Lqc95.js";import"./menu-CS4hC5o5.js";import"./label-CHTKSIlM.js";import"./portal-DCXWZpKv.js";import"./Disclose-DPbRJmoB.js";function n({transaction:r}){return t.jsx(o,{title:"Transaction - "+r.reference})}export{n as default};
