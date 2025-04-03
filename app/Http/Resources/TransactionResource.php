@@ -25,7 +25,7 @@ class TransactionResource extends JsonResource
             'model_id' => $this->model_id,
             'date' => $this->created_at?->toDayDateTimeString(),
             'user' => $this->type == Role::PATIENT ? new PatientResource($this->patient) : new PractitionerResource($this->patient),
-            'appointment' => $this->appointment ? new AppointmentResource($this->appointment) : null,
+            'appointment' => $this->appointment ? new AppointmentResource($this->whenLoaded('appointment')) : null,
             'tests' => $this->test ? new TestResource($this->test) : null,
             'medication' => $this->medication ? new MedicationResource($this->medication) : null,
         ];

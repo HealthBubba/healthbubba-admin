@@ -25,13 +25,15 @@ class OrderController extends Controller
             $query->whereType($type);
         })
         ->when($request->keyword, function($query, $keyword){
-            $query->where('reference', $keyword);
+            $query->where('reference', $keyword)
+                ->orWhereRelation('user', 'first_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('user', 'last_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('user', 'email', 'LIKE', "%$keyword%");
         })
         ->latest()
         ->paginate();
 
         $total = $query->count();
-        // ->whereStatus(Status::COMPLETED)
         $completed = $query->count();
         $pending = $query->count();
         $revenue = $query->sum('order_value');

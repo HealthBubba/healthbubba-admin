@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Role;
+use Illuminate\Support\Facades\DB;
 
 class Patient extends User {
 
@@ -17,5 +18,7 @@ class Patient extends User {
     function medications(){
         return $this->hasMany(PatientMedication::class, 'patient_id', 'id');
     }
+
+    
 
 }

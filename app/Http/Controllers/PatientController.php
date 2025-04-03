@@ -38,7 +38,6 @@ class PatientController extends Controller {
                         ->withSerialNo()->latest()->paginate();
 
         $totalPatients = Patient::count();
-        // $totalDeletedPatients = 
 
         return Inertia::render('Patients/Index', [
             'patients' => PatientResource::collection($patients),
@@ -81,6 +80,18 @@ class PatientController extends Controller {
         return Inertia::render('Patients/Appointments', [
             'patient' => new PatientResource($user),
             'appointments' => AppointmentResource::collection($appointments),
+        ]);
+    }
+
+    function records(Request $request, User $user) {
+        return Inertia::render('Patients/MedicalRecords', [
+            'patient' => new PatientResource($user),
+        ]);
+    }
+
+    function conditions(Request $request, User $user) {
+        return Inertia::render('Patients/MedicalConditions', [
+            'patient' => new PatientResource($user),
         ]);
     }
 

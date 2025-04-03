@@ -16,7 +16,6 @@ class PatientResource extends JsonResource
      */
     public function toArray(Request $request): array {
         $appointments = $this->patientAppointments;
-
         return [
             'no' => $this->no,
             'id' => $this->id,
@@ -26,7 +25,6 @@ class PatientResource extends JsonResource
             'phone' => $this->phone,
             'dob' => $this->dob,
             'sex' => $this->sex,
-            'phone' => $this->phone,
             'weight' => $this->weight,
             'title' => $this->title,
             'status' => $this->status(),
@@ -38,7 +36,13 @@ class PatientResource extends JsonResource
             'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),
             'transactions_sum' => $this->payments->sum('amount'),
             'transactions_count' => $this->transactions()->whereStatus('confirmed')->count(),
-            'joined_date' => Date::parse($this->created_at)->format('jS M, Y')
+            'joined_date' => Date::parse($this->created_at)->format('jS M, Y'),
+            'surgeries' => $this->surgeries,
+            'medical_conditions' => $this->medical_conditions,
+            'allergies' => $this->allergies,
+            'family_history' => $this->family_history,
+            'medical_records' => $this->medical_records,
+            'emergency_contacts' => $this->emergency_contacts,
         ];
     }
 

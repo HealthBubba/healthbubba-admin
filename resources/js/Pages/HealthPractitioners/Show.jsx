@@ -62,6 +62,35 @@ export default function () {
 
                 <div className='space-y-3'>
                     <div>
+                        <h4 className='font-semibold'>Specialties</h4>
+                    </div>
+
+                    <div className="gap-3 grid md:grid-cols-3 md:divide-x">
+                        { 
+                            user.specialties.length
+
+                            ?
+
+                            <ol className='list-inside list-decimal'>
+                                {user.specialties.map(specialty => {
+                                    return (
+                                        <li className=''>{specialty.specialty_name}</li>
+                                    )
+                                }) }
+                            </ol>
+
+                            :
+
+                            <p className="text-gray-500">No Specialty</p>
+                            
+                        }
+                    </div>
+                </div>
+
+                <div className="border"></div>
+
+                <div className='space-y-3'>
+                    <div>
                         <h4 className='font-semibold'>Available Days</h4>
                     </div>
 

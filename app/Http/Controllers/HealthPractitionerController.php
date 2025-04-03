@@ -62,7 +62,6 @@ class HealthPractitionerController extends Controller {
             'transactions' => TransactionResource::collection($transactions)
         ]);
     }
-
     function consultations(User $user) {
         $consultations = $user->doctorsAppointments()->paginate();
         return Inertia::render('HealthPractitioners/Consultations', [

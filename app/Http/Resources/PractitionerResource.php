@@ -40,7 +40,8 @@ class PractitionerResource extends JsonResource
             'is_active' => $this->is_active,
             'earnings' => $this->transactions()->where('transactions.status', Status::CONFIRMED)->sum('amount'),
             'consultations' => $this->doctorsAppointments()->count(),
-            'availabilities' => PractitionerAvailabilityResource::collection($this->availabilities)
+            'availabilities' => PractitionerAvailabilityResource::collection($this->availabilities),
+            'specialties' => $this->specialties,
         ];
     }
 

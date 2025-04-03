@@ -5,7 +5,7 @@ export default function ({patient}) {
 
     return (
         <PatientLayout patient={patient} title="Overview" >
-            <div className='space-y-5'>
+            <div className='space-y-10'>
                 <div className='space-y-3' >
                     <div>
                         <h4 className='font-semibold'>Personal Information</h4>

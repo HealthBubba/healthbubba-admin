@@ -23,7 +23,7 @@ export default function ({appointments, stats}) {
 
                 <div className="card p-0 rounded-xl">
                     <div className="p-4 md:flex space-y-2 md:space-x-2">
-                        <div>
+                        {/* <div>
                             <Menu>
                                 <MenuButton className="border-2 p-1 font-medium h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
                                     <SettingIcon className='size-5' />         
@@ -62,7 +62,7 @@ export default function ({appointments, stats}) {
                                     </div>
                                 </MenuItems>
                             </Menu>
-                        </div>
+                        </div> */}
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                                 <div className='px-2'>

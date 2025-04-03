@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable {
     use HasFactory, Notifiable, HasQuery;
@@ -64,6 +65,30 @@ class User extends Authenticatable {
 
     function getFullNameAttribute(){
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    function getMedicalRecordsAttribute(){
+        return DB::table('user_medical_records')->where('user_id', $this->id)->get();
+    }
+
+    function getMedicalConditionsAttribute(){
+        return DB::table('user_past_medical_conditions')->where('user_id', $this->id)->get();
+    }
+
+    function getSurgeriesAttribute(){
+        return DB::table('user_past_surgeries')->where('user_id', $this->id)->get();
+    }
+
+    function getFamilyHistoryAttribute(){
+        return DB::table('user_family_health_histories')->where('user_id', $this->id)->get();
+    }
+
+    function getEmergencyContactsAttribute(){
+        return DB::table('user_emergency_contacts')->where('user_id', $this->id)->get();
+    }
+
+    function getAllergiesAttribute(){
+        return DB::table('user_allergies')->where('user_id', $this->id)->get();
     }
 
     function patientAppointments(){

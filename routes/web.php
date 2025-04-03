@@ -74,6 +74,8 @@ Route::middleware('auth')->group(function(){
             Route::get('edit', [PatientController::class, 'edit'])->name('patients.edit');
             Route::get('appointments', [PatientController::class, 'appointments'])->name('patients.appointments');
             Route::get('prescriptions', [PatientController::class, 'prescriptions'])->name('patients.prescriptions');
+            Route::get('records', [PatientController::class, 'records'])->name('patients.records');
+            Route::get('conditions', [PatientController::class, 'conditions'])->name('patients.conditions');
             Route::get('destroy', [PatientController::class, 'destroy'])->name('patients.destroy');
         });
     });

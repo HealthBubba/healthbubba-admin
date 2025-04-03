@@ -19,10 +19,9 @@ class AppointmentResource extends JsonResource
         [$hour, $minute, $second] = $this->time ? explode(':', $this->time) : [0, 0, 0]; 
         return [
             'id' => $this->appointment_id,
-            'no' => $this->no,
             'patient' => new PatientResource($this->patient),
             'doctor' => new PractitionerResource($this->doctor),
-            'transaction' => new TransactionResource($this->transaction),
+            // 'transaction' => new TransactionResource($this->whenLoaded()),
             'payment_status' => $this->is_appointment_paid,
             'date' => Date::parse("{$this->date} {$this->time}")->format('jS F, Y'),
             'time' => Date::createFromTime($hour, $minute, $second)->format('h:m A'),

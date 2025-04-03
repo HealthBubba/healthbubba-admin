@@ -89,6 +89,12 @@ export default function ({children, title}) {
                             <li className={`p-2  ${route().current() == 'patients.prescriptions' ? 'border-primary border-b-4' : ''}`}>
                                 <Link href={route('patients.prescriptions', {user: patient.id})} >Prescriptions</Link>
                             </li>
+                            <li className={`p-2  ${route().current() == 'patients.records' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.records', {user: patient.id})} >Medical Records</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.conditions' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.conditions', {user: patient.id})} >Medical Conditions</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

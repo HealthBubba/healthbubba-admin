@@ -10,7 +10,18 @@ use Inertia\Inertia;
 class AppointmentController extends Controller
 {
     function index(Request $request){
-        $appointments = Appointment::withSerialNo()->latest('date')->paginate();
+        $appointments = Appointment::when($request->status, function($query, $status){
+            $query->whereStatus($status);
+        })
+        ->when($request->keyword, function($query, $keyword){
+            $query->where('appointment_id', $keyword)
+                ->orWhereRelation('patient', 'first_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('doctor', 'first_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('patient', 'last_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('doctor', 'last_name', 'LIKE', "%$keyword%")
+                ->orWhereRelation('patient', 'email', 'LIKE', "%$keyword%")
+                ->orWhereRelation('doctor', 'email', 'LIKE', "%$keyword%");
+        })->latest('date')->paginate();
         $stats = [
             'total' => Appointment::count(),
             'completed' => Appointment::whereIsAppointmentPaid(true)->count(),
