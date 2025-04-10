@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Role;
 use App\Http\Requests\Practitioner\UpdatePractitionerRequest;
 use App\Http\Resources\AppointmentResource;
+use App\Http\Resources\LicenseResource;
 use App\Http\Resources\PatientMedicationResource;
 use App\Http\Resources\PractitionerResource;
 use App\Http\Resources\TransactionResource;
@@ -62,6 +63,15 @@ class HealthPractitionerController extends Controller {
             'transactions' => TransactionResource::collection($transactions)
         ]);
     }
+
+    function licenses(Doctor $user) {
+        $licenses = $user->licenses()->paginate();
+        return Inertia::render('HealthPractitioners/Licenses', [
+            'user' => new PractitionerResource($user),
+            'licenses' => LicenseResource::collection($licenses)
+        ]);
+    }
+    
     function consultations(User $user) {
         $consultations = $user->doctorsAppointments()->paginate();
         return Inertia::render('HealthPractitioners/Consultations', [

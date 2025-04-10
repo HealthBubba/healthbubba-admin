@@ -106,6 +106,9 @@ export default function ({children, title}) {
                         <li className={`p-2  ${route().current() == 'practitioners.prescriptions' ? 'border-primary border-b-4' : ''}`}>
                             <Link href={route('practitioners.prescriptions', {user: user.id})} >Prescriptions</Link>
                         </li>
+                        <li className={`p-2  ${route().current() == 'practitioners.licenses' ? 'border-primary border-b-4' : ''}`}>
+                            <Link href={route('practitioners.licenses', {user: user.id})} >Licenses</Link>
+                        </li>
                     </ul>
                     </div>
                 </div>

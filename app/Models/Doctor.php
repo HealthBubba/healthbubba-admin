@@ -29,4 +29,8 @@ class Doctor extends User {
         return $this->hasMany(UserSpecialty::class, 'user_id', 'id');
     }
 
+    function licenses(){
+        return $this->hasMany(License::class, 'user_id');
+    }
+
 }

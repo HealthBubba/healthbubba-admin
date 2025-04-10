@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HealthPractitionerController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
@@ -49,6 +50,13 @@ Route::middleware('auth')->group(function(){
             Route::get('edit', [HealthPractitionerController::class, 'edit'])->name('practitioners.edit');
             Route::post('update', [HealthPractitionerController::class, 'update'])->name('practitioners.update');
             Route::get('transactions', [HealthPractitionerController::class, 'transactions'])->name('practitioners.transactions');
+
+            Route::prefix('licenses')->group(function(){
+                Route::get('', [HealthPractitionerController::class, 'licenses'])->name('practitioners.licenses');
+                Route::post('', LicenseController::class)->withoutMiddleware(HandleInertiaRequests::class)->name('practitioners.licenses.create');
+
+            });
+
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');
             Route::get('prescriptions', [HealthPractitionerController::class, 'prescriptions'])->name('practitioners.prescriptions');
             Route::post('upload', [HealthPractitionerController::class, 'upload'])->name('practitioners.upload');
