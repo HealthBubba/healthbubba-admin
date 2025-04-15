@@ -13,6 +13,7 @@ class LicenseController extends Controller
         $response = Http::baseURL(env('API_BASE'))->put('admin/licenses/update-status', $data);
 
         $data = $response->json();
+
         if($data && $data['ok']) {
             toast($data['message'])->success();
             return back();

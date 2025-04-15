@@ -32,7 +32,7 @@ export default function ({license, ...modal}) {
 
                 <div>
                     <Label>Select Status</Label>
-                    <Select  defaultValue={form.status} onChange={(e) => form.setData('status', e.currentTarget.value)} >
+                    <Select  defaultValue={form.status} onChange={(e) => form.setData('newStatus', e.currentTarget.value)} >
                         <option value={''}>Select Status</option>
                         <option selected={form.status == Status.UNDER_REVIEW} value={Status.UNDER_REVIEW}>{Status.UNDER_REVIEW}</option>
                         <option selected={form.status == Status.REJECTED} value={Status.REJECTED}>{Status.REJECTED}</option>

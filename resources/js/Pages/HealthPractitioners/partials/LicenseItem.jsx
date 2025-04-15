@@ -11,9 +11,6 @@ import Button from '@/Components/Button/Button'
 
 export default function ({license}) {
 
-    console.log(license)
-
-
     const approve = () => {
         router.get(route('practitioners.approve', {user: license.id}))
     }
