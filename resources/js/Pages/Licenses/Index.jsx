@@ -18,9 +18,9 @@ export default function ({licenses, status, all}) {
                 <div className="grid md:grid-cols-5 grid-cols-2 gap-3 mb-5">
                     <StatsItem title={'Total Licenses'} amount={all} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Under Review'} amount={status.under_review} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Verified'} amount={status.verified} isPrice direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Verified'} amount={status.verified} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Rejected'} amount={status.rejected} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Expired'} amount={status.expired} isPrice direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Expired'} amount={status.expired} direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="card p-0 rounded-xl">
