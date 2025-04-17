@@ -14,9 +14,10 @@ class LicenseController extends Controller
         $licenses = License::when(request('keyword'), function($query, $keyword) {
                             $query->whereRelation('owner', 'first_name', 'LIKE', "%$keyword%")
                                     ->orWhereRelation('owner', 'last_name', 'LIKE', "%$keyword%")
-                                    ->orWhereRelation('qualification', 'qualification_name', 'LIKE', "%$keyword%");
-                        })->when(request('status'), function($query, $filter) {
-                            $query->where('status', $filter);
+                                    ->orWhereRelation('qualification', 'qualification_name', 'LIKE', "%$keyword%")
+                                    ->when(request('status'), function($query, $filter) {
+                                        $query->where('status', $filter);
+                                    });
                         })->with(['qualification', 'owner'])->latest()->paginate();
 
         $all = License::count();
@@ -31,7 +32,9 @@ class LicenseController extends Controller
         return inertia('Licenses/Index', [
             'licenses' => LicenseResource::collection($licenses),
             'status' => $statusCounts,
-            'all' => $all
+            'all' => $all,
+            'keyword' => request('keyword'),
+            'current_status' => request('status'),
         ]);
     }
 
