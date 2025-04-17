@@ -18,4 +18,8 @@ class License extends Model
     function qualification(){
         return $this->belongsTo(Qualification::class, 'qualification_id');
     }
+
+    function owner(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
