@@ -11,8 +11,6 @@ import Status from '@/Enums/Status';
 
 export default function ({licenses, status, all}) {
 
-    console.log(licenses)
-
     return (
         <AuthenticatedLayout title="Manage Medical Licenses">
             <Head title="Manage Medical Licenses" />
