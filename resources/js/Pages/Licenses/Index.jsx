@@ -7,6 +7,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import SettingIcon from '@/Icons/SettingIcon';
 import Pagination from '@/Components/Pagination';
+import Status from '@/Enums/Status';
 
 export default function ({licenses, status, all}) {
 
@@ -36,7 +37,15 @@ export default function ({licenses, status, all}) {
                                 <MenuItems transition anchor="bottom start" className="min-w-32  origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
                                     <div className='p-1'>
                                         <MenuItem >
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">All Licenses</button>
+                                            <button onClick={() => router.reload({data: {status: ''}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">All Licenses</button>
+                                        </MenuItem>
+                                    </div>
+
+                                    <div className="border-t-[1.5px]"></div>
+
+                                    <div className='p-1'>
+                                        <MenuItem >
+                                            <button onClick={() => router.reload({data: {status: Status.UNDER_REVIEW}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Under Review</button>
                                         </MenuItem>
                                     </div>
 
@@ -44,7 +53,7 @@ export default function ({licenses, status, all}) {
 
                                     <div className='p-1'>
                                         <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Under Review</button>
+                                            <button onClick={() => router.reload({data: {status: Status.VERIFIED}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Verified</button>
                                         </MenuItem>
                                     </div>
 
@@ -52,7 +61,7 @@ export default function ({licenses, status, all}) {
 
                                     <div className='p-1'>
                                         <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Verified</button>
+                                            <button onClick={() => router.reload({data: {status: Status.REJECTED}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Rejected</button>
                                         </MenuItem>
                                     </div>
 
@@ -60,15 +69,7 @@ export default function ({licenses, status, all}) {
 
                                     <div className='p-1'>
                                         <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Rejected</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Expired</button>
+                                            <button onClick={() => router.reload({data: {status: Status.EXPIRED}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Expired</button>
                                         </MenuItem>
                                     </div>
                                 </MenuItems>

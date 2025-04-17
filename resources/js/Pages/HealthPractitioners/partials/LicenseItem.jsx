@@ -1,8 +1,6 @@
 import Disclose from '@/Components/Disclose'
 import Swal from '@/Components/Swal'
 import Status from '@/Enums/Status'
-import UploadLicence from '@/Partials/HealthPractitioners/UploadLicence'
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Link, router } from '@inertiajs/react'
 import React from 'react'
 import EditLicenseStatus from './EditLicenseStatus'
