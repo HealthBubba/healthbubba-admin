@@ -14,7 +14,7 @@ export default function ({license, showOwner}) {
     return (
         <tr>
             {
-                showOwner
+                (showOwner && license.owner)
 
                 &&
 
