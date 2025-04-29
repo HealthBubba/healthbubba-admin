@@ -41,6 +41,13 @@ Route::middleware('auth')->group(function(){
             Route::get('delete', [SpecialtyController::class, 'destroy'])->name('specialties.destroy');
         });
     });
+
+    Route::prefix('licenses')->group(function(){
+        Route::get('', [LicenseController::class, 'index'])->name('licenses');
+        Route::prefix('{license}')->group(function(){
+            Route::get('delete', [LicenseController::class, 'destroy'])->name('licenses.destroy');
+        });
+    });
     
     Route::prefix('practitioners')->group(function(){
         Route::get('', [HealthPractitionerController::class, 'index'])->name('practitioners');
@@ -53,8 +60,7 @@ Route::middleware('auth')->group(function(){
 
             Route::prefix('licenses')->group(function(){
                 Route::get('', [HealthPractitionerController::class, 'licenses'])->name('practitioners.licenses');
-                Route::post('', LicenseController::class)->withoutMiddleware(HandleInertiaRequests::class)->name('practitioners.licenses.create');
-
+                Route::post('', [LicenseController::class, 'update'])->withoutMiddleware(HandleInertiaRequests::class)->name('practitioners.licenses.create');
             });
 
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');

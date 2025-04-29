@@ -1,29 +1,27 @@
 import Disclose from '@/Components/Disclose'
 import Swal from '@/Components/Swal'
 import Status from '@/Enums/Status'
-import UploadLicence from '@/Partials/HealthPractitioners/UploadLicence'
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import React from 'react'
 import EditLicenseStatus from './EditLicenseStatus'
 import useModal from '@/Hooks/useModal'
 import Button from '@/Components/Button/Button'
 
-export default function ({license}) {
-
-    const approve = () => {
-        router.get(route('practitioners.approve', {user: license.id}))
-    }
-    
-    const disapprove = () => {
-        router.get(route('practitioners.disapprove', {user: license.id}))
-
-    }
+export default function ({license, showOwner}) {
 
     const modal = useModal()
 
     return (
         <tr>
+            {
+                showOwner
+
+                &&
+
+                <td>
+                    <Link href={route('practitioners.show', {user: license.owner.id})} className='link'>{license.owner.full_name}</Link>
+                </td>
+            }
             <td>
                 <a href={license.license_image} target='_blank' className='text-primary flex space-x-4 items-center'>View License</a>
             </td>

@@ -80,9 +80,9 @@ export default function ({users, totalDoctors}) {
                                         <th className='min-w-52'>Name</th>
                                         <th >Email</th>
                                         <th >Phone</th>
-                                        <th>License No.</th>
+                                        {/* <th>License No.</th>
                                         <th className='min-w-32'>Licence Doc</th>
-                                        <th className='min-w-32'>Other Document</th>
+                                        <th className='min-w-32'>Other Document</th> */}
                                         <th>Status</th>
                                         <th>Consultations</th>
                                         <th>Earnings</th>

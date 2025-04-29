@@ -24,6 +24,10 @@ export default function () {
                     <li>
                         <SidebarItem name={'Health Practitioners'} url={route('practitioners')} is_current={route().current('practitioners.*')} icon={SethoscopeIcon} />
                     </li>
+
+                    <li>
+                        <SidebarItem name={'Medical Licenses'} url={route('licenses')} is_current={route().current('licenses.*')} icon={CheckBadgeIcon} />
+                    </li>
                     
                     <li>
                         <SidebarItem name={'Patients'} url={route('patients')} is_current={route().current('patients.*')} icon={HospitalBedIcon} />

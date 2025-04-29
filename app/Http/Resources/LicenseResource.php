@@ -22,7 +22,8 @@ class LicenseResource extends JsonResource
             'status' => $this->status,
             'expiration_date' => $this->expiration_date ? Date::parse($this->expiration_date)->format('jS F Y') : null,
             'expires_at' => $this->expiration_date,
-            'qualification' => new QualificationResource($this->qualification)
+            'qualification' => new QualificationResource($this->qualification),
+            'owner' => new UserResource($this->owner),
         ];
     }
 }

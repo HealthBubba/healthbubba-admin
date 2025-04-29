@@ -9,6 +9,7 @@ use App\Enums\TransactionTypes;
 use App\Http\Resources\TransactionResource;
 use App\Models\Appointment;
 use App\Models\Order;
+use App\Models\PatientMedication;
 use App\Models\Transaction;
 use App\Models\User;
 use Flowframe\Trend\Trend;
@@ -28,6 +29,7 @@ class DashboardController extends Controller
         $completed = Appointment::isCompleted()->count();
         $transactions = TransactionResource::collection(Transaction::withSerialNo()->limit(5)->get());
         $revenue = Transaction::whereStatus('confirmed')->sum('amount'); 
+        $medications = PatientMedication::count();
         $orders = Order::count();
 
         $pending_orders = Transaction::count();
@@ -38,7 +40,7 @@ class DashboardController extends Controller
             'ios' => Transaction::whereSource(Source::IOS)->count()
         ];
         
-        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed', 'revenue', 'sources', 'orders', 'pending_orders'));
+        return Inertia::render('Dashboard', compact('patients', 'practitioners', 'appointments', 'transactions', 'pending', 'completed', 'revenue', 'sources', 'orders', 'pending_orders', 'medications'));
     }
 
     function trends(Request $request){
