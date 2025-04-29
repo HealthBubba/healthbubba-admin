@@ -14,12 +14,17 @@ export default function ({license, showOwner}) {
     return (
         <tr>
             {
-                (showOwner && license.owner)
+                (showOwner)
 
                 &&
-
                 <td>
-                    <Link href={route('practitioners.show', {user: license.owner.id})} className='link'>{license.owner.full_name}</Link>
+                    {
+                        !!license.owner
+
+                        &&
+
+                        <Link href={route('practitioners.show', {user: license.owner.id})} className='link'>{license.owner.full_name}</Link>
+                    }
                 </td>
             }
             <td>
