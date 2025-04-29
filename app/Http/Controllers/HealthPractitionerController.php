@@ -20,8 +20,7 @@ use Inertia\Inertia;
 class HealthPractitionerController extends Controller {
     
     function index(Request $request){
-        $users = User::whereType(Role::DOCTOR)
-                    ->when($request->keyword, function($query, $keyword) {
+        $users = User::when($request->keyword, function($query, $keyword) {
                         $query->where('first_name', 'LIKE', "%$keyword%")
                             ->orWhere('last_name', 'LIKE', "%$keyword%")
                             ->orWhere('email', 'LIKE', "%$keyword%");
@@ -35,7 +34,7 @@ class HealthPractitionerController extends Controller {
                     })
                     ->when($request->endDate && $request->startDate, function($query) use($request){
                         $query->whereBetween('created_at', [$request->startDate, $request->endDate]);
-                    })->withSerialNo()->latest()->paginate();
+                    })->withSerialNo()->whereType(Role::DOCTOR)->latest()->paginate();
 
                     
         return Inertia::render('HealthPractitioners/Index', [
@@ -45,6 +44,7 @@ class HealthPractitionerController extends Controller {
     }
 
     function show(Doctor $user) {
+
         return Inertia::render('HealthPractitioners/Show', [
             'user' => new PractitionerResource($user)
         ]);

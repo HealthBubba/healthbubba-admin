@@ -6,6 +6,7 @@ use App\Enums\Status;
 use App\Http\Resources\Practitioner\PractitionerAvailabilityResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Date;
 
 class PractitionerResource extends JsonResource
 {
@@ -42,6 +43,9 @@ class PractitionerResource extends JsonResource
             'consultations' => $this->doctorsAppointments()->count(),
             'availabilities' => PractitionerAvailabilityResource::collection($this->availabilities),
             'specialties' => $this->specialties,
+            'doctor_signature' => $this->doctor_signature,
+            'doctor_signature_file_name' => $this->doctor_signature_file_name,
+            'doctor_signature_date' => Date::parse($this->doctor_signature_date)->format('jS F, Y h:i A'),
         ];
     }
 

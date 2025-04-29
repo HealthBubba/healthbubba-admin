@@ -62,6 +62,36 @@ export default function () {
 
                 <div className='space-y-3'>
                     <div>
+                        <h4 className='font-semibold'>Signature</h4>
+                    </div>
+
+                    <div className="">
+                        { 
+                            user.doctor_signature
+
+                            ?
+
+                            <>
+                                <div className="space-y-3">
+                                    <a href={user.doctor_signature} target='_blank'>
+                                        <img className='max-w-[30%]'  src={user.doctor_signature} />
+                                    </a>
+                                    <p><strong>Uploaded At:</strong> {user.doctor_signature_date}</p>
+                                </div>
+                            </>
+
+                            :
+
+                            <p className="text-gray-500">No Signature Uploaded</p>
+                            
+                        }
+                    </div>
+                </div
+                >
+                <div className="border"></div>
+
+                <div className='space-y-3'>
+                    <div>
                         <h4 className='font-semibold'>Specialties</h4>
                     </div>
 

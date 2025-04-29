@@ -9,7 +9,7 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { useMemo } from 'react';
 
-export default function Dashboard({patients, practitioners, revenue, appointments, pending, transactions, orders, sources, completed, pending_orders}) {
+export default function Dashboard({patients, practitioners, revenue, appointments, pending, transactions, orders, sources, completed, pending_orders, medications}) {
 
     const {props} = usePage()
 
@@ -41,7 +41,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <StatsItem title={'Total Appointments'} amount={appointments} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Appointments'} amount={completed} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled  Appointments'} amount={pending} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Ongoing Orders'} amount={pending_orders} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Total Medications'} amount={medications} direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="md:grid gap-4 grid-cols-2">
