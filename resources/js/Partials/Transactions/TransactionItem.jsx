@@ -1,7 +1,6 @@
 import { Badge } from '@/Components/Badge'
 import Currency from '@/Components/Currency'
 import Swal from '@/Components/Swal'
-import td from '@/Components/Table/td'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid'
 import { Link, router } from '@inertiajs/react'
