@@ -15,7 +15,7 @@ export default function AppointmentItem({appointment}) {
             <td>
                 <Link href={route('practitioners.show', {user: appointment.doctor?.id})} className='link' >{appointment.doctor?.full_name}</Link>
             </td>
-            <TableLink href={route('appointments.show', {appointment: appointment.id})}>Payment</TableLink>
+            <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.complain}</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.status ? 'Completed' : 'Pending'}</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.date}</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>

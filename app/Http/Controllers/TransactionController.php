@@ -11,13 +11,19 @@ class TransactionController extends Controller
 {
     function index(Request $request){
         $transactions = Transaction::withSerialNo()
+                            ->with(['user'])
                             ->when($request->endDate && $request->startDate, function($query) use($request){
                                 $query->whereBetween('created_at', [$request->startDate, $request->endDate]);
                             })
                             ->latest()->paginate();
+
+        $total = Transaction::count();
                             
         return Inertia::render('Transactions/Index', [
-            'transactions' => TransactionResource::collection($transactions)
+            'transactions' => TransactionResource::collection($transactions),
+            'stats' => [
+                'total' => $total,
+            ]
         ]);
     }
 

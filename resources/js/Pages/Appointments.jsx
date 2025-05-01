@@ -81,9 +81,9 @@ export default function ({appointments, stats}) {
                                 <tr>
                                     <th>Patient name</th>
                                     <th >Practitioner Name</th>
-                                    <th>Type</th>
+                                    <th>Reason</th>
                                     <th>Status</th>
-                                    <th>Order Date</th>
+                                    <th>Date</th>
                                     <th>Payment Status</th>
                                     <th>Amount</th>
                                 </tr>

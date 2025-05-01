@@ -3,18 +3,24 @@ import Pagination from '@/Components/Pagination';
 import useSearchParams from '@/Hooks/useSearchParams';
 import SettingIcon from '@/Icons/SettingIcon';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import TransactionItem from '@/Partials/Transactions/TransactionItem';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 import { Head, router } from '@inertiajs/react';
 
-export default function ({transactions}) {
+export default function ({transactions, stats}) {
 
     const params = useSearchParams()
 
     return (
         <AuthenticatedLayout title="Transactions">
             <Head title='Transactions' />
+
+            <div className="grid md:grid-cols-4 grid-cols-1 gap-3 mb-5">
+                <StatsItem title={'Total Transactions'} amount={stats.total} direction={Direction.up} percentage={36} />
+            </div>
+
             <div className="card p-0 rounded-xl">
                 <div className="justify-between items-center md:flex p-4">
                     <div>
@@ -78,6 +84,7 @@ export default function ({transactions}) {
                                 <th>Patient name</th>
                                 {/* <th>Practitioner Name</th> */}
                                 <th>Type</th>
+                                <th>Type ID</th>
                                 <th>Amount</th>
                                 <th>Status</th>
                                 {/* <th>Payment Method</th> */}

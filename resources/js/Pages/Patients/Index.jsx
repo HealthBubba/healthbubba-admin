@@ -81,7 +81,7 @@ export default function ({patients, totalPatients}) {
                                     <th>Phone No.</th>
                                     <th>Status</th>
                                     <th>Consultations</th>
-                                    <th>Total Payments</th>
+                                    <th>Requests</th>
                                     <th>Joined At</th>
                                     <th></th>
                                 </tr>

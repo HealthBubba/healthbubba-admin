@@ -28,6 +28,7 @@ class TransactionResource extends JsonResource
             'appointment' => $this->appointment ? new AppointmentResource($this->whenLoaded('appointment')) : null,
             'tests' => $this->test ? new TestResource($this->test) : null,
             'medication' => $this->medication ? new MedicationResource($this->medication) : null,
+            'owner_id' => $this->test?->id ?? $this->medication?->id ?? $this->appointment?->id,
         ];
     }
 }

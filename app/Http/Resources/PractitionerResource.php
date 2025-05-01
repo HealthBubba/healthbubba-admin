@@ -25,7 +25,7 @@ class PractitionerResource extends JsonResource
             'full_name' => $this->fullname,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'phone' => $this->phone,
+            'phone' => "{$this->country_code}{$this->phone}",
             'dob' => $this->dob,
             'sex' => $this->sex,
             'type' => $this->type,

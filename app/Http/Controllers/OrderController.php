@@ -28,7 +28,8 @@ class OrderController extends Controller
             $query->where('reference', $keyword)
                 ->orWhereRelation('user', 'first_name', 'LIKE', "%$keyword%")
                 ->orWhereRelation('user', 'last_name', 'LIKE', "%$keyword%")
-                ->orWhereRelation('user', 'email', 'LIKE', "%$keyword%");
+                ->orWhereRelation('user', 'email', 'LIKE', "%$keyword%")
+                ->orWhereRelation('user', 'phone', 'LIKE', "%$keyword%");
         })
         ->latest()
         ->paginate();

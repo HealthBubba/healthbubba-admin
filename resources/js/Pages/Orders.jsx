@@ -67,31 +67,6 @@ export default function ({orders, total, completed, pending, revenue}) {
                                 </div>
                             </div>
                         </div>
-
-                        <div>
-                            {/* <Menu>
-                                <MenuButton className="border-2 p-1 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                    <SettingIcon className='size-5' />         
-                                    <span className='font-medium'>All Type</span>
-                                    <ChevronDownIcon className='size-3' />         
-                                </MenuButton>
-                                <MenuItems transition anchor="bottom start" className="min-w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                    <div className='p-1'>
-                                        <MenuItem >
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Tests</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Medications</button>
-                                        </MenuItem>
-                                    </div>
-                                </MenuItems>
-                            </Menu> */}
-                        </div>
                     </div>
 
                     <div className="border-t ml-4"></div>
@@ -102,6 +77,9 @@ export default function ({orders, total, completed, pending, revenue}) {
                                 <tr>
                                     <th>Reference</th>
                                     <th>Patient</th>
+                                    <th>Email Address</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
                                     <th>Amount</th>
                                     <th>Status</th>
                                     <th>Created At</th>
