@@ -23,7 +23,8 @@ class HealthPractitionerController extends Controller {
         $users = User::when($request->keyword, function($query, $keyword) {
                         $query->where('first_name', 'LIKE', "%$keyword%")
                             ->orWhere('last_name', 'LIKE', "%$keyword%")
-                            ->orWhere('email', 'LIKE', "%$keyword%");
+                            ->orWhere('email', 'LIKE', "%$keyword%")
+                            ->orWhere('phone', 'LIKE', "%$keyword%");
                     })
                     ->when($request->status, function($query, $filter) {
                         match ($filter) {

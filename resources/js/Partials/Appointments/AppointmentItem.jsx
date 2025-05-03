@@ -1,8 +1,6 @@
 import { Badge } from '@/Components/Badge'
 import Currency from '@/Components/Currency'
 import TableLink from '@/Components/Table/TableLink'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import { Link } from '@inertiajs/react'
 import React from 'react'
 

@@ -84,7 +84,7 @@ export default function ({appointments, stats}) {
                                     <th>Reason</th>
                                     <th>Status</th>
                                     <th>Date</th>
-                                    <th>Payment Status</th>
+                                    {/* <th>Payment Status</th> */}
                                     <th>Amount</th>
                                 </tr>
                             </thead>
