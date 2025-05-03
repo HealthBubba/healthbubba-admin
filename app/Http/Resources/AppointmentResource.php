@@ -22,6 +22,7 @@ class AppointmentResource extends JsonResource
             'patient' => new PatientResource($this->patient),
             'doctor' => new PractitionerResource($this->doctor),
             // 'transaction' => new TransactionResource($this->whenLoaded()),
+            'amount' => $this->transaction->amount,
             'payment_status' => $this->is_appointment_paid,
             'date' => Date::parse("{$this->date} {$this->time}")->format('jS F, Y'),
             'time' => Date::createFromTime($hour, $minute, $second)->format('h:m A'),
