@@ -7,8 +7,8 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class AppointmentController extends Controller
-{
+class AppointmentController extends Controller {
+    
     function index(Request $request){
         $appointments = Appointment::when($request->status, function($query, $status){
             $query->whereStatus($status);
@@ -21,7 +21,7 @@ class AppointmentController extends Controller
                 ->orWhereRelation('doctor', 'last_name', 'LIKE', "%$keyword%")
                 ->orWhereRelation('patient', 'email', 'LIKE', "%$keyword%")
                 ->orWhereRelation('doctor', 'email', 'LIKE', "%$keyword%");
-        })->latest('date')->paginate();
+        })->with(['transaction'])->latest('date')->paginate();
         $stats = [
             'total' => Appointment::count(),
             'completed' => Appointment::whereIsAppointmentPaid(true)->count(),
