@@ -46,6 +46,7 @@ class PractitionerResource extends JsonResource
             'doctor_signature' => $this->doctor_signature,
             'doctor_signature_file_name' => $this->doctor_signature_file_name,
             'doctor_signature_date' => Date::parse($this->doctor_signature_date)->format('jS F, Y h:i A'),
+            'signature_verified' => $this->isSignature_verified,
         ];
     }
 

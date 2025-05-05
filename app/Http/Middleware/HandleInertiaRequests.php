@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
             'toast' =>  $request->session()->get('toast'),
             'payload' => $request->session()->get('payload'),
             'roles' => Role::options(),
+            'api' => env('API_BASE'),
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

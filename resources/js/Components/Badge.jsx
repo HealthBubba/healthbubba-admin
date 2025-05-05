@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 
 const states = {
     success: ['successfull', 'verified', 'confirmed', 'paid'],
-    warning: ['pending', 'suspended'],
+    warning: ['pending', 'suspended', 'unverified'],
     danger: ['failed',],
     info: ['unpaid']
 }
@@ -23,6 +23,6 @@ export const Badge = ({children, status = '', className, ...props}) => {
     })
 
     return (
-        <span className={`inline-flex uppercase items-center gap-x-1.5 py-[3px] px-3 rounded-full text-[12px] font-medium border ${color} ${className}`} {...props}>{children}</span>
+        <span className={`inline-flex uppercase items-center gap-x-1.5 py-1.5 leading-none px-3 rounded-lg text-[12px] font-semibold border ${color} ${className}`} {...props}>{children}</span>
     )
 }

@@ -55,7 +55,7 @@ export const PractitionerItem = ({user}) => {
                 </Disclose>
             </td> */}
             <TableLink href={route('practitioners.show', {user: user.id})}>
-                <Badge className='capitalize' status={user.status} >{user.status}</Badge>
+                <Badge status={user.status} >{user.status}</Badge>
             </TableLink>
             <TableLink href={route('practitioners.show', {user: user.id})}>{user.consultations}</TableLink>
             <TableLink href={route('practitioners.show', {user: user.id})}><Currency />{user.earnings.toLocaleString()}</TableLink>
