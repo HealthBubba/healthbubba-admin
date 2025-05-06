@@ -2,7 +2,8 @@ import { Badge } from '@/Components/Badge'
 import Button from '@/Components/Button/Button'
 import Disclose from '@/Components/Disclose'
 import Swal from '@/Components/Swal'
-import { usePage } from '@inertiajs/react'
+import { router, usePage } from '@inertiajs/react'
+import axios from 'axios'
 import FsLightbox from 'fslightbox-react'
 import React from 'react'
 import {useState} from 'react'
@@ -17,18 +18,11 @@ export default function ({user}) {
 
     const updateStatus = (status, close) => {
         status ? setLoading(true) : setLoadingDisapproved(true)
-        fetch(`${api}/admin/signature/update-status`, {
-            method: "PUT",
-            body: {
-                userId: user.id,
-                isVerified: status
+        router.get(route('signature.status', {user: user.id}), {status: status}, {
+            onFinish: () => {
+                setLoading(false)
+                setLoadingDisapproved(false)
             }
-        }).then(res => toast.success(status ? 'Signature approved successfully' : 'Signature disapproved successfully'))
-        .catch(err => toast.error(err))
-        .finally(() => {
-            setLoading(false)
-            setLoadingDisapproved(false)
-            close()
         })
     }
 
