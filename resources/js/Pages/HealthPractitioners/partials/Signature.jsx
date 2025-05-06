@@ -18,7 +18,7 @@ export default function ({user}) {
 
     const updateStatus = (status, close) => {
         status ? setLoading(true) : setLoadingDisapproved(true)
-        router.get(route('signature.status', {user: user.id}), {status: status}, {
+        router.post(route('signature.status', {user: user.id}), {status: !!status}, {
             onFinish: () => {
                 setLoading(false)
                 setLoadingDisapproved(false)

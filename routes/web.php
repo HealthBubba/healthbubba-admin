@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function(){
             });
 
             Route::prefix('signatures')->group(function(){
-                Route::get('status', [SignatureController::class, 'status'])->name('signature.status');
+                Route::post('status', [SignatureController::class, 'status'])->name('signature.status');
             });
 
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');
