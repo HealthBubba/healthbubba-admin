@@ -41,7 +41,7 @@ export default function ({user}) {
                         </ul>
 
                         <div className="space-x-4">
-                            <Swal title='Are you sure you wish to approve this signature?' onConfirm={() => updateStatus(false)} className='btn btn-primary'>Approve</Swal>
+                            <Swal title='Are you sure you wish to approve this signature?' onConfirm={() => updateStatus(true)} className='btn btn-primary'>Approve</Swal>
                             <Swal title='Are you sure you wish to disapprove this signature?' onConfirm={() => updateStatus(false)} className='btn btn-danger' >Disapprove</Swal>
                         </div>
                     </div>
