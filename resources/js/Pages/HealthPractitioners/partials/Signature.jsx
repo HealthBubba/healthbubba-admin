@@ -12,8 +12,11 @@ export default function ({user}) {
 
     const [show, setShow] = useState(false)
     const {api} = usePage().props
+    const [loading, setLoading] = useState(false)
+    const [loadingDisapproved, setLoadingDisapproved] = useState(false)
 
-    const updateStatus = (status) => {
+    const updateStatus = (status, close) => {
+        status ? setLoading(true) : setLoadingDisapproved(true)
         fetch(`${api}/admin/signature/update-status`, {
             method: "PUT",
             body: {
@@ -22,6 +25,11 @@ export default function ({user}) {
             }
         }).then(res => toast.success(status ? 'Signature approved successfully' : 'Signature disapproved successfully'))
         .catch(err => toast.error(err))
+        .finally(() => {
+            setLoading(false)
+            setLoadingDisapproved(false)
+            close()
+        })
     }
 
     return (
@@ -41,8 +49,8 @@ export default function ({user}) {
                         </ul>
 
                         <div className="space-x-4">
-                            <Swal title='Are you sure you wish to approve this signature?' onConfirm={() => updateStatus(true)} className='btn btn-primary'>Approve</Swal>
-                            <Swal title='Are you sure you wish to disapprove this signature?' onConfirm={() => updateStatus(false)} className='btn btn-danger' >Disapprove</Swal>
+                            <Swal loading={loading} title='Are you sure you wish to approve this signature?' onConfirm={(close) => updateStatus(true, close)} className='btn btn-primary'>Approve</Swal>
+                            <Swal loading={loadingDisapproved} title='Are you sure you wish to disapprove this signature?' onConfirm={(close) => updateStatus(false, close)} className='btn btn-danger' >Disapprove</Swal>
                         </div>
                     </div>
 
