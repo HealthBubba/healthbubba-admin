@@ -22,6 +22,7 @@ export default function ({user}) {
             onFinish: () => {
                 setLoading(false)
                 setLoadingDisapproved(false)
+                close()
             }
         })
     }
