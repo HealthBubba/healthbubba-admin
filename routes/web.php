@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Middleware\HandleInertiaRequests;
@@ -61,6 +62,10 @@ Route::middleware('auth')->group(function(){
             Route::prefix('licenses')->group(function(){
                 Route::get('', [HealthPractitionerController::class, 'licenses'])->name('practitioners.licenses');
                 Route::post('', [LicenseController::class, 'update'])->withoutMiddleware(HandleInertiaRequests::class)->name('practitioners.licenses.create');
+            });
+
+            Route::prefix('signatures')->group(function(){
+                Route::get('status', [SignatureController::class, 'status'])->name('signature.status');
             });
 
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');

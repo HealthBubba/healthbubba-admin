@@ -66,7 +66,7 @@ export default function ({users, totalDoctors}) {
                                 <div className='px-2'>
                                     <MagnifyingGlassIcon className='size-4 text-muted' />
                                 </div>
-                                <input type="text" onBlur={e => router.reload({data: {keyword: e.currentTarget.value}})} placeholder='Search health practitioners' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
+                                <input type="text" onChange={e => router.reload({data: {keyword: e.currentTarget.value}})} placeholder='Search health practitioners' className='pl-0 border-0 bg-transparent focus:ring-0 text-sm' />
                             </div>
                         </div>
                     </div>
