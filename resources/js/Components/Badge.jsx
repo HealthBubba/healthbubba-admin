@@ -2,9 +2,9 @@ import React, { useMemo } from 'react'
 
 const states = {
     success: ['successfull', 'verified', 'confirmed', 'paid'],
-    warning: ['pending', 'suspended', 'unverified'],
+    warning: ['pending', 'suspended', ],
     danger: ['failed',],
-    info: ['unpaid']
+    info: ['unpaid', 'unverified']
 }
 
 export const Badge = ({children, status = '', className, ...props}) => {
