@@ -52,9 +52,8 @@ class PractitionerResource extends JsonResource
 
     function status(){
         if(!$this->is_active) return Status::SUSPENDED->value;
-        // && $this->licence_number_verified
         if($this->is_doctor_verified) return Status::VERIFIED->value;
-        return Status::PENDING->value;
+        return Status::UNVERIFIED->value;
     }
 
 }

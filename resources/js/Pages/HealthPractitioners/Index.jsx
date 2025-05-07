@@ -52,7 +52,7 @@ export default function ({users, totalDoctors}) {
 
                                     <div className='p-1'>
                                         <MenuItem>
-                                            <button onClick={e => router.reload({data: {status: 'pending'}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Pending</button>
+                                            <button onClick={e => router.reload({data: {status: 'unverified'}})} className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Unverified</button>
                                         </MenuItem>
                                     </div>
                                 </MenuItems>

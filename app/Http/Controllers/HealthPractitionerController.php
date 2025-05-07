@@ -29,7 +29,7 @@ class HealthPractitionerController extends Controller {
                     ->when($request->status, function($query, $filter) {
                         match ($filter) {
                             'verified' => $query->where('is_doctor_verified', true)->where('is_active', true),
-                            'pending' => $query->where('is_doctor_verified', false)->where('is_active', true),
+                            'unverified' => $query->where('is_doctor_verified', false)->where('is_active', true),
                             default => null
                         };
                     })
