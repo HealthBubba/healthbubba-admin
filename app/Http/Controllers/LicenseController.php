@@ -50,7 +50,6 @@ class LicenseController extends Controller
             toast($data['message'])->success();
             return back();
         }
-        
 
         if(isset($data['ok']) && !$data['ok']) {
             toast($data['message'] ?? 'Invalid request response')->error();

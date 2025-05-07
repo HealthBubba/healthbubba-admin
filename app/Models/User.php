@@ -123,4 +123,8 @@ class User extends Authenticatable {
         return $this->hasMany(PatientMedication::class, 'patient_id', 'id');
     }
 
+    function licenses(){
+        return $this->hasMany(License::class, 'user_id');
+    }
+
 }
