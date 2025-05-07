@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Http;
 class SignatureController extends Controller {
     
     function status(Request $request, User $user){
-        $data =  $request->only('status');
+        $data =  $request->only('status', 'reason');
             
         $response = Http::baseURL(env('API_BASE'))->put('/admin/signature/update-status', [
             'isVerified' => $request->status,
+            'reason' => $request->reason,
             'userId' => $user->id
         ]);
 

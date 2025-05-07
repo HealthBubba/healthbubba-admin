@@ -40,7 +40,7 @@ class LicenseController extends Controller
     }
 
     function update(Request $request){
-        $data =  $request->only('licenseId', 'newStatus');
+        $data =  $request->only('licenseId', 'newStatus', 'reason');
             
         $response = Http::baseURL(env('API_BASE'))->put('admin/licenses/update-status', $data);
 

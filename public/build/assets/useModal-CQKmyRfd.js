@@ -1,0 +1,1 @@
+import{r as l}from"./app-Q7ctglVU.js";const r=(e={isCloseable:!0,defaultValue:!1})=>{const[o,s]=l.useState(e.defaultValue),[t,a]=l.useState(e.isCloseable);return{show:o,open:()=>s(!0),close:()=>t?s(!1):null,closeable:t}};export{r as u};

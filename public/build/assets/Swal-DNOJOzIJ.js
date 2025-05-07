@@ -1,0 +1,6 @@
+import{j as s}from"./app-Q7ctglVU.js";import{M as j}from"./Modal-T_MglTo4.js";import{u as p}from"./useModal-CQKmyRfd.js";import{B as l}from"./Button-Bg7nIKS2.js";function v({children:r,className:a="",title:o="Are you sure?",caption:i="Are you sure you wish to proceed?",type:c="danger",onConfirm:t=e=>{},cancelLabel:d="Cancel",confirmLabel:m="Proceed",loading:x=!1,onCancel:n=e=>{e()}}){const e=p(),u=()=>{n&&n(e.close),e.close()},h=()=>t(e.close);return s.jsxs(s.Fragment,{children:[s.jsx("span",{role:"button",onClick:e.open,className:a,children:r}),s.jsx(j,{...e,children:s.jsxs("div",{className:"space-y-5",children:[s.jsxs("div",{className:"space-y-1",children:[s.jsx("p",{className:"text-lg font-medium",children:o}),s.jsx("p",{className:"text-[#4B5563] md:text-base",children:i})]}),s.jsxs("div",{className:"flex justify-end space-x-3",children:[s.jsx("div",{children:s.jsx(l,{onClick:u,className:"btn-light",children:d})}),s.jsx("div",{children:s.jsx(l,{onClick:h,loading:x,className:`
+                                    ${c=="success"&&"btn-success"}
+                                    ${c=="warning"&&"btn-warning"}
+                                    ${c=="light"&&"btn-light"}
+                                    ${c=="danger"&&"btn-danger"}
+                                `,children:m})})]})]})})]})}export{v as S};
