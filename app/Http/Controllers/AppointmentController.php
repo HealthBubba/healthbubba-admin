@@ -22,6 +22,7 @@ class AppointmentController extends Controller {
                 ->orWhereRelation('patient', 'email', 'LIKE', "%$keyword%")
                 ->orWhereRelation('doctor', 'email', 'LIKE', "%$keyword%");
         })->with(['transaction'])->latest('date')->paginate();
+        
         $stats = [
             'total' => Appointment::count(),
             'completed' => Appointment::whereIsAppointmentPaid(true)->count(),
