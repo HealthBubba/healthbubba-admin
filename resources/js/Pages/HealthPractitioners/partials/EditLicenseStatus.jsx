@@ -19,7 +19,7 @@ export default function ({license, ...modal}) {
     const update = (e) => {
         e.preventDefault()  
         form.post(route('practitioners.licenses.create', {
-            user: user.id
+            user: license.owner.id
         }))
     }
 
