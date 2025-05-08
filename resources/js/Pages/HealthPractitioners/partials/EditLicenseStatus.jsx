@@ -21,7 +21,11 @@ export default function ({license, ...modal}) {
         e.preventDefault()  
         form.post(route('practitioners.licenses.create', {
             user: license.owner.id
-        }))
+        }), {
+            onSuccess(){
+                modal.close()
+            }
+        })
     }
 
     return (
