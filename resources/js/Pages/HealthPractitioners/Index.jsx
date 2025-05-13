@@ -28,7 +28,7 @@ export default function ({users, totalDoctors}) {
                     <div className="p-4 md:flex md:space-x-2">
                         <div>
                             <Menu>
-                                <MenuButton className="border-2 p-1 h-full px-3 font-medium items-center space-x-1 text-sm rounded-lg inline-flex">
+                                <MenuButton className="border-2 p-1 h-full bg-[#F9FAFB] px-3 font-medium items-center space-x-1 text-sm rounded-lg inline-flex">
                                     <SettingIcon className='size-5' />         
                                     <span>Filter</span>
                                     <ChevronDownIcon className='size-3' />         

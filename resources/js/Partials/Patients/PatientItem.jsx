@@ -24,9 +24,9 @@ export default function PatientItem({patient}) {
             {/* <td>Jane Smith</td> */}
             <TableLink href={route('patients.show', {user: patient.id})}>{patient.phone}</TableLink>
             <TableLink href={route('patients.show', {user: patient.id})}>
-                <Badge className='capitalize' status={patient.status} >{patient.status}</Badge>
+                <Badge status={patient.status} >{patient.status}</Badge>
             </TableLink>
-            <TableLink href={route('patients.show', {user: patient.id})}>{patient.appointments_count}</TableLink>
+            <TableLink href={route('patients.show', {user: patient.id})}>{patient.requests}</TableLink>
             <TableLink href={route('patients.show', {user: patient.id})}><Currency />{patient.transactions_sum.toLocaleString()}</TableLink>
             <TableLink href={route('patients.show', {user: patient.id})}>{patient.joined_date}</TableLink>
             <td>

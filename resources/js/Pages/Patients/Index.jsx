@@ -80,8 +80,8 @@ export default function ({patients, totalPatients}) {
                                     <th>Email Address</th>
                                     <th>Phone No.</th>
                                     <th>Status</th>
-                                    <th>Consultations</th>
                                     <th>Requests</th>
+                                    <th>Transactions</th>
                                     <th>Joined At</th>
                                     <th></th>
                                 </tr>

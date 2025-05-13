@@ -32,7 +32,7 @@ class PatientResource extends JsonResource
             'is_active' => $this->is_active,
             'role' => $this->type,
             'appointments' => $appointments,
-            'appointments_count' => $appointments->count() + $this->orders->count(),
+            'requests' => $appointments->count() + $this->orders->count(),
             'next_appointment_date' => $appointments->where('date', '>', now())->first('date'),
             'transactions_sum' => $this->payments->sum('amount'),
             'transactions_count' => $this->transactions()->whereStatus('confirmed')->count(),

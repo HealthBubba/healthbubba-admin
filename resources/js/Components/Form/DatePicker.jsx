@@ -24,8 +24,8 @@ export default ({val = { startDate: null, endDate: null }, onChange: isChanged =
     }
 
     return (
-        <div className={`border-2 h-full font-medium items-center space-x-1 text-sm rounded-lg inline-flex ${className}`}>
-            <label className="inline-flex px-3 p-1 cursor-pointer items-center space-x-1">
+        <div className={`border-2 h-full font-medium items-center bg-[#F9FAFB] space-x-1 text-sm rounded-lg inline-flex ${className}`}>
+            <label className="inline-flex px-3 p-1 cursor-pointer w-48 items-center space-x-1">
                 <CalendarDateRangeIcon className='size-5' />         
                 <Datepicker 
                     value={value}
