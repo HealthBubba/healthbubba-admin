@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 
 export default function () {
 
-    const {props: {user: {data: user}}} = usePage()
+    const {props: {user}} = usePage()
 
     const form = useForm({
         first_name: user.first_name,
