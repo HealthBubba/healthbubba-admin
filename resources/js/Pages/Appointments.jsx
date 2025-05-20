@@ -23,46 +23,6 @@ export default function ({appointments, stats}) {
 
                 <div className="card p-0 rounded-xl">
                     <div className="p-4 md:flex space-y-2 md:space-x-2">
-                        {/* <div>
-                            <Menu>
-                                <MenuButton className="border-2 p-1 font-medium h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex">
-                                    <SettingIcon className='size-5' />         
-                                    <span >All Appointments</span>
-                                    <ChevronDownIcon className='size-3' />         
-                                </MenuButton>
-                                <MenuItems transition anchor="bottom start" className="min-w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                    <div className='p-1'>
-                                        <MenuItem >
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">All Appointments</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Confirmed Orders</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Cancelled Orders</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Completed Orders</button>
-                                        </MenuItem>
-                                    </div>
-                                </MenuItems>
-                            </Menu>
-                        </div> */}
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                                 <div className='px-2'>
@@ -88,7 +48,9 @@ export default function ({appointments, stats}) {
                             </thead>
 
                             <tbody>
-                                {appointments.data.map(appointment => <AppointmentItem key={appointment.no} appointment={appointment} />)}
+                                {
+                                    appointments.data.map(appointment => <AppointmentItem key={appointment.id} appointment={appointment} />)
+                                }
                             </tbody>
                         </table>
                     </div>

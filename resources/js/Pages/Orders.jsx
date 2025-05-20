@@ -20,7 +20,7 @@ export default function ({orders, total, completed, pending, revenue}) {
                     <StatsItem title={'Total Orders'} amount={total} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Orders'} amount={completed} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled Orders'} amount={pending} direction={Direction.up} percentage={36} />
-                    <StatsItem title={'Revenue Generated'} amount={revenue} isPrice direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Transactions Value'} amount={revenue} isPrice direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="card p-0 rounded-xl">

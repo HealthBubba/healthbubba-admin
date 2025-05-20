@@ -6,6 +6,7 @@ import { Badge } from '@/Components/Badge';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import Swal from '@/Components/Swal';
 import Disclose from '@/Components/Disclose';
+import { access_levels } from '@/Constants/Roles';
 
 
 export default function ({children, title}) {
@@ -22,7 +23,7 @@ export default function ({children, title}) {
         router.get(route('patients.verify-email', {user: patient.id}))
     }
 
-    const {props: {patient}} = usePage()
+    const {props: {patient, auth}} = usePage()
 
     return (
         <AuthenticatedLayout title={`${patient.full_name} - ${title}`} >
@@ -89,12 +90,14 @@ export default function ({children, title}) {
                             <li className={`p-2  ${route().current() == 'patients.prescriptions' ? 'border-primary border-b-4' : ''}`}>
                                 <Link href={route('patients.prescriptions', {user: patient.id})} >Prescriptions</Link>
                             </li>
-                            <li className={`p-2  ${route().current() == 'patients.records' ? 'border-primary border-b-4' : ''}`}>
-                                <Link href={route('patients.records', {user: patient.id})} >Medical Records</Link>
-                            </li>
-                            <li className={`p-2  ${route().current() == 'patients.conditions' ? 'border-primary border-b-4' : ''}`}>
-                                <Link href={route('patients.conditions', {user: patient.id})} >Medical Conditions</Link>
-                            </li>
+                            <Disclose show={auth.user.access_level == access_levels.superadmin} > 
+                                <li className={`p-2  ${route().current() == 'patients.records' ? 'border-primary border-b-4' : ''}`}>
+                                    <Link href={route('patients.records', {user: patient.id})} >Medical Records</Link>
+                                </li>
+                                <li className={`p-2  ${route().current() == 'patients.conditions' ? 'border-primary border-b-4' : ''}`}>
+                                    <Link href={route('patients.conditions', {user: patient.id})} >Medical Conditions</Link>
+                                </li>
+                            </Disclose>
                         </ul>
                     </div>
                 </div>

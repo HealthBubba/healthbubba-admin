@@ -5,6 +5,10 @@ export const roles = {
     viewer: 'viewer'
 }
 
+export const access_levels = {
+    superadmin: "super_admin",
+}
+
 export const permissions = {
     create: 'create',
     read: 'read',

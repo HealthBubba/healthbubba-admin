@@ -21,7 +21,7 @@ export default function TransactionItem({transaction}) {
             </td>
             <td>{transaction.user.email}</td>
             <td>{transaction.type}</td>
-            <td>{transaction.owner_id}</td>
+            {/* <td>{transaction.owner_id}</td> */}
             <td><Currency /> {transaction.amount.toLocaleString()}</td>
             <td>
                 <Badge status={transaction.status}>{transaction.status}</Badge>
