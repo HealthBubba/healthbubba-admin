@@ -1,11 +1,14 @@
 import React from 'react'
 import PatientLayout from './Layouts/PatientLayout'
+import HealthInfo from '@/Partials/Patients/HealthInfo';
+import PastCondition from '@/Partials/Patients/PastCondition';
+import CurrentHealthCondition from '@/Partials/Patients/CurrentHealthCondition';
 
-export default function ({patient}) {
+export default function ({patient, currentHealth, pastConditions}) {
 
     return (
         <PatientLayout patient={patient} title="Overview" >
-            <div className='space-y-10'>
+            <div className="space-y-10">
                 <div className='space-y-3' >
                     <div>
                         <h4 className='font-semibold'>Personal Information</h4>
@@ -49,6 +52,29 @@ export default function ({patient}) {
                             <p>{patient.address}</p>
                         </div>
                     </div>
+                </div>
+
+                <div className='space-y-3'>
+                    <div>
+                        <h4 className='font-semibold'>Current Health Condition</h4>
+                    </div>
+
+
+                    <CurrentHealthCondition currentHealth={currentHealth} />                
+                </div>
+
+                <div className='space-y-3'>
+                    <div>
+                        <h4 className='font-semibold'>Past Health Condition</h4>
+                    </div>
+
+                    {
+                        pastConditions.map((condition) => {
+                            return (
+                                <PastCondition condition={condition} />
+                            )
+                        })
+                    }
                 </div>
             </div>
         </PatientLayout>

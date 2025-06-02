@@ -10,6 +10,8 @@ use App\Http\Resources\PatientResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\PatientCurrentHealth;
+use App\Models\PatientPastCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -46,8 +48,14 @@ class PatientController extends Controller {
     }
 
     function show(Request $request, User $user) {
+        $user->load(['currentHealth', 'pastCondition']);
+        $currentHealth = $user->currentHealth;
+        $pastConditions = $user->pastCondition;
+        
         return Inertia::render('Patients/Details', [
             'patient' => new PatientResource($user),
+            'currentHealth' => $currentHealth,
+            'pastConditions' => $pastConditions,
         ]);
     }
 
@@ -123,7 +131,7 @@ class PatientController extends Controller {
         ]);
     }
 
-    function destroy(User $user){
+    public function destroy(User $user){
         try {
             $user->delete();
         } catch (\Throwable $th) {
@@ -131,6 +139,18 @@ class PatientController extends Controller {
         }
         toast('Patient account deleted successfully!')->success();
         return back();
+    }
+
+    public function healthInformation(Request $request, User $user) {
+        $user->load(['currentHealth', 'pastCondition']);
+        $currentHealth = $user->currentHealth;
+        $pastConditions = $user->pastCondition;
+
+        return Inertia::render('Patients/HealthInformation', [
+            'patient' => new PatientResource($user),
+            'currentHealth' => $currentHealth,
+            'pastConditions' => $pastConditions,
+        ]);
     }
 
 }

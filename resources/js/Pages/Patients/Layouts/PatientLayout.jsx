@@ -90,6 +90,9 @@ export default function ({children, title}) {
                             <li className={`p-2  ${route().current() == 'patients.prescriptions' ? 'border-primary border-b-4' : ''}`}>
                                 <Link href={route('patients.prescriptions', {user: patient.id})} >Prescriptions</Link>
                             </li>
+                            <li className={`p-2  ${route().current() == 'patients.health-information' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.health-information', {user: patient.id})} >Health Information</Link>
+                            </li>
                             <Disclose show={auth.user.access_level == access_levels.superadmin} > 
                                 <li className={`p-2  ${route().current() == 'patients.records' ? 'border-primary border-b-4' : ''}`}>
                                     <Link href={route('patients.records', {user: patient.id})} >Medical Records</Link>

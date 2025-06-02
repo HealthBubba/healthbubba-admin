@@ -43,6 +43,8 @@ class PatientResource extends JsonResource
             'family_history' => $this->family_history,
             'medical_records' => $this->medical_records,
             'emergency_contacts' => $this->emergency_contacts,
+            'current_health' => $this->currentHealth,
+            'past_condition' => $this->pastCondition,
         ];
     }
 

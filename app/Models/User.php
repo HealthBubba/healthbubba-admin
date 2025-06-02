@@ -127,4 +127,12 @@ class User extends Authenticatable {
         return $this->hasMany(License::class, 'user_id');
     }
 
+    function currentHealth() {
+        return $this->hasMany(PatientCurrentHealth::class, 'user_id');
+    }
+
+    function pastCondition() {
+        return $this->hasMany(PatientPastCondition::class, 'user_id');
+    }
+
 }
