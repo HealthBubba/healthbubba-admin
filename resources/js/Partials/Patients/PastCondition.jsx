@@ -60,23 +60,23 @@ export default function ({condition}) {
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Treatment Conditions</p>
-                        <p className='text-gray-500'>{condition?.treatment_conditions.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.treatment_conditions?.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Allergies</p>
-                        <p className='text-gray-500'>{condition?.allergies.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.allergies?.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Medications</p>
-                        <p className='text-gray-500'>{condition?.medications.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.medications?.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Immunization History</p>
-                        <p className='text-gray-500'>{condition?.immunization_history.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.immunization_history?.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Family Medical Conditions</p>
-                        <p className='text-gray-500'>{condition?.family_medical_conditions.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.family_medical_conditions?.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">General Health Change Explanation</p>
