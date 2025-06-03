@@ -5,7 +5,7 @@ export default function ({currentHealth}) {
         <div className='p-4 rounded-xl space-y-5 bg-gray-100 border'>
             <div className="space-y-2" >
                 <div className='p-2 rounded-lg bg-gray-200'>
-                    <p className='font-semibold' >Treatment Status</p>
+                    <p className='font-semibold' >Current Health Condition</p>
                 </div>
 
                 <table className='border-b'>
