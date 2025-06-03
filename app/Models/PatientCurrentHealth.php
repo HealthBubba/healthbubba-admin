@@ -20,7 +20,8 @@ class PatientCurrentHealth extends Model
         'smokes' => 'boolean',
         'drinks' => 'boolean',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'current_medical_conditions' => 'array'
     ];
 
     public function user()

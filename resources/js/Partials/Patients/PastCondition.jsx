@@ -16,71 +16,71 @@ export default function ({condition}) {
                     </div>
                     <div className=''>
                         <p className="font-medium">Last Checkup Date</p>
-                        <p>{condition?.last_medical_checkup_date || 'Not Available'}</p>
+                        <p className='text-gray-500'>{condition?.last_medical_checkup_date || 'Not Available'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Children</p>
-                        <p>{condition?.has_children ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_children ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Is Taking Medication</p>
-                        <p>{condition?.is_taking_medications ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.is_taking_medications ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Had General Health Change</p>
-                        <p>{condition?.had_general_health_change ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.had_general_health_change ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Family Medical History</p>
-                        <p>{condition?.has_family_medical_history ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_family_medical_history ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Seizure History</p>
-                        <p>{condition?.has_seizure_history ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_seizure_history ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Heart or BP issues</p>
-                        <p>{condition?.has_heart_or_bp_issues ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_heart_or_bp_issues ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Had Surgeries</p>
-                        <p>{condition?.had_surgeries ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.had_surgeries ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Allergies</p>
-                        <p>{condition?.has_allergies ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_allergies ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Asthma</p>
-                        <p>{condition?.has_asthma ? 'Yes' : 'No'}</p>
+                        <p className='text-gray-500'>{condition?.has_asthma ? 'Yes' : 'No'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Menstrual History</p>
-                        <p>{condition?.menstrual_history || 'Not Available'}</p>
+                        <p className='text-gray-500'>{condition?.menstrual_history || 'Not Available'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Treatment Conditions</p>
-                        <p>{condition?.treatment_conditions.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.treatment_conditions.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Allergies</p>
-                        <p>{condition?.allergies.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.allergies.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Medications</p>
-                        <p>{condition?.medications.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.medications.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Immunization History</p>
-                        <p>{condition?.immunization_history.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.immunization_history.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">Family Medical Conditions</p>
-                        <p>{condition?.family_medical_conditions.join(', ') || 'None'}</p>
+                        <p className='text-gray-500'>{condition?.family_medical_conditions.join(', ') || 'None'}</p>
                     </div>
                     <div className="col-span-full">
                         <p className="font-medium">General Health Change Explanation</p>
-                        <p>{condition?.general_health_change_explanation || 'Not Available'}</p>
+                        <p className='text-gray-500'>{condition?.general_health_change_explanation || 'Not Available'}</p>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export default function ({currentHealth}) {
                         {currentHealth?.map((current_health) => (
                             <tr key={current_health.id}>
                                 <td>{current_health?.physical_activity_level || 'Not specified'}</td>
-                                <td>{current_health?.current_medical_conditions || 'None'}</td>
+                                <td>{current_health?.current_medical_conditions.join(', ') || 'None'}</td>
                                 <td>
                                     <div>Smokes: {current_health?.smokes ? 'Yes' : 'No'}</div>
                                     <div>Drinks: {current_health?.drinks ? 'Yes' : 'No'}</div>
