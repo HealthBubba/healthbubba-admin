@@ -16,7 +16,7 @@ export default function ({condition}) {
                     </div>
                     <div className=''>
                         <p className="font-medium">Last Checkup Date</p>
-                        <p className='text-gray-500'>{condition?.last_medical_checkup_date || 'Not Available'}</p>
+                        <p className='text-gray-500'>{condition?.last_medical_checkup_date ? new Date(condition?.last_medical_checkup_date).toDateString() : 'Not Available'}</p>
                     </div>
                     <div className=''>
                         <p className="font-medium">Has Children</p>
