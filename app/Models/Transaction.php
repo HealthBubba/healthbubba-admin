@@ -18,7 +18,6 @@ class Transaction extends Model
     protected $fillable = ['user_id', 'amount', 'balance', 'transaction_type', 'transaction_reference', 'reason', 'status', 'source', 'destination', 'model_id'];
 
     protected $casts = [
-        'transaction_type' => TransactionTypes::class,
         'created_at' => 'date'
     ];
 
