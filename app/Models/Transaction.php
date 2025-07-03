@@ -19,7 +19,6 @@ class Transaction extends Model
 
     protected $casts = [
         'transaction_type' => TransactionTypes::class,
-        'status' => Status::class,
         'created_at' => 'date'
     ];
 
