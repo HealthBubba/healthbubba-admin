@@ -8,10 +8,23 @@ export default function AppointmentItem({appointment}) {
     return (
         <tr>
             <td>
-                <Link href={route('patients.show', {user: appointment.patient?.id})} className='link'>{appointment.patient?.full_name}</Link>
+                {
+                    appointment.patient
+
+                    &&
+
+                    <Link href={route('patients.show', {user: appointment.patient?.id})} className='link'>{appointment.patient?.full_name}</Link>
+                }
             </td>
             <td>
-                <Link href={route('practitioners.show', {user: appointment.doctor?.id})} className='link' >{appointment.doctor?.full_name}</Link>
+                {
+                    appointment.doctor
+
+                    &&
+
+
+                    <Link href={route('practitioners.show', {user: appointment.doctor?.id})} className='link' >{appointment.doctor?.full_name}</Link>
+                }
             </td>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.status ? 'Completed' : 'Pending'}</TableLink>
             <TableLink href={route('appointments.show', {appointment: appointment.id})}>{appointment.date}</TableLink>

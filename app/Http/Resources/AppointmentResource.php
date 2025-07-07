@@ -28,6 +28,13 @@ class AppointmentResource extends JsonResource
             'status' => $this->status,
             'complain' => $this->complain,
             'height' => $this->height,
+            'is_physical_appointment' => $this->is_physical_appointment,
+            'meeting_id' => $this->meeting_id,
+            'external_meeting_id' => $this->external_meeting_id,
+            'doctor_attendee_id' => $this->doctor_attendee_id,
+            'patient_attendee_id' => $this->patient_attendee_id,
+            'is_patient_joined' => $this->is_patient_joined,
+            'is_doctor_joined' => $this->is_doctor_joined,
             'weight' => $this->weight,
             'attachments' => AppointmentAttachmentResource::collection($this->attachments)
         ];
