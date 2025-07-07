@@ -82,13 +82,10 @@ export default function ({transactions, stats}) {
                                 <th>Transaction ID</th>
                                 <th>Date/Time</th>
                                 <th>Patient name</th>
-                                {/* <th>Practitioner Name</th> */}
                                 <th>Type</th>
                                 <th>Type ID</th>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                {/* <th>Payment Method</th> */}
-                                {/* <th>Appointment ID</th> */}
                             </tr>
                         </thead>
 
