@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 
 const states = {
     success: ['successfull', 'verified', 'confirmed', 'active', 'paid'],
-    warning: ['pending', 'suspended', ],
+    warning: ['pending', 'suspended', 'PENDING'],
     danger: ['failed',],
     info: ['unpaid', 'unverified']
 }

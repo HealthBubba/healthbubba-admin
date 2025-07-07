@@ -100,6 +100,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                                     <th>Transaction ID</th>
                                     <th>Date/Time</th>
                                     <th>Patient name</th>
+                                    <th>Email Address</th>
                                     <th>Type</th>
                                     <th>Amount</th>
                                     <th>Status</th>
