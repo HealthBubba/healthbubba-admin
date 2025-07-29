@@ -8,6 +8,7 @@ use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\SignatureController;
@@ -150,6 +151,11 @@ Route::middleware('auth')->group(function(){
         });
     
     });
+});
+
+Route::prefix('prescription')->group(function(){
+    Route::get('', [PrescriptionController::class, 'index']);
+    Route::get('download', [PrescriptionController::class, 'download']);
 });
 
 // Route::get('/logout', [TransactionController::class, 'index'])->name('logout');
