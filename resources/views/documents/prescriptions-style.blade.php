@@ -1,4 +1,5 @@
-*, ::before, ::after {
+<style>
+  *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -667,3 +668,5 @@ th {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
+
+</style>
