@@ -1,5 +1,4 @@
-<style>
-    *, ::before, ::after {
+*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -504,10 +503,6 @@ tbody tr {
   cursor: pointer;
   transition-duration: 500ms;
 }
-tbody tr:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
 tbody > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -532,6 +527,10 @@ th {
   font-weight: 500;
 }
 @layer __play_components__;
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .ml-4 {
   margin-left: 1rem;
 }
@@ -555,6 +554,9 @@ th {
 }
 .w-5\/6 {
   width: 83.333333%;
+}
+.max-w-5xl {
+  max-width: 64rem;
 }
 .max-w-\[20\%\] {
   max-width: 20%;
@@ -626,7 +628,6 @@ th {
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 @layer __play_base__;
-@layer __play_components__;
 .\[\&_td\]\:border-2 td {
   border-width: 2px;
 }
@@ -666,5 +667,3 @@ th {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
-
-</style>
