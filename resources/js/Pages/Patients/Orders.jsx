@@ -11,11 +11,14 @@ export default function ({orders}) {
                 <table className='border-b'>
                     <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>User</th>
+                            <th>Reference</th>
+                            <th>Patient</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
                             <th>Amount</th>
                             <th>Status</th>
-                            <th>Order Date</th>
+                            <th>Created At</th>
                             <th>Payment Status</th>
                             <th>Action</th>
                         </tr>

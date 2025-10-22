@@ -84,7 +84,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                 <div className="card p-0 w-full max-w-full rounded-xl">
                     <div className="p-4 flex justify-between">
                         <div>
-                        <p className='font-semibold'>Transactions</p>
+                            <p className='font-semibold'>Transactions</p>
                         </div>
                         <div>
                             <Link className='text-sm inline-flex items-center text-[#4F46E5] font-medium' href={route('transactions')}>See All Transactions <ChevronRightIcon className='size-3 ms-1' /></Link>
@@ -93,8 +93,8 @@ export default function Dashboard({patients, practitioners, revenue, appointment
 
                     <div className="border-t ml-4"></div>
 
-                    <div className="p-4 overflow-x-auto">
-                        <table className='w-full'>
+                    <div className="overflow-x-auto">
+                        <table className='border-b'>
                             <thead>
                                 <tr>
                                     <th>Transaction ID</th>
@@ -106,11 +106,23 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                                     <th>Status</th>
                                 </tr>
                             </thead>
-
+    
                             <tbody>
                                 {transactions.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
                             </tbody>
                         </table>
+    
+                        {
+                                transactions.length < 1 
+    
+                                ?
+    
+                                <p className='text-center py-3' >No records found</p>
+    
+                                :
+    
+                                ''
+                            }
                     </div>
                 </div>
             </div>

@@ -1,8 +1,8 @@
 import { router } from '@inertiajs/react'
 import React from 'react'
 
-export default function TableLink({children, href = ''}) {
+export default function TableLink({children, className = '', href = ''}) {
     return (
-        <td onClick={() => router.visit(href)} >{children}</td>
+        <td className={className} onClick={() => router.visit(href)} >{children}</td>
     )
 }

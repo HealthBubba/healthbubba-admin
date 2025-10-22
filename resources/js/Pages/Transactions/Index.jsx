@@ -1,4 +1,5 @@
 import DatePicker from '@/Components/Form/DatePicker';
+import Dropdown from '@/Components/Form/Dropdown';
 import Pagination from '@/Components/Pagination';
 import useSearchParams from '@/Hooks/useSearchParams';
 import SettingIcon from '@/Icons/SettingIcon';
@@ -9,7 +10,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 import { Head, router } from '@inertiajs/react';
 
-export default function ({transactions, stats}) {
+export default function ({transactions, stats, status}) {
 
     const params = useSearchParams()
 
@@ -31,44 +32,19 @@ export default function ({transactions, stats}) {
                             <DatePicker val={{endDate: params.endDate, startDate: params.startDate}} onChange={(value) => router.reload({data: value})} />
                         </div>
                         <div>
-                            <Menu>
-                                <MenuButton className="border-2 py-2 h-full px-3 items-center space-x-1 text-sm rounded-lg inline-flex font-medium">
-                                    <SettingIcon className='size-5' />         
-                                    <span>All Status</span>
-                                    <ChevronDownIcon className='size-3' />         
-                                </MenuButton>
-                                <MenuItems transition anchor="bottom start" className="w-32 origin-top-right mt-1 rounded-xl border-[1.5px] bg-white transition duration-100 ease-out text-sm" >
-                                    <div className='p-1'>
-                                        <MenuItem >
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">All</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Successful</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Failed</button>
-                                        </MenuItem>
-                                    </div>
-
-                                    <div className="border-t-[1.5px]"></div>
-
-                                    <div className='p-1'>
-                                        <MenuItem>
-                                            <button className="inline-flex w-full text-sm rounded-lg py-2 px-3 text-muted hover:bg-muted/10">Processing</button>
-                                        </MenuItem>
-                                    </div>
-                                </MenuItems>
-                            </Menu>
+                            <Dropdown
+                                placeholder={'All Status'}
+                                options={[
+                                    {label: 'All', value: ''},
+                                    {label: 'Pending', value: 'pending'},
+                                    {label: 'Confirmed', value: 'confirmed'},
+                                    {label: 'Successful', value: 'success'},
+                                    {label: 'Refund', value: 'refund'},
+                                    {label: 'Failed', value: 'failed'},
+                                ]}
+                                value={status}
+                                action={value => router.reload({data: {status: value}})}
+                            />
                         </div>
                     </div>
                 </div>
@@ -82,13 +58,10 @@ export default function ({transactions, stats}) {
                                 <th>Transaction ID</th>
                                 <th>Date/Time</th>
                                 <th>Patient name</th>
-                                {/* <th>Practitioner Name</th> */}
                                 <th>Type</th>
                                 <th>Type ID</th>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                {/* <th>Payment Method</th> */}
-                                {/* <th>Appointment ID</th> */}
                             </tr>
                         </thead>
 

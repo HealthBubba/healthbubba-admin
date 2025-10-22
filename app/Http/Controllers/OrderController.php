@@ -31,7 +31,8 @@ class OrderController extends Controller
                 ->orWhereRelation('user', 'email', 'LIKE', "%$keyword%")
                 ->orWhereRelation('user', 'phone', 'LIKE', "%$keyword%");
         })
-        ->latest()
+        ->when($request->status, fn($query, $status) => $query->where('status', 'LIKE', "%$status%"))
+        ->latest('created_at')
         ->paginate();
 
         $total = $query->count();
@@ -40,8 +41,9 @@ class OrderController extends Controller
         $revenue = $query->sum('order_value');
 
         $orders = OrderResource::collection($orders);
+        $status = $request->status;
 
-        return Inertia::render('Orders', compact('total', 'completed', 'pending', 'revenue', 'orders'));
+        return Inertia::render('Orders', compact('total', 'status', 'completed', 'pending', 'revenue', 'orders'));
     }
 
     function upload(Request $request, OrderItem $order) {

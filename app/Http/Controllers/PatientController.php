@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\PatientMedicationResource;
@@ -10,6 +11,8 @@ use App\Http\Resources\PatientResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\PatientCurrentHealth;
+use App\Models\PatientPastCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -46,8 +49,14 @@ class PatientController extends Controller {
     }
 
     function show(Request $request, User $user) {
+        $user->load(['currentHealth', 'pastCondition']);
+        $currentHealth = $user->currentHealth;
+        $pastConditions = $user->pastCondition;
+        
         return Inertia::render('Patients/Details', [
             'patient' => new PatientResource($user),
+            'currentHealth' => $currentHealth,
+            'pastConditions' => $pastConditions,
         ]);
     }
 
@@ -57,11 +66,21 @@ class PatientController extends Controller {
         ]);
     }
 
-    function verifyEmail(Request $request, User $user) {
-        $user->email_verified = true;
+    function update(UpdatePatientRequest $request, User $user){
+        $validated = $request->validated();
+
+        $user->fill($validated);
         $user->save();
 
-        toast('Patient Email address verified successfully!')->success();
+        toast('Patient Information updated successfully');
+        return back();
+    }
+
+    function verifyEmail(Request $request, User $user) {
+        $user->email_verified = !$user->email_verified;
+        $user->save();
+
+        toast($user->email_verified ? 'Patient Email address verified successfully!': 'Patient Email address unverified successfully!')->success();
         return back();
     }
 
@@ -114,16 +133,16 @@ class PatientController extends Controller {
                             ->when($request->keyword, function($query, $keyword){
                                 $query->where('reference', $keyword);
                             })
-                            ->latest()
+                            ->latest('created_at')
                             ->paginate();
 
         return Inertia::render('Patients/Orders', [
             'patient' => new PatientResource($user),
-            'orders' => $orders,
+            'orders' => OrderResource::collection($orders),
         ]);
     }
 
-    function destroy(User $user){
+    public function destroy(User $user){
         try {
             $user->delete();
         } catch (\Throwable $th) {
@@ -131,6 +150,18 @@ class PatientController extends Controller {
         }
         toast('Patient account deleted successfully!')->success();
         return back();
+    }
+
+    public function healthInformation(Request $request, User $user) {
+        $user->load(['currentHealth', 'pastCondition']);
+        $currentHealth = $user->currentHealth;
+        $pastConditions = $user->pastCondition;
+
+        return Inertia::render('Patients/HealthInformation', [
+            'patient' => new PatientResource($user),
+            'currentHealth' => $currentHealth,
+            'pastConditions' => $pastConditions,
+        ]);
     }
 
 }

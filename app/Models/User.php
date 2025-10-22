@@ -18,11 +18,7 @@ use Illuminate\Support\Facades\DB;
 class User extends Authenticatable {
     use HasFactory, Notifiable, HasQuery;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [ ];
 
     protected $hidden = [
         'password',
@@ -125,6 +121,14 @@ class User extends Authenticatable {
 
     function licenses(){
         return $this->hasMany(License::class, 'user_id');
+    }
+
+    function currentHealth() {
+        return $this->hasMany(PatientCurrentHealth::class, 'user_id');
+    }
+
+    function pastCondition() {
+        return $this->hasMany(PatientPastCondition::class, 'user_id');
     }
 
 }

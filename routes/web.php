@@ -8,6 +8,7 @@ use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\SignatureController;
@@ -86,6 +87,8 @@ Route::middleware('auth')->group(function(){
     Route::prefix('patients')->group(function(){
         Route::get('/', [PatientController::class, 'index'])->name('patients');
         Route::prefix('{user}')->group(function(){
+            Route::post('', [PatientController::class, 'update'])->name('patients.update');
+            Route::get('/health-information', [PatientController::class, 'healthInformation'])->name('patients.health-information');
             Route::get('', [PatientController::class, 'show'])->name('patients.show');
             Route::get('verify-email', [PatientController::class, 'verifyEmail'])->name('patients.verify-email');
             Route::get('orders', [PatientController::class, 'orders'])->name('patients.orders');
@@ -149,6 +152,11 @@ Route::middleware('auth')->group(function(){
         });
     
     });
+});
+
+Route::prefix('prescription')->group(function(){
+    Route::get('', [PrescriptionController::class, 'index']);
+    Route::get('download', [PrescriptionController::class, 'download']);
 });
 
 // Route::get('/logout', [TransactionController::class, 'index'])->name('logout');

@@ -49,9 +49,15 @@ export default function ({children, title}) {
                             </div>
 
                             <div className='flex gap-2 flex-wrap ' >
+                                <Disclose show={!patient.email_verified} >
+                                    <div>
+                                        <Swal title="Verify this User's Email" type={'primary'} onConfirm={verifyEmail} caption="Are you sure you want to verify this user's Email Address?" className="btn btn-primary btn-sm">Verify Email</Swal>
+                                    </div>
+                                </Disclose>
+
                                 <Disclose show={patient.email_verified} >
                                     <div>
-                                        <Swal title="Verify this User's Email" type={'success'} onConfirm={verifyEmail} caption="Are you sure you want to verify this user's Email Address?" className="btn btn-primary btn-sm">Verify Email</Swal>
+                                        <Swal title="Unverify this User's Email" type={'primary'} onConfirm={verifyEmail} caption="Are you sure you want to unverify this user's Email Address?" className="btn btn-warning btn-sm">Unverify Email</Swal>
                                     </div>
                                 </Disclose>
                                 <div>
@@ -89,6 +95,9 @@ export default function ({children, title}) {
                             </li>
                             <li className={`p-2  ${route().current() == 'patients.prescriptions' ? 'border-primary border-b-4' : ''}`}>
                                 <Link href={route('patients.prescriptions', {user: patient.id})} >Prescriptions</Link>
+                            </li>
+                            <li className={`p-2  ${route().current() == 'patients.health-information' ? 'border-primary border-b-4' : ''}`}>
+                                <Link href={route('patients.health-information', {user: patient.id})} >Health Information</Link>
                             </li>
                             <Disclose show={auth.user.access_level == access_levels.superadmin} > 
                                 <li className={`p-2  ${route().current() == 'patients.records' ? 'border-primary border-b-4' : ''}`}>
