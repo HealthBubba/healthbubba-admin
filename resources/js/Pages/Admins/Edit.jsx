@@ -30,8 +30,8 @@ export default function Edit({admin}) {
     }
 
     return (
-        <AuthenticatedLayout title={<BreadCrumbs name={admin.data.full_name} />} >
-            <Head title={admin.data.full_name} />
+        <AuthenticatedLayout title={<BreadCrumbs name={admin.full_name} />} >
+            <Head title={admin.full_name} />
             <div className="md:py-10 py-5">
                 <div className="md:w-2/3 mx-auto md:flex space-y-5 md:space-x-5">
                     <div className="md:w-1/3 space-y-6">
@@ -41,7 +41,7 @@ export default function Edit({admin}) {
                             </div>
 
                             <div>
-                                <p className="font-medium">{admin.data.full_name}</p>
+                                <p className="font-medium">{admin.full_name}</p>
                                 <p className="text-sm text-gray-500">Last signed in 3h ago</p>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export default function Edit({admin}) {
                             </Swal>
 
                             <div>
-                                <p className="text-gray-400 text-sm">Added on <span className="text-black">{admin.data.created_at}</span></p>
+                                <p className="text-gray-400 text-sm">Added on <span className="text-black">{admin.created_at}</span></p>
                             </div>
                         </div>
                     </div>
@@ -101,26 +101,26 @@ export default function Edit({admin}) {
                                 <Disclose show={tab == ''} >
                                     <div>
                                         <p className="text-[#6B7280B7]">Full Name</p>
-                                        <p>{admin.data.full_name}</p>
+                                        <p>{admin.full_name}</p>
                                     </div>
                                     <div className="border-t"></div>
                                     <div>
                                         <p className="text-[#6B7280B7]">Email Address</p>
-                                        <p>{admin.data.email}</p>
+                                        <p>{admin.email}</p>
                                     </div>
                                     <div className="border-t"></div>
                                     <div>
                                         <p className="text-[#6B7280B7]">Phone Number</p>
-                                        <p>{admin.data.phone}</p>
+                                        <p>{admin.phone}</p>
                                     </div>
                                 </Disclose>
 
                                 <Disclose show={tab == 'roles'} >
-                                    <EditRoles admin={admin.data} />
+                                    <EditRoles admin={admin} />
                                 </Disclose>
 
                                 <Disclose show={tab == 'edit'} >
-                                    <EditForm admin={admin.data} />
+                                    <EditForm admin={admin} />
                                 </Disclose>
                             </div>
                         </div>

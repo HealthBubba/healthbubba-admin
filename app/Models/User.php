@@ -18,11 +18,7 @@ use Illuminate\Support\Facades\DB;
 class User extends Authenticatable {
     use HasFactory, Notifiable, HasQuery;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [ ];
 
     protected $hidden = [
         'password',

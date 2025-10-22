@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('patients')->group(function(){
         Route::get('/', [PatientController::class, 'index'])->name('patients');
         Route::prefix('{user}')->group(function(){
+            Route::post('', [PatientController::class, 'update'])->name('patients.update');
             Route::get('/health-information', [PatientController::class, 'healthInformation'])->name('patients.health-information');
             Route::get('', [PatientController::class, 'show'])->name('patients.show');
             Route::get('verify-email', [PatientController::class, 'verifyEmail'])->name('patients.verify-email');

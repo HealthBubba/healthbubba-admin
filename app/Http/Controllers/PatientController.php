@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Http\Requests\UpdatePatientRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\PatientMedicationResource;
@@ -65,11 +66,21 @@ class PatientController extends Controller {
         ]);
     }
 
-    function verifyEmail(Request $request, User $user) {
-        $user->email_verified = true;
+    function update(UpdatePatientRequest $request, User $user){
+        $validated = $request->validated();
+
+        $user->fill($validated);
         $user->save();
 
-        toast('Patient Email address verified successfully!')->success();
+        toast('Patient Information updated successfully');
+        return back();
+    }
+
+    function verifyEmail(Request $request, User $user) {
+        $user->email_verified = !$user->email_verified;
+        $user->save();
+
+        toast($user->email_verified ? 'Patient Email address verified successfully!': 'Patient Email address unverified successfully!')->success();
         return back();
     }
 
@@ -122,12 +133,12 @@ class PatientController extends Controller {
                             ->when($request->keyword, function($query, $keyword){
                                 $query->where('reference', $keyword);
                             })
-                            ->latest()
+                            ->latest('created_at')
                             ->paginate();
 
         return Inertia::render('Patients/Orders', [
             'patient' => new PatientResource($user),
-            'orders' => $orders,
+            'orders' => OrderResource::collection($orders),
         ]);
     }
 

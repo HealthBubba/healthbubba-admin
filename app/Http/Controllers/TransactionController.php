@@ -14,6 +14,7 @@ class TransactionController extends Controller
                             ->when($request->endDate && $request->startDate, function($query) use($request){
                                 $query->whereBetween('created_at', [$request->startDate, $request->endDate]);
                             })
+                            ->when($request->status, fn($query, $status) => $query->whereStatus($status))
                             ->latest()->paginate();
 
         $total = Transaction::count();
@@ -22,7 +23,8 @@ class TransactionController extends Controller
             'transactions' => TransactionResource::collection($transactions),
             'stats' => [
                 'total' => $total,
-            ]
+            ],
+            'status' => $request->status
         ]);
     }
 

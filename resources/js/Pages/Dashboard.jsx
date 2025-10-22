@@ -94,7 +94,7 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                     <div className="border-t ml-4"></div>
 
                     <div className="overflow-x-auto">
-                        <table className='w-full'>
+                        <table className='border-b'>
                             <thead>
                                 <tr>
                                     <th>Transaction ID</th>
@@ -106,11 +106,23 @@ export default function Dashboard({patients, practitioners, revenue, appointment
                                     <th>Status</th>
                                 </tr>
                             </thead>
-
+    
                             <tbody>
                                 {transactions.map(transaction => <TransactionItem key={transaction.id} transaction={transaction} />)}
                             </tbody>
                         </table>
+    
+                        {
+                                transactions.length < 1 
+    
+                                ?
+    
+                                <p className='text-center py-3' >No records found</p>
+    
+                                :
+    
+                                ''
+                            }
                     </div>
                 </div>
             </div>
