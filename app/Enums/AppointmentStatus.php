@@ -4,9 +4,9 @@ namespace App\Enums;
 
 enum AppointmentStatus:int {
 
-    case UPCOMING = 0,
-    case COMPLETED = 1,
-    case CANCELLED = 2, 
+    case UPCOMING = 0;
+    case COMPLETED = 1;
+    case CANCELLED = 2; 
 
     function label(){
         return match($this) {
