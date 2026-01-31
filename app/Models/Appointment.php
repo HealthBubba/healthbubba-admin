@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Enums\AppointmentStatus;
 
 class Appointment extends Model {
     use HasFactory, HasUuids, HasQuery;
@@ -16,6 +17,10 @@ class Appointment extends Model {
     protected $fillable = ['patient_id', 'doctor_id', 'appointment_id'];
 
     public $timestamps = false;
+
+    protected $casts = [
+        'status' => AppointmentStatus::class
+    ];
 
     function scopeWithSerialNo(Builder $query){
         return $query->select('*')->addSelect(DB::raw('ROW_NUMBER() OVER (ORDER BY appointment_id) AS no'));

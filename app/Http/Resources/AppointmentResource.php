@@ -25,7 +25,7 @@ class AppointmentResource extends JsonResource
             'payment_status' => $this->is_appointment_paid,
             'date' => Date::parse("{$this->date} {$this->time}")->format('jS F, Y'),
             'time' => Date::createFromTime($hour, $minute, $second)->format('h:m A'),
-            'status' => $this->status,
+            'status' => $this->status?->label(),
             'complain' => $this->complain,
             'is_follow_up' => $this->is_follow_up,
             'follow_up_parent_id' => $this->follow_up_parent_id,
