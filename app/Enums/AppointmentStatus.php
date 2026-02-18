@@ -16,4 +16,13 @@ enum AppointmentStatus:int {
             default => 'Unknown Status'
         };
     }
+
+    static function fromValue($value): ?self {
+        return match($value) {
+            'upcoming' => self::UPCOMING,
+            'completed' => self::COMPLETED,
+            'cancelled' => self::CANCELLED,
+            default => null
+        };
+    }
 }

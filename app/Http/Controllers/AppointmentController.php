@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\AppointmentStatus;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
@@ -10,8 +11,9 @@ use Inertia\Inertia;
 class AppointmentController extends Controller {
     
     function index(Request $request){
+        // dd($request->all());
         $appointments = Appointment::when($request->status, function($query, $status){
-            $query->whereStatus($status);
+            $query->whereStatus(AppointmentStatus::fromValue($status));
         })
         ->when($request->keyword, function($query, $keyword){
             $query->where('appointment_id', $keyword)
@@ -22,17 +24,18 @@ class AppointmentController extends Controller {
                 ->orWhereRelation('patient', 'email', 'LIKE', "%$keyword%")
                 ->orWhereRelation('doctor', 'email', 'LIKE', "%$keyword%");
         })->with(['transaction'])->latest('date')->paginate();
-        
+    
         $stats = [
             'total' => Appointment::count(),
-            'completed' => Appointment::whereIsAppointmentPaid(true)->count(),
-            'cancelled' => Appointment::whereStatus(true)->count(),
-            'revenue' => Appointment::whereStatus(true)->count(),
+            'completed' => Appointment::whereStatus(AppointmentStatus::COMPLETED)->count(),
+            'cancelled' => Appointment::whereStatus(AppointmentStatus::CANCELLED)->count(),
+            'revenue' => Appointment::whereStatus(AppointmentStatus::COMPLETED)->whereIsAppointmentPaid(true)->sum('appointment_fee'),
         ];
 
         return Inertia::render('Appointments', [
             'appointments' => AppointmentResource::collection($appointments),
-            'stats' => $stats
+            'stats' => $stats,
+            'status' => $request->status
         ]);
     }
 

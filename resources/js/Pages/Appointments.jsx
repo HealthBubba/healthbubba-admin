@@ -1,14 +1,13 @@
-import { Badge } from '@/Components/Badge';
+import Dropdown from '@/Components/Form/Dropdown';
 import Pagination from '@/Components/Pagination';
-import SettingIcon from '@/Icons/SettingIcon';
+import { AppointmentStatus } from '@/Constants/AppointmentStatus';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AppointmentItem from '@/Partials/Appointments/AppointmentItem';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { Head, router } from '@inertiajs/react';
 
-export default function ({appointments, stats}) {
+export default function ({appointments, status, stats}) {
 
     return (
         <AuthenticatedLayout title="Manage Appointments">
@@ -22,7 +21,20 @@ export default function ({appointments, stats}) {
                 </div>
 
                 <div className="card p-0 rounded-xl">
-                    <div className="p-4 md:flex space-y-2 md:space-x-2">
+                    <div className="p-4 md:flex items-cente space-y-2 md:space-x-2">
+                        <div>
+                            <Dropdown
+                                placeholder={'All Appointments'}
+                                options={[
+                                    {label: 'All Appointments', value: ''},
+                                    {label: 'Upcoming', value: AppointmentStatus.UPCOMING},
+                                    {label: 'Completed', value: AppointmentStatus.COMPLETED},
+                                    {label: 'Cancelled', value: AppointmentStatus.CANCELLED},
+                                ]}
+                                value={status}
+                                action={value => router.reload({data: {status: value}})}
+                            />
+                        </div>
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
                                 <div className='px-2'>
