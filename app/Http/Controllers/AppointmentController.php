@@ -30,7 +30,10 @@ class AppointmentController extends Controller {
             'total' => Appointment::count(),
             'completed' => Appointment::whereStatus(AppointmentStatus::COMPLETED)->count(),
             'cancelled' => Appointment::whereStatus(AppointmentStatus::CANCELLED)->count(),
-            'revenue' => Appointment::whereIsAppointmentPaid(true)->join('transactions', 'appointments.id', '=', 'transactions.appointment_id')->sum('transactions.amount'),
+            'revenue' => Appointment::whereIsAppointmentPaid(true)
+                            ->withSum('transaction', 'amount')
+                            ->get()
+                            ->sum('transaction_sum_amount'),
         ];
 
         return Inertia::render('Appointments', [
