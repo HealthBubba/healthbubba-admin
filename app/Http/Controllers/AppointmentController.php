@@ -24,12 +24,13 @@ class AppointmentController extends Controller {
                 ->orWhereRelation('patient', 'email', 'LIKE', "%$keyword%")
                 ->orWhereRelation('doctor', 'email', 'LIKE', "%$keyword%");
         })->with(['transaction'])->latest('date')->paginate();
-    
+
+        // whereStatus(AppointmentStatus::COMPLETED)->
         $stats = [
             'total' => Appointment::count(),
             'completed' => Appointment::whereStatus(AppointmentStatus::COMPLETED)->count(),
             'cancelled' => Appointment::whereStatus(AppointmentStatus::CANCELLED)->count(),
-            'revenue' => Appointment::whereStatus(AppointmentStatus::COMPLETED)->whereIsAppointmentPaid(true)->sum('appointment_fee'),
+            'revenue' => Appointment::whereIsAppointmentPaid(true)->join('transactions', 'appointments.id', '=', 'transactions.appointment_id')->sum('transactions.amount'),
         ];
 
         return Inertia::render('Appointments', [
