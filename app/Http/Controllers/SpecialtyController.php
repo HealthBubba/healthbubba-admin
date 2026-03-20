@@ -27,8 +27,13 @@ class SpecialtyController extends Controller
 
     function update(Request $request, Specialty $specialty) {
         $validated = $request->validate([
-            'specialty_name' => ['required', 'string', Rule::unique('specialties', 'specialty_name')->ignore($specialty?->specialty_id, 'specialty_id')]
+            'specialty_name' => ['required', 'string', Rule::unique('specialties', 'specialty_name')->ignore($specialty?->specialty_id, 'specialty_id')],
+            'short_preview' => 'required|string',
+            'full_description' => 'required|string',
+            'image' => 'nullable|image'
         ]);
+
+        $validated['image'] = $request->hasFile('image') ? upload()->upload($request->image) : $specialty->image;
 
         $specialty = $specialty?->fill($validated) ?? new Specialty($validated);
         $specialty->save();

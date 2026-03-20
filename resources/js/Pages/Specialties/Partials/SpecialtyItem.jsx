@@ -15,7 +15,18 @@ export default function ({specialty}) {
 
     return (
         <tr>
-            <td>{specialty.specialty_name}</td>
+            <td>
+                <div className="flex gap-2 items-center">
+                    <div className="size-10">
+                        <img src={specialty.image} className="size-full rounded object-cover" />
+                    </div>
+    
+                    <div className='md:w-[50vw]'>
+                        <p className='font-medium'>{specialty.specialty_name}</p>
+                        <p className="text-sm text-gray-500">{specialty.short_preview}</p>
+                    </div>
+                </div>
+            </td>
             <td>{specialty.practitioners_count}</td>
             <td>
                 <Menu>

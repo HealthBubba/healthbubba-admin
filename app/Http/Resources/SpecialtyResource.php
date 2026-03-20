@@ -18,7 +18,10 @@ class SpecialtyResource extends JsonResource
             'practitioners' => $this->practitioners,
             'practitioners_count' => $this->practitioners->count(),
             'specialty_id' => $this->specialty_id,
-            'specialty_name' => $this->specialty_name
+            'specialty_name' => $this->specialty_name,
+            'short_preview' => $this->short_preview,
+            'full_description' => $this->full_description,
+            'image' => $this->image,
         ];
     }
 }
