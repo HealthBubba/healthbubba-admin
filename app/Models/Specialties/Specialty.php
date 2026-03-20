@@ -10,7 +10,7 @@ class Specialty extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['specialty_id', 'specialty_name', 'full_description', 'image'];
+    protected $fillable = ['specialty_id', 'specialty_name', 'short_preview', 'full_description', 'image'];
 
     public $primaryKey = 'specialty_id';
     public $timestamps = false;

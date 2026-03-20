@@ -15,8 +15,6 @@ export default function EditSpecialtyModal({modal, specialty = null}) {
         image: null
     })
 
-    console.log(specialty)
-
     const updateForm = () => {
         form.post(route('specialties.update', {
             specialty: specialty?.specialty_id
@@ -39,7 +37,7 @@ export default function EditSpecialtyModal({modal, specialty = null}) {
                 <div className='space-y-0.5'>
                     <Label>Short Preview</Label>
                     <TextArea name="short_preview" className="resize-none" placeholder="Short Preview" value={form.data.short_preview} onChange={(e) => form.setData('short_preview', e.currentTarget.value)} />
-                    <InputError message={form.errors?.full_description} />
+                    <InputError message={form.errors?.short_preview} />
                 </div>
                 
                 <div className='space-y-0.5'>
