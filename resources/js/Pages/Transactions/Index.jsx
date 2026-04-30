@@ -59,7 +59,6 @@ export default function ({transactions, stats, status}) {
                                 <th>Date/Time</th>
                                 <th>Patient name</th>
                                 <th>Type</th>
-                                <th>Type ID</th>
                                 <th>Amount</th>
                                 <th>Status</th>
                             </tr>

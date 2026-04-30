@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\Role;
+use App\Enums\TransactionTypes;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,6 +16,13 @@ class TransactionResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $type_label = match($this->transaction_type) {
+            'appointment' => TransactionTypes::APPOINTMENT->label(),
+            'ai_subscription' => TransactionTypes::AI_SUBSCRIPTION->label(),
+            'wallet_transfer' => TransactionTypes::WALLET_TRANSFER->label(),
+            default => $this->transaction_type
+        };
+        
         return [
             'id' => $this->id,
             'no' => $this->no,
@@ -22,6 +30,7 @@ class TransactionResource extends JsonResource
             'status' => $this->status,
             'reference' => $this->transaction_reference,
             'type' => $this->transaction_type,
+            'type_label' => $type_label,
             'model_id' => $this->model_id,
             'date' => $this->created_at?->toDayDateTimeString(),
             'user' => $this->type == Role::PATIENT ? new PatientResource($this->patient) : new PractitionerResource($this->patient),

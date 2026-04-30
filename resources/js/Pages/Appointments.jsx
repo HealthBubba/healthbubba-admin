@@ -1,13 +1,21 @@
+import DatePicker from '@/Components/Form/DatePicker';
 import Dropdown from '@/Components/Form/Dropdown';
 import Pagination from '@/Components/Pagination';
 import { AppointmentStatus } from '@/Constants/AppointmentStatus';
+import useSearchParams from '@/Hooks/useSearchParams';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AppointmentItem from '@/Partials/Appointments/AppointmentItem';
 import { Direction, StatsItem } from '@/Partials/Stats/StatsItem';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { Head, router } from '@inertiajs/react';
 
-export default function ({appointments, status, stats}) {
+export default function ({appointments, status, payment_status, stats}) {
+
+    const params = useSearchParams()
+
+    const reload = (value) => {
+        router.reload({data: value})
+    }
 
     return (
         <AuthenticatedLayout title="Manage Appointments">
@@ -16,12 +24,13 @@ export default function ({appointments, status, stats}) {
                 <div className="grid md:grid-cols-4 grid-cols-1 gap-3 mb-5">
                     <StatsItem title={'Total Appointments'} amount={stats.total} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Completed Appointments'} amount={stats.completed} direction={Direction.up} percentage={36} />
+                    <StatsItem title={'Open Appointments'} amount={stats.open} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Cancelled Appointments'} amount={stats.cancelled} direction={Direction.up} percentage={36} />
                     <StatsItem title={'Revenue Generated'} amount={stats.revenue} isPrice direction={Direction.up} percentage={36} />
                 </div>
 
                 <div className="card p-0 rounded-xl">
-                    <div className="p-4 md:flex items-cente space-y-2 md:space-x-2">
+                    <div className="p-4 md:flex md:space-y-0 space-y-2 md:space-x-2">
                         <div>
                             <Dropdown
                                 placeholder={'All Appointments'}
@@ -34,6 +43,21 @@ export default function ({appointments, status, stats}) {
                                 value={status}
                                 action={value => router.reload({data: {status: value}})}
                             />
+                        </div>
+                        <div>
+                            <Dropdown
+                                placeholder={'Payment Status'}
+                                options={[
+                                    {label: 'All Appointments', value: ''},
+                                    {label: 'Paid', value: "paid"},
+                                    {label: 'Unpaid', value: 'unpaid'}
+                                ]}
+                                value={status}
+                                action={value => router.reload({data: {payment_status: value}})}
+                            />
+                        </div>
+                        <div>
+                            <DatePicker val={{endDate: params.endDate, startDate: params.startDate}} onChange={reload} />
                         </div>
                         <div>
                             <div className="relative bg-[#F9FAFB] flex items-center border-[#E5E7EB] rounded-lg border-2">
@@ -53,7 +77,7 @@ export default function ({appointments, status, stats}) {
                                 <tr>
                                     <th>Patient name</th>
                                     <th >Practitioner Name</th>
-                                    <th>Is Physical</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>Payment Status</th>

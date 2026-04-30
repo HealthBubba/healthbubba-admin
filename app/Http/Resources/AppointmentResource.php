@@ -44,8 +44,7 @@ class AppointmentResource extends JsonResource
             'external_meeting_id' => $this->external_meeting_id,
             'doctor_attendee_id' => $this->doctor_attendee_id,
             'patient_attendee_id' => $this->patient_attendee_id,
-            'is_patient_joined' => $this->is_patient_joined,
-            'is_doctor_joined' => $this->is_doctor_joined,
+            'type' => $this->is_physical ? 'In Person' : 'Virtual',
             'weight' => $this->weight,
             'attachments' => AppointmentAttachmentResource::collection($this->attachments)
         ];

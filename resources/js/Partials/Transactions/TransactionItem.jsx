@@ -17,10 +17,10 @@ export default function TransactionItem({transaction}) {
             <td>{transaction.reference}</td>
             <td>{transaction.date}</td>
             <td>
-                <Link className='link' href={transaction.user.role == 'patient' ? route('patients.show', {user: transaction.user?.id}) : route('practitioners.show', {user: transaction.user?.id})}>{transaction.user?.full_name}</Link>
+                <Link className='link' href={transaction.user.role == 'patient' ? route('patients.show', {user: transaction.user?.id}) : route('practitioners.show', {user: transaction.user?.id})}>{transaction.user?.full_name}</Link> <br />
+                <a href={`mailto:${transaction.user.email}`}>{transaction.user.email}</a>
             </td>
-            <td>{transaction.user.email}</td>
-            <td>{transaction.type}</td>
+            <td>{transaction.type_label}</td>
             {/* <td>{transaction.owner_id}</td> */}
             <td><Currency /> {transaction.amount.toLocaleString()}</td>
             <td>
