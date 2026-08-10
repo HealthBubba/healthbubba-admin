@@ -49,7 +49,7 @@ export default function ({user}) {
 
                     <>
                         <div className="space-y-3">
-                            <img onClick={() => setShow(!show)} className='cursor-pointer max-w-[30%]'  src={user.doctor_signature} />
+                            <a href={user.doctor_signature} target='_blank' className='text-primary flex space-x-4 items-center'>View Signature</a>
 
                             <ul>
                                 <li><strong>Uploaded At:</strong> {user.doctor_signature_date}</li>
@@ -61,13 +61,6 @@ export default function ({user}) {
                                 <Button className='btn btn-danger' onClick={modal.open} >Disapprove</Button>
                             </div>
                         </div>
-
-                        <FsLightbox
-                            toggler={show} 
-                            sources={[
-                                user.doctor_signature
-                            ]}
-                        />
                     </>
 
                     :
