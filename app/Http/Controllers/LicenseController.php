@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Status;
 use App\Http\Resources\LicenseResource;
 use App\Models\License;
 use Illuminate\Http\Request;
@@ -57,6 +58,23 @@ class LicenseController extends Controller
             toast("Invalid request response from {$response->effectiveUri()}")->error();
         }
         
+        return back();
+    }
+
+    // Admin replaces a license file and auto-approves it (status = verified).
+    function uploadFile(Request $request, License $license) {
+        $request->validate([
+            'license' => 'required|file|mimes:jpg,jpeg,png,pdf',
+        ]);
+
+        $file = $request->file('license');
+
+        $license->license_image = cloudinaryUpload($file->getRealPath());
+        $license->file_name = $file->getClientOriginalName();
+        $license->status = Status::VERIFIED->value;
+        $license->save();
+
+        toast('License updated and approved')->success();
         return back();
     }
 

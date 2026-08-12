@@ -58,11 +58,21 @@ export default function ({children, title}) {
                             </div>
 
                             <div className='flex gap-2 flex-wrap ' >
-                                <Disclose show={!user.email_verified} >
+                                {
+                                    user.email_verified
+
+                                    ?
+
+                                    <div>
+                                        <Button className="btn btn-success btn-sm" disabled>Verified</Button>
+                                    </div>
+
+                                    :
+
                                     <div>
                                         <Swal title="Verify this User's Email" type={'success'} onConfirm={verifyEmail} caption="Are you sure you want to verify this user's Email Address?" className="btn btn-primary btn-sm">Verify Email</Swal>
                                     </div>
-                                </Disclose>
+                                }
                                 <Disclose show={!user.is_doctor_verified} >
                                     <div>
                                         <Swal title="Appprove this doctor's request" type={'success'} onConfirm={approve} caption="Are you sure you want to appprove this doctor's request?" className="btn btn-primary btn-sm">Approve</Swal>

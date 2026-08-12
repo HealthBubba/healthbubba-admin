@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function(){
         Route::get('', [LicenseController::class, 'index'])->name('licenses');
         Route::prefix('{license}')->group(function(){
             Route::get('delete', [LicenseController::class, 'destroy'])->name('licenses.destroy');
+            Route::post('upload', [LicenseController::class, 'uploadFile'])->name('licenses.upload');
         });
     });
     
@@ -68,6 +69,7 @@ Route::middleware('auth')->group(function(){
 
             Route::prefix('signatures')->group(function(){
                 Route::post('status', [SignatureController::class, 'status'])->name('signature.status');
+                Route::post('upload', [HealthPractitionerController::class, 'uploadSignature'])->name('practitioners.signatures.upload');
             });
 
             Route::get('consultations', [HealthPractitionerController::class, 'consultations'])->name('practitioners.consultations');

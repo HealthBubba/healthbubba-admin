@@ -137,6 +137,24 @@ class HealthPractitionerController extends Controller {
         return back();
     }
 
+    // Admin replaces a doctor's signature and auto-approves it (isSignature_verified = 1 = verified).
+    function uploadSignature(Request $request, User $user) {
+        $request->validate([
+            'signature' => 'required|file|mimes:jpg,jpeg,png,pdf',
+        ]);
+
+        $file = $request->file('signature');
+
+        $user->doctor_signature = cloudinaryUpload($file->getRealPath());
+        $user->doctor_signature_file_name = $file->getClientOriginalName();
+        $user->doctor_signature_date = now();
+        $user->isSignature_verified = 1;
+        $user->save();
+
+        toast("Signature updated and approved")->success();
+        return back();
+    }
+
     function update(UpdatePractitionerRequest $request, User $user) {
         $validated = $request->validated();
         $validated['picture'] = $request->hasFile('picture') ? cloudinaryUpload($request->file('picture')->getRealPath()) : null;
