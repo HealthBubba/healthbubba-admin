@@ -11,6 +11,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\ReconciliationController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\TransactionController;
@@ -107,6 +108,11 @@ Route::middleware('auth')->group(function(){
         Route::prefix('{appointment:appointment_id}')->group(function(){
             Route::get('', [AppointmentController::class, 'show'])->name('appointments.show');
         });
+    });
+
+    Route::prefix('reconciliation')->group(function(){
+        Route::get('', [ReconciliationController::class, 'index'])->name('reconciliation');
+        Route::post('{appointment}', [ReconciliationController::class, 'action'])->name('reconciliation.action');
     });
 
     Route::prefix('orders')->group(function(){

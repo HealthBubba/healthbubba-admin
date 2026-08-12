@@ -4,7 +4,7 @@ import { CubeIcon } from '@/Icons/CubeIcon';
 import HospitalBedIcon from '@/Icons/HospitalBedIcon';
 import SethoscopeIcon from '@/Icons/SethoscopeIcon';
 import React from 'react'
-import { BriefcaseIcon, CheckBadgeIcon, EyeDropperIcon, ListBulletIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, BriefcaseIcon, CheckBadgeIcon, EyeDropperIcon, ListBulletIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function () {
     return (
@@ -39,6 +39,10 @@ export default function () {
                 <ul className="space-y-1">
                     <li>
                         <SidebarItem name={'Appointments'} url={route('appointments')} is_current={route().current('appointments.*')} icon={CubeIcon} />
+                    </li>
+
+                    <li>
+                        <SidebarItem name={'Reconciliation'} url={route('reconciliation')} is_current={route().current('reconciliation.*')} icon={ArrowPathIcon} />
                     </li>
 
                     <li>
