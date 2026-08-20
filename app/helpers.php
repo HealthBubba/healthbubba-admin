@@ -53,8 +53,10 @@ if(!function_exists('upload')) {
 
 if(!function_exists('cloudinaryUpload')) {
     function cloudinaryUpload($file, $folder = 'doctor_documents') {
+        // Accept either an uploaded-file object or an already-resolved path string.
+        $path = is_string($file) ? $file : $file->getRealPath();
         return cloudinary()
-                ->upload($file->getRealPath(), [
+                ->upload($path, [
                     'folder' => $folder,
                     'resource_type' => "image",
                     'format' => "jpg", // Converts PDF to JPG
