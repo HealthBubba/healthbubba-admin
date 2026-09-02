@@ -4,6 +4,29 @@ import { useState } from 'react';
 
 const fullName = (f, l) => [f, l].filter(Boolean).join(' ') || '—';
 
+const FIELD_LABELS = {
+    first_name: 'First name',
+    last_name: 'Last name',
+    picture: 'Photo',
+    credentials: 'Credentials',
+    title: 'Title',
+    is_board_certified: 'Board certified',
+    provider_type: 'Provider type',
+    years_of_experience: 'Years of experience',
+    licence_number: 'Licence number',
+    doctor_license: 'Licence document',
+};
+
+const isUrl = (v) => typeof v === 'string' && /^https?:\/\//.test(v);
+
+const displayVal = (field, val) => {
+    if (val === null || val === undefined || val === '') return '—';
+    if (field === 'is_board_certified') {
+        return val === true || val === 1 || val === '1' || val === 'true' ? 'Yes' : 'No';
+    }
+    return String(val);
+};
+
 const Avatar = ({ src }) =>
     src ? (
         <img
@@ -16,11 +39,54 @@ const Avatar = ({ src }) =>
         <div className="size-12 rounded-full bg-gray-100 border flex items-center justify-center text-xs text-gray-400">—</div>
     );
 
+function ChangeRow({ field, oldVal, newVal }) {
+    const label = FIELD_LABELS[field] || field;
+
+    if (field === 'picture') {
+        return (
+            <div className="flex items-center gap-2">
+                <span className="text-muted text-sm w-28">{label}:</span>
+                <Avatar src={oldVal} />
+                <span>→</span>
+                <Avatar src={newVal} />
+            </div>
+        );
+    }
+
+    if (field === 'doctor_license') {
+        return (
+            <div className="text-sm flex items-center gap-2">
+                <span className="text-muted w-28">{label}:</span>
+                {isUrl(oldVal) ? (
+                    <a className="underline" href={oldVal} target="_blank" rel="noreferrer">current</a>
+                ) : (
+                    <span className="text-muted">—</span>
+                )}
+                <span>→</span>
+                {isUrl(newVal) ? (
+                    <a className="underline text-green-700" href={newVal} target="_blank" rel="noreferrer">new document</a>
+                ) : (
+                    <span className="font-medium">{displayVal(field, newVal)}</span>
+                )}
+            </div>
+        );
+    }
+
+    return (
+        <div className="text-sm">
+            <span className="text-muted">{label}: </span>
+            <span className="line-through text-muted">{displayVal(field, oldVal)}</span>
+            <span className="mx-1">→</span>
+            <span className="font-medium">{displayVal(field, newVal)}</span>
+        </div>
+    );
+}
+
 export default function ({ items = [] }) {
     const [busy, setBusy] = useState(null);
 
     const approve = (item) => {
-        if (!window.confirm(`Approve profile change for ${fullName(item.first_name, item.last_name)}?\nThe new name/photo will go live for patients.`)) return;
+        if (!window.confirm(`Approve profile change for ${fullName(item.first_name, item.last_name)}?\nThe new details will go live for patients.`)) return;
         setBusy(`${item.id}:approve`);
         router.post(route('profile-changes.approve', item.id), {}, { preserveScroll: true, onFinish: () => setBusy(null) });
     };
@@ -32,15 +98,6 @@ export default function ({ items = [] }) {
         router.post(route('profile-changes.reject', item.id), { note }, { preserveScroll: true, onFinish: () => setBusy(null) });
     };
 
-    const nameChange = (item) => {
-        const c = item.changes || {};
-        if (c.first_name == null && c.last_name == null) return null;
-        return {
-            old: fullName(item.first_name, item.last_name),
-            next: fullName(c.first_name ?? item.first_name, c.last_name ?? item.last_name),
-        };
-    };
-
     return (
         <AuthenticatedLayout title="Profile Change Requests">
             <Head title="Profile Change Requests" />
@@ -48,7 +105,7 @@ export default function ({ items = [] }) {
                 <div className="card p-4 rounded-xl">
                     <h2 className="font-semibold">Verified-doctor identity changes</h2>
                     <p className="text-sm text-muted">
-                        Name and photo changes requested by verified doctors. They stay hidden from patients until you approve them, so what patients see always matches the verified credentials. {items.length} pending.
+                        Name, photo and credential changes requested by verified doctors. They stay hidden from patients until you approve them, so what patients see always matches the verified credentials. {items.length} pending.
                     </p>
                 </div>
 
@@ -58,7 +115,7 @@ export default function ({ items = [] }) {
                             <thead>
                                 <tr>
                                     <th>Doctor</th>
-                                    <th>Requested change</th>
+                                    <th>Requested changes</th>
                                     <th>Submitted</th>
                                     <th>Resolve</th>
                                 </tr>
@@ -70,8 +127,9 @@ export default function ({ items = [] }) {
                                     </tr>
                                 )}
                                 {items.map((item) => {
-                                    const nc = nameChange(item);
-                                    const newPic = item.changes?.picture;
+                                    const changes = item.changes || {};
+                                    const previous = item.previous || {};
+                                    const fields = Object.keys(changes);
                                     return (
                                         <tr key={item.id}>
                                             <td>
@@ -84,23 +142,12 @@ export default function ({ items = [] }) {
                                                 </div>
                                             </td>
                                             <td>
-                                                {nc && (
-                                                    <div className="text-sm">
-                                                        <span className="text-muted">Name: </span>
-                                                        <span className="line-through text-muted">{nc.old}</span>
-                                                        <span className="mx-1">→</span>
-                                                        <span className="font-medium">{nc.next}</span>
-                                                    </div>
-                                                )}
-                                                {newPic && (
-                                                    <div className="flex items-center gap-2 mt-2">
-                                                        <span className="text-muted text-sm">Photo:</span>
-                                                        <Avatar src={item.picture} />
-                                                        <span>→</span>
-                                                        <Avatar src={newPic} />
-                                                    </div>
-                                                )}
-                                                {!nc && !newPic && <span className="text-muted text-sm">—</span>}
+                                                <div className="space-y-1.5 py-1">
+                                                    {fields.length === 0 && <span className="text-muted text-sm">—</span>}
+                                                    {fields.map((f) => (
+                                                        <ChangeRow key={f} field={f} oldVal={previous[f]} newVal={changes[f]} />
+                                                    ))}
+                                                </div>
                                             </td>
                                             <td className="text-sm text-muted whitespace-nowrap">
                                                 {item.created_at ? new Date(item.created_at).toLocaleString() : '—'}
