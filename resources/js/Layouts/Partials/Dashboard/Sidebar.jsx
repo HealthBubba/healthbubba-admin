@@ -46,6 +46,10 @@ export default function () {
                     </li>
 
                     <li>
+                        <SidebarItem name={'Profile Changes'} url={route('profile-changes')} is_current={route().current('profile-changes.*')} icon={UserCircleIcon} />
+                    </li>
+
+                    <li>
                         <SidebarItem name={'Tests & Medication Orders'} url={route('orders')} is_current={route().current('orders.*')} icon={SethoscopeIcon} />
                     </li>
                     <li>

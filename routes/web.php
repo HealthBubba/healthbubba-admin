@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\QualificationController;
 use App\Http\Controllers\ReconciliationController;
 use App\Http\Controllers\SignatureController;
@@ -115,6 +116,12 @@ Route::middleware('auth')->group(function(){
     Route::prefix('reconciliation')->group(function(){
         Route::get('', [ReconciliationController::class, 'index'])->name('reconciliation');
         Route::post('{appointment}', [ReconciliationController::class, 'action'])->name('reconciliation.action');
+    });
+
+    Route::prefix('profile-changes')->group(function(){
+        Route::get('', [ProfileChangeController::class, 'index'])->name('profile-changes');
+        Route::post('{id}/approve', [ProfileChangeController::class, 'approve'])->name('profile-changes.approve');
+        Route::post('{id}/reject', [ProfileChangeController::class, 'reject'])->name('profile-changes.reject');
     });
 
     Route::prefix('orders')->group(function(){
