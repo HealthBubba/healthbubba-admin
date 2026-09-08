@@ -12,6 +12,7 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\UrgentPricingController;
 use App\Http\Controllers\ReconciliationController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\SpecialtyController;
@@ -122,6 +123,11 @@ Route::middleware('auth')->group(function(){
         Route::get('', [ProfileChangeController::class, 'index'])->name('profile-changes');
         Route::post('{id}/approve', [ProfileChangeController::class, 'approve'])->name('profile-changes.approve');
         Route::post('{id}/reject', [ProfileChangeController::class, 'reject'])->name('profile-changes.reject');
+    });
+
+    Route::prefix('urgent-pricing')->group(function(){
+        Route::get('', [UrgentPricingController::class, 'index'])->name('urgent-pricing');
+        Route::post('', [UrgentPricingController::class, 'update'])->name('urgent-pricing.update');
     });
 
     Route::prefix('orders')->group(function(){
