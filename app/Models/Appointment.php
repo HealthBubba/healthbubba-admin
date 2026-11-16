@@ -5,14 +5,14 @@ namespace App\Models;
 use App\Concerns\Models\HasQuery;
 use App\Models\Appointment\AppointmentAttachment;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Concerns\HasVersion4Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Enums\AppointmentStatus;
 
 class Appointment extends Model {
-    use HasFactory, HasUuids, HasQuery;
+    use HasFactory, HasVersion4Uuids, HasQuery;
 
     protected $fillable = ['patient_id', 'doctor_id', 'appointment_id'];
 

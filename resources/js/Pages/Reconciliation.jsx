@@ -66,7 +66,7 @@ export default function ({ items = [], count = 0 }) {
 
                 <div className="card p-0 rounded-xl">
                     <div className="overflow-x-auto relative">
-                        <table className="border-b w-full">
+                        <table className="border-b w-auto">
                             <thead>
                                 <tr>
                                     <th>Appointment</th>

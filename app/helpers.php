@@ -5,6 +5,7 @@ use App\Library\Toast;
 use App\Library\Uploader;
 use App\Models\Admin;
 use App\Models\User;
+use Cloudinary\Cloudinary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 
@@ -51,18 +52,24 @@ if(!function_exists('upload')) {
     }
 }
 
+if (!function_exists('cloudinary')) {
+    function cloudinary(): Cloudinary {
+        return app(Cloudinary::class);
+    }
+}
+
 if(!function_exists('cloudinaryUpload')) {
     function cloudinaryUpload($file, $folder = 'doctor_documents') {
         // Accept either an uploaded-file object or an already-resolved path string.
         $path = is_string($file) ? $file : $file->getRealPath();
         return cloudinary()
+                ->uploadApi()
                 ->upload($path, [
                     'folder' => $folder,
                     'resource_type' => "image",
                     'format' => "jpg", // Converts PDF to JPG
                     'pages' => true,
-                ])
-                ->getSecurePath();
+                ])['secure_url'];
     }
 }
 

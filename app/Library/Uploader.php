@@ -2,7 +2,6 @@
 
 namespace App\Library;
 
-use Cloudinary\Cloudinary;
 use Illuminate\Support\Str;
 
 class Uploader {
@@ -19,7 +18,7 @@ class Uploader {
                     if(env('STORAGE_LOCATION') === 'local' ){
                         $file_array[$i] = self::saveToStorage($file);
                     }else if (env('STORAGE_LOCATION') === 'cloud') {
-                        $url = cloudinary()->upload($file->getRealPath())->getSecurePath();
+                        $url = cloudinary()->uploadApi()->upload($file->getRealPath())['secure_url'];
                         $file_array[$i] = $url;
                     }
                 }
@@ -30,7 +29,7 @@ class Uploader {
             if(env('STORAGE_LOCATION') === 'local'){
                 $url = self::saveToStorage($files);
             }else if(env('STORAGE_LOCATION') === 'cloud'){
-                $url = cloudinary()->upload($files->getRealPath())->getSecurePath();
+                $url = cloudinary()->uploadApi()->upload($files->getRealPath())['secure_url'];
             }
 
             return $url;
@@ -60,7 +59,7 @@ class Uploader {
     static function deleteFile($file){
         if ($file) {
             $cloudinary_id = self::extractFileId($file);
-            cloudinary()->destroy($cloudinary_id);
+            cloudinary()->uploadApi()->destroy($cloudinary_id);
         }
     }
 

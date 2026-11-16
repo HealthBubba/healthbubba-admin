@@ -1,5 +1,29 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+## HealthBubba admin setup
+
+This application uses Laravel 13 and Inertia 2. It requires PHP 8.3 or newer,
+Composer 2, and Node.js 20.19+ or 22.12+ for the Vite 7 build.
+Composer resolves dependencies against PHP 8.3 to keep the lockfile compatible
+with the minimum supported runtime.
+
+```sh
+composer install
+npm ci
+npm run build
+```
+
+Copy `.env.example` to `.env`, configure the shared HealthBubba database and
+backend API, then run `php artisan key:generate` for a new local environment.
+Existing environments should retain their application key.
+Cloudinary uploads use the official PHP SDK and the existing `CLOUDINARY_URL`
+setting (for example, `cloudinary://API_KEY:API_SECRET@CLOUD_NAME`).
+
+Run the database-independent upgrade checks with
+`php artisan test --testsuite=Unit,Compatibility`. The existing Feature tests
+require the base HealthBubba schema: this repository's migrations alter tables
+such as `users` and `admins` and cannot initialize an empty database by themselves.
+
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
