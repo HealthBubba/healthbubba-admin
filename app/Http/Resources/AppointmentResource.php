@@ -46,7 +46,27 @@ class AppointmentResource extends JsonResource
             'patient_attendee_id' => $this->patient_attendee_id,
             'type' => $this->is_physical ? 'In Person' : 'Virtual',
             'weight' => $this->weight,
-            'attachments' => AppointmentAttachmentResource::collection($this->attachments)
+            'attachments' => AppointmentAttachmentResource::collection($this->attachments),
+            // Scheduled (regular) consultation lifecycle — PRD §1-9.
+            'scheduled_status' => $this->scheduled_status,
+            'scheduled_payout_amount' => $this->scheduled_payout_amount,
+            'scheduled_admin_reason' => $this->scheduled_admin_reason,
+            'doctor_response_deadline' => $this->doctor_response_deadline,
+            'patient_grace_deadline' => $this->patient_grace_deadline,
+            'chat_opened_at' => $this->chat_opened_at,
+            'settlement_status' => $this->settlement_status,
+            'reschedule_proposed_date' => $this->reschedule_proposed_date,
+            'reschedule_proposed_time' => $this->reschedule_proposed_time,
+            'reschedule_proposed_by' => $this->reschedule_proposed_by,
+            // Sponsor Account funding, same lifecycle.
+            'is_sponsored_consultation' => $this->is_sponsored_consultation,
+            'sponsor_id' => $this->sponsor_id,
+            'sponsor_campaign_id' => $this->sponsor_campaign_id,
+            'sponsor_reservation_status' => $this->sponsor_reservation_status,
+            // Doctor no-show flag — Admin's Flagged No-Shows queue.
+            'no_show_flag_status' => $this->no_show_flag_status,
+            'no_show_flag_resolved_by_admin_id' => $this->no_show_flag_resolved_by_admin_id,
+            'no_show_flag_resolved_at' => $this->no_show_flag_resolved_at,
         ];
     }
 }

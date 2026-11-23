@@ -4,7 +4,7 @@ import { CubeIcon } from '@/Icons/CubeIcon';
 import HospitalBedIcon from '@/Icons/HospitalBedIcon';
 import SethoscopeIcon from '@/Icons/SethoscopeIcon';
 import React from 'react'
-import { ArrowPathIcon, BriefcaseIcon, CheckBadgeIcon, CurrencyDollarIcon, EyeDropperIcon, ListBulletIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, BanknotesIcon, BriefcaseIcon, CheckBadgeIcon, CurrencyDollarIcon, ExclamationTriangleIcon, EyeDropperIcon, ListBulletIcon, ScaleIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function () {
     return (
@@ -46,11 +46,23 @@ export default function () {
                     </li>
 
                     <li>
+                        <SidebarItem name={'Scheduled Review'} url={route('scheduled-review')} is_current={route().current('scheduled-review.*')} icon={ScaleIcon} />
+                    </li>
+
+                    <li>
+                        <SidebarItem name={'Flagged No-Shows'} url={route('no-show-flags')} is_current={route().current('no-show-flags.*')} icon={ExclamationTriangleIcon} />
+                    </li>
+
+                    <li>
                         <SidebarItem name={'Profile Changes'} url={route('profile-changes')} is_current={route().current('profile-changes.*')} icon={UserCircleIcon} />
                     </li>
 
                     <li>
                         <SidebarItem name={'Urgent Pricing'} url={route('urgent-pricing')} is_current={route().current('urgent-pricing.*')} icon={CurrencyDollarIcon} />
+                    </li>
+
+                    <li>
+                        <SidebarItem name={'Payout Settings'} url={route('payout-settings')} is_current={route().current('payout-settings.*')} icon={BanknotesIcon} />
                     </li>
 
                     <li>

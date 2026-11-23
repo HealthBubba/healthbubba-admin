@@ -12,6 +12,9 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileChangeController;
 use App\Http\Controllers\QualificationController;
+use App\Http\Controllers\ScheduledPayoutSettingsController;
+use App\Http\Controllers\ScheduledReviewController;
+use App\Http\Controllers\NoShowFlagController;
 use App\Http\Controllers\UrgentPricingController;
 use App\Http\Controllers\ReconciliationController;
 use App\Http\Controllers\SignatureController;
@@ -128,6 +131,24 @@ Route::middleware('auth')->group(function(){
     Route::prefix('urgent-pricing')->group(function(){
         Route::get('', [UrgentPricingController::class, 'index'])->name('urgent-pricing');
         Route::post('', [UrgentPricingController::class, 'update'])->name('urgent-pricing.update');
+    });
+
+    Route::prefix('payout-settings')->group(function(){
+        Route::get('', [ScheduledPayoutSettingsController::class, 'index'])->name('payout-settings');
+        Route::post('', [ScheduledPayoutSettingsController::class, 'update'])->name('payout-settings.update');
+    });
+
+    Route::prefix('scheduled-review')->group(function(){
+        Route::get('', [ScheduledReviewController::class, 'index'])->name('scheduled-review');
+        Route::post('{appointment:appointment_id}', [ScheduledReviewController::class, 'resolve'])->name('scheduled-review.resolve');
+    });
+
+    Route::prefix('no-show-flags')->group(function(){
+        Route::get('', [NoShowFlagController::class, 'index'])->name('no-show-flags');
+        Route::prefix('{appointment:appointment_id}')->group(function(){
+            Route::post('dismiss', [NoShowFlagController::class, 'dismiss'])->name('no-show-flags.dismiss');
+            Route::post('suspend', [NoShowFlagController::class, 'suspend'])->name('no-show-flags.suspend');
+        });
     });
 
     Route::prefix('orders')->group(function(){
