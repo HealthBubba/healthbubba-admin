@@ -22,34 +22,12 @@ class NoShowFlagController extends Controller
 
     function index()
     {
-        $appointments = Appointment::where('no_show_flag_status', 'flagged')
-            ->with(['patient', 'doctor'])
-            ->orderByDesc('date')
-            ->get();
-
-        $items = $appointments->map(fn (Appointment $appointment) => [
-            'appointment_id' => $appointment->appointment_id,
-            'date' => $appointment->date,
-            'time' => $appointment->time,
-            'patient' => $appointment->patient ? [
-                'id' => $appointment->patient->id,
-                'full_name' => $appointment->patient->full_name,
-                'phone' => $appointment->patient->phone,
-                'email' => $appointment->patient->email,
-            ] : null,
-            'doctor' => $appointment->doctor ? [
-                'id' => $appointment->doctor->id,
-                'full_name' => $appointment->doctor->full_name,
-                'phone' => $appointment->doctor->phone,
-                'email' => $appointment->doctor->email,
-            ] : null,
-            'scheduled_payout_amount' => $appointment->scheduled_payout_amount,
-            'is_sponsored_consultation' => $appointment->is_sponsored_consultation,
-        ]);
-
-        return inertia('NoShowFlags', [
-            'items' => $items,
-        ]);
+        // Gated: production's appointments table doesn't have
+        // no_show_flag_status yet (whatsapp-integration not deployed to
+        // prod). This would 500 on a live query otherwise. Remove this
+        // short-circuit once that reaches prod — see the
+        // whatsapp-integration-prod-gap memory.
+        return inertia('ComingSoon', ['title' => 'Flagged No-Shows']);
     }
 
     function dismiss(Request $request, Appointment $appointment)

@@ -19,18 +19,11 @@ class ScheduledPayoutSettingsController extends Controller
 
     function index()
     {
-        $response = $this->api()->get('admin/scheduled-consultations/payout-settings');
-        $data = $response->json();
-
-        $ok = is_array($data) && ($data['ok'] ?? false);
-        if (!$ok) {
-            toast(($data['message'] ?? null) ?: "Could not load payout settings")->error();
-        }
-
-        return inertia('PayoutSettings', [
-            'current' => $ok ? ($data['data']['current'] ?? null) : null,
-            'history' => $ok ? ($data['data']['history'] ?? []) : [],
-        ]);
+        // Gated: the matching backend_service release (scheduled-consultation
+        // payout settings table + endpoints) is only on whatsapp-integration
+        // so far, not yet deployed to production. Remove this short-circuit
+        // once that reaches prod — see the whatsapp-integration-prod-gap memory.
+        return inertia('ComingSoon', ['title' => 'Payout Settings']);
     }
 
     function update(Request $request)

@@ -23,37 +23,11 @@ class ScheduledReviewController extends Controller
 
     function index()
     {
-        $appointments = Appointment::where('scheduled_status', 'admin_review')
-            ->with(['patient', 'doctor'])
-            ->orderBy('doctor_response_deadline')
-            ->get();
-
-        $items = $appointments->map(fn (Appointment $appointment) => [
-            'appointment_id' => $appointment->appointment_id,
-            'date' => $appointment->date,
-            'time' => $appointment->time,
-            'patient' => $appointment->patient ? [
-                'id' => $appointment->patient->id,
-                'full_name' => $appointment->patient->full_name,
-                'phone' => $appointment->patient->phone,
-                'email' => $appointment->patient->email,
-            ] : null,
-            'doctor' => $appointment->doctor ? [
-                'id' => $appointment->doctor->id,
-                'full_name' => $appointment->doctor->full_name,
-                'phone' => $appointment->doctor->phone,
-                'email' => $appointment->doctor->email,
-            ] : null,
-            'scheduled_payout_amount' => $appointment->scheduled_payout_amount,
-            'is_sponsored_consultation' => $appointment->is_sponsored_consultation,
-            'sponsor_id' => $appointment->sponsor_id,
-            'scheduled_admin_reason' => $appointment->scheduled_admin_reason,
-            'doctor_response_deadline' => $appointment->doctor_response_deadline,
-        ]);
-
-        return inertia('ScheduledReview', [
-            'items' => $items,
-        ]);
+        // Gated: production's appointments table doesn't have scheduled_status
+        // yet (whatsapp-integration not deployed to prod). This would 500 on a
+        // live query otherwise. Remove this short-circuit once that reaches
+        // prod — see the whatsapp-integration-prod-gap memory.
+        return inertia('ComingSoon', ['title' => 'Scheduled Review']);
     }
 
     function resolve(Request $request, Appointment $appointment)
