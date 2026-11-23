@@ -12,6 +12,7 @@ import { Head, router } from '@inertiajs/react';
 export default function ({patients, totalPatients}) {
 
     const params = useSearchParams()
+    console.log(patients)
 
     return (
         <AuthenticatedLayout title="Patients">

@@ -11,7 +11,6 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { Head, Link, router } from '@inertiajs/react';
 
 export default function ({users, totalDoctors}) {
-
     const params = useSearchParams()
 
     return (
@@ -98,7 +97,7 @@ export default function ({users, totalDoctors}) {
                             </table>
 
                             {
-                                users.data?.length < 1 
+                                users.data.length < 1 
 
                                 ?
 
